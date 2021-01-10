@@ -8,20 +8,21 @@ const express = require("express"),
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // seedDB();
-
-const db = require("./config/key").mongoURI;
+     
+//environment variables
+require("dotenv").config();
 
 mongoose
-  .connect(db, {
+  .connect(process.env.DATABASEURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("Mongodb Connected..."))
   .catch((err) => console.log(err));
 
-app.use("/items", items);
+app.use("/list", items);
 
-//   mongoose.set("useFindAndModify", false);
+//mongoose.set("useFindAndModify", false);
 
 const port = process.env.PORT || 5000;
 

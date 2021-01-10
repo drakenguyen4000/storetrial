@@ -1,0 +1,50 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 0 10%;
+}
+
+/*Items List*/
+.model {
+  width: 150px;
+  height: 200px;
+  background-size: cover;
+}
+
+.description, .price {
+  font-size: 12px;
+}
+ 
+.itemContainer {
+  width: 150px;
+  margin: 20px 4%;
+
+}
+
+.list-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modelImage {
+  width: 300px;
+  height: 400px;
+  background-size: cover;
+}
+
+.grid_nio {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
+
+button {
+  width: 100px;
+  height: 24px;
+  background: rgb(201, 201, 252);
+  border: 1px rgb(157, 170, 199) solid;
+  border-radius: 5px;
+}
