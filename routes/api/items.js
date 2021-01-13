@@ -4,7 +4,7 @@ const express = require("express"),
 //Item Model
 const Item = require("../../models/Item");
 
-//Get Route
+//Index Route
 router.get("/", (req, res) => {
   Item.find()
     //-1 is sort by descending
@@ -13,11 +13,27 @@ router.get("/", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//Show Route
 router.get("/:id", (req, res) => {
   Item.findById(req.params.id)
     .then((item) => res.status(200).json(item))
     .catch((err) => console.log(err));
 });
+
+router.get("/shoppingcart", (req, res) => {
+  console.log(req)
+  Item.findById(req.params.id)
+    .then((item) => res.status(200).json(item))
+    .catch((err) => console.log(err));
+});
+
+//Get Shopping Items
+// router.get("/shoppingcart/:id", (req, res) => {
+//   // console.log(req);
+//   Item.findById(req.params.id)
+//     .then((item) => res.status(200).json(item))
+//     .catch((err) => console.log(err));
+// });
 
 // //@route  POST api/items
 // //@desc   Create an Item

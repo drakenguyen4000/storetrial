@@ -1,16 +1,23 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import { showItem } from "../action";
 
 const ItemDetail = (props) => {
-  // useEffect(()=>{
-  //   console.log(props)
-  // }, [])
+  useEffect(() => {
+    props.showItem(props.item_id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   if (props.details) {
     return (
       <div className="container">
         <h2>Details</h2>
-        <div className="grid_nio">
-          <img className="modelImage" src={`${props.details.image}`} alt="nothing" />
+        <div className="grid_detail">
+          <img
+            className="modelImage"
+            src={`${props.details.image}`}
+            alt="nothing"
+          />
           <div className="detail">
             <div>{props.details.brand}</div>
             <p className="description">{props.details.description}</p>
@@ -23,9 +30,11 @@ const ItemDetail = (props) => {
   return <div className="container"></div>;
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    details: state.selected,
+    details: state.show,
+    item_id: ownProps.match.params.id,
   };
 };
-export default connect(mapStateToProps)(ItemDetail);
+
+export default connect(mapStateToProps, { showItem })(ItemDetail);

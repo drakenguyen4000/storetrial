@@ -1,9 +1,38 @@
 import axios from "axios";
 
-export const getItems = () => (dispatch) => {
+//Get Items List
+export const getList = () => (dispatch) => {
   dispatch(itemsLoading());
   axios
     .get("/list")
+    .then((res) =>
+      dispatch({
+        type: "GET_LIST",
+        payload: res.data,
+      })
+    )
+    .catch((err) => console.log(err));
+};
+
+//show Item
+export const showItem = (id) => (dispatch) => {
+  dispatch(itemsLoading());
+  axios
+    .get(`/list/${id}`)
+    .then((res) =>
+      dispatch({
+        type: "SHOW_ITEM",
+        payload: res.data,
+      })
+    )
+    .catch((err) => console.log(err));
+};
+
+export const getItems = (id) => (dispatch) => {
+  console.log(id);
+  dispatch(itemsLoading());
+  axios
+    .get(`/list/shoppingcart`)
     .then((res) =>
       dispatch({
         type: "GET_ITEMS",
@@ -13,18 +42,25 @@ export const getItems = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// export const selectedItem = (dispatch, item) => {
-export const selectedItem = (id) => (dispatch) => {
+
+
+// export const getItems = (id) => (dispatch) => {
+//   console.log(id);
+//   dispatch(itemsLoading());
+//   axios.get(`/shoppingcart/${id}`).then((res) =>
+//     dispatch({
+//       type: "GET_ITEMS",
+//       payload: res.data,
+//     })
+//   );
+// };
+
+export const addItem = (item) => (dispatch) => {
   dispatch(itemsLoading());
-  axios
-    .get(`/list/${id}`)
-    .then(res =>
-      dispatch({
-        type: "SELECTED_ITEMS",
-        payload: res.data,
-      })
-    )
-    .catch((err) => console.log(err));
+  dispatch({
+    type: "ADD_ITEM",
+    payload: item,
+  });
 };
 
 export const itemsLoading = () => {

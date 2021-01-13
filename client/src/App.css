@@ -9,10 +9,28 @@ body {
 }
 
 /*Items List*/
+
+.shoppingCart-btn {
+  border: 2px orange solid;
+  height: 36px;
+  width: 66px;
+  background: white;
+  float: right;
+}
+
+.fa-shopping-cart {
+  font-size: 25px;
+  color: rgb(218, 142, 1);
+}
+
 .model {
   width: 150px;
   height: 200px;
   background-size: cover;
+}
+
+.model:hover {
+  box-shadow: 3px 3px 5px rgb(133, 133, 161);
 }
 
 .description, .price {
@@ -36,6 +54,35 @@ body {
   background-size: cover;
 }
 
+.brand-link:link {
+  text-decoration: none;
+  color:rgb(250, 96, 7);
+}
+
+.brand-link:visited {
+  color:rgb(250, 96, 7);
+}
+
+.brand-link:hover {
+  color:rgb(253, 159, 100);
+}
+
+.description-link:link {
+  text-decoration: none;
+  color: black;
+}
+
+.description-link:visited {
+  color: black;
+}
+
+.description-link:hover {
+  color: rgb(61, 61, 61);
+}
+
+
+
+/*---Item Details---*/
 .grid_nio {
   display: grid;
   grid-template-columns: 30% 1fr;

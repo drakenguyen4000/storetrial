@@ -4,7 +4,7 @@ import "../App.css";
 // import axios from "axios";
 import ItemList from "./ItemList";
 import ItemDetail from "./ItemDetail";
-import Cart from "./Cart";
+import ShoppingCart from "./ShoppingCart";
 import { HashRouter, Route } from "react-router-dom";
 import history from "./history";
 
@@ -16,7 +16,7 @@ const App = () => {
         {/* <ItemDetail /> */}
         <Route path="/list" exact component={ItemList} />
         <Route path="/list/:id" exact component={ItemDetail} />
-        <Route path="/cart" exact component={Cart} />
+        <Route path="/list/shoppingcart" exact component={ShoppingCart} />
       </div>
     </HashRouter>
   );
