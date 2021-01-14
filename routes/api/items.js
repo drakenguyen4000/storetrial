@@ -13,16 +13,26 @@ router.get("/", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//Index Route
+router.get("/list", (req, res) => {
+  Item.find()
+    //-1 is sort by descending
+    .sort({ date: -1 })
+    .then((items) => res.status(200).json(items))
+    .catch((err) => console.log(err));
+});
+
 //Show Route
-router.get("/:id", (req, res) => {
+router.get("/list/:id", (req, res) => {
   Item.findById(req.params.id)
     .then((item) => res.status(200).json(item))
     .catch((err) => console.log(err));
 });
 
-router.get("/shoppingcart", (req, res) => {
-  console.log(req)
-  Item.findById(req.params.id)
+
+router.post("/shoppingcart", (req, res) => {
+  // console.log(req.body)
+  Item.findById(req.body)
     .then((item) => res.status(200).json(item))
     .catch((err) => console.log(err));
 });

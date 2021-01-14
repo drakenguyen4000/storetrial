@@ -29,10 +29,10 @@ export const showItem = (id) => (dispatch) => {
 };
 
 export const getItems = (id) => (dispatch) => {
-  console.log(id);
+  // console.log(id);
   dispatch(itemsLoading());
   axios
-    .get(`/list/shoppingcart`)
+    .post(`/shoppingcart`, id)
     .then((res) =>
       dispatch({
         type: "GET_ITEMS",

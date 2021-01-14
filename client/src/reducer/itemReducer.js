@@ -1,6 +1,7 @@
 const initialState = {
   items: [],
   cart: [],
+  shoplist: [],
   selected: null,
   loading: false,
 };

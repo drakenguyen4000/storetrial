@@ -4,6 +4,7 @@ import { showItem } from "../action";
 
 const ItemDetail = (props) => {
   useEffect(() => {
+    console.log("Items Details")
     props.showItem(props.item_id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -31,6 +32,7 @@ const ItemDetail = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
+  // console.log(state)
   return {
     details: state.show,
     item_id: ownProps.match.params.id,

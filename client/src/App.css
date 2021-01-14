@@ -95,3 +95,19 @@ button {
   border: 1px rgb(157, 170, 199) solid;
   border-radius: 5px;
 }
+
+/*---Shopping List--*/
+.shopContainer {
+  margin: 5% 0 0 30%;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  grid-gap: 40%;
+}
+
+.shop-btn {
+  font-weight: 800;
+  width: 35px;
+  margin: 2%;
+  background: rgb(252, 211, 135);
+  border: none;
+}

@@ -14,9 +14,11 @@ const App = () => {
       <div className="App">
         {/* <ItemList /> */}
         {/* <ItemDetail /> */}
+        <Route path="/" exact component={ItemList} />
         <Route path="/list" exact component={ItemList} />
         <Route path="/list/:id" exact component={ItemDetail} />
-        <Route path="/list/shoppingcart" exact component={ShoppingCart} />
+        <Route path="/shoppingcart" exact component={ShoppingCart} />
+        {/* <Route path="/list/shoppingcart" exact component={ShoppingCart} /> */}
       </div>
     </HashRouter>
   );

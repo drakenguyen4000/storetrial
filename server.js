@@ -20,7 +20,7 @@ mongoose
   .then(() => console.log("Mongodb Connected..."))
   .catch((err) => console.log(err));
 
-app.use("/list", items);
+app.use("/", items);
 
 //mongoose.set("useFindAndModify", false);
 

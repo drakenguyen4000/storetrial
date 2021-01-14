@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const ItemList = (props) => {
   useEffect(() => {
+    console.log("Item list");
     props.getList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -12,7 +13,7 @@ const ItemList = (props) => {
   if (props.list) {
     return (
       <div className="container">
-        <Link to={`/list/shoppingcart`}>
+        <Link to={`/shoppingcart`}>
           <button className="shoppingCart-btn">
             <i className="fas fa-shopping-cart"></i>
           </button>
@@ -42,7 +43,7 @@ const ItemList = (props) => {
                 <button onClick={() => props.addItem(item._id)}>
                   Add to Cart
                 </button>
-                <Link to={`/list/shoppingcart`}>
+                <Link to={`/shoppingcart`}>
                   <button>Buy Now</button>
                 </Link>
               </div>
@@ -56,7 +57,7 @@ const ItemList = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     list: state.items,
     cart: state.cart,
