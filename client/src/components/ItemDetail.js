@@ -13,7 +13,7 @@ const ItemDetail = (props) => {
     return (
       <div className="container">
         <h2>Details</h2>
-        <div className="grid_detail">
+        <div>
           <img
             className="modelImage"
             src={`${props.details.image}`}

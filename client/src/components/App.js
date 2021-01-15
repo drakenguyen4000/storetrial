@@ -7,18 +7,21 @@ import ItemDetail from "./ItemDetail";
 import ShoppingCart from "./ShoppingCart";
 import { HashRouter, Route } from "react-router-dom";
 import history from "./history";
+import Sidebar from "../Sidebar";
+import Navbar from "../Navbar";
 
 const App = () => {
   return (
     <HashRouter history={history}>
-      <div className="App">
-        {/* <ItemList /> */}
-        {/* <ItemDetail /> */}
-        <Route path="/" exact component={ItemList} />
-        <Route path="/list" exact component={ItemList} />
-        <Route path="/list/:id" exact component={ItemDetail} />
-        <Route path="/shoppingcart" exact component={ShoppingCart} />
-        {/* <Route path="/list/shoppingcart" exact component={ShoppingCart} /> */}
+      <div className="wrapper">
+        <Navbar />
+        <Sidebar />
+        <div className="main">
+          <Route path="/" exact component={ItemList} />
+          <Route path="/list" exact component={ItemList} />
+          <Route path="/list/:id" exact component={ItemDetail} />
+          <Route path="/shoppingcart" exact component={ShoppingCart} />
+        </div>
       </div>
     </HashRouter>
   );

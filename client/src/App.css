@@ -8,20 +8,71 @@ body {
   padding: 0 10%;
 }
 
-/*Items List*/
+.navbar {
+  grid-area: header;
+}
+
+/*review*/
+.sidebar {
+  grid-area: sidebar;
+  min-height: 1000px;
+}
+
+.main {
+  grid-area: main;
+}
+
+.wrapper {  
+  display: grid;
+  grid-template-columns:  300px 1fr;
+  grid-template-areas: 
+  "header header"
+  "sidebar main";
+}
+
+/*---navbar---*/
+
+.navbar {
+  background: #ececec;
+  height: 50px;
+  box-shadow: 3px 3px 5px#d8d8d8;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin: 0 80px;
+}
 
 .shoppingCart-btn {
   border: 2px orange solid;
   height: 36px;
   width: 66px;
   background: white;
-  float: right;
 }
 
 .fa-shopping-cart {
   font-size: 25px;
   color: rgb(218, 142, 1);
 }
+
+.sidebar {
+  /* background: #f3f3f3; */
+  /* width: 220px; */
+  padding-left: 80px;
+  box-shadow: 3px 3px 5px #d8d8d8;
+}
+
+.sidebar div {
+  font-size: 1.4rem;
+  padding: 6% 4%;
+  font-weight: 500;
+}
+
+/*Items List*/
 
 .model {
   width: 150px;
@@ -40,7 +91,6 @@ body {
 .itemContainer {
   width: 150px;
   margin: 20px 4%;
-
 }
 
 .list-grid {
@@ -98,7 +148,7 @@ button {
 
 /*---Shopping List--*/
 .shopContainer {
-  margin: 5% 0 0 30%;
+  /* margin: 5% 0 0 30%; */
   display: grid;
   grid-template-columns: 1fr 200px;
   grid-gap: 40%;

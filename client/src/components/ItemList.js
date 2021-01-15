@@ -13,11 +13,6 @@ const ItemList = (props) => {
   if (props.list) {
     return (
       <div className="container">
-        <Link to={`/shoppingcart`}>
-          <button className="shoppingCart-btn">
-            <i className="fas fa-shopping-cart"></i>
-          </button>
-        </Link>
         <h2>ItemList</h2>
         <div className="list-grid">
           {props.list.map((item) => {
