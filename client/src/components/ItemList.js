@@ -17,7 +17,7 @@ const ItemList = (props) => {
         <div className="list-grid">
           {props.list.map((item) => {
             return (
-              <div className="itemContainer" key={item._id}>
+              <div className="item-container" key={item._id}>
                 <Link className="image-link" to={`/list/${item._id}`}>
                   <img
                     className="model"
@@ -39,7 +39,7 @@ const ItemList = (props) => {
                   Add to Cart
                 </button>
                 <Link to={`/shoppingcart`}>
-                  <button>Buy Now</button>
+                  <button onClick={() => props.addItem(item._id)}>Buy Now</button>
                 </Link>
               </div>
             );
@@ -52,7 +52,7 @@ const ItemList = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  console.log(state);
   return {
     list: state.items,
     cart: state.cart,

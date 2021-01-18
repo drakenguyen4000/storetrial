@@ -7,6 +7,7 @@ const initialState = {
 };
 
 export default function itemReducer (state = initialState, action) {
+  // const {cart} = state;
   switch (action.type) {
     case "GET_LIST":
       return {
@@ -18,7 +19,8 @@ export default function itemReducer (state = initialState, action) {
       // console.log(action.payload)
       return {
         ...state, 
-        cart: [action.payload],
+        //If state.cart exist or empty, add payload to state.cart array
+        cart: [ ...(state.cart || []), action.payload], 
         loading: false,
       }
     case "SHOW_ITEM": 
@@ -28,6 +30,7 @@ export default function itemReducer (state = initialState, action) {
         loading: false,
       };
     case "GET_ITEMS": 
+    console.log(action.payload, "get_items reducer")
       return {
         ...state,
         shoplist: action.payload,
@@ -42,23 +45,3 @@ export default function itemReducer (state = initialState, action) {
     return state
   }
 }
-// const getItemReducer = (state = initialState, action) => {
-//  if(action.type ===  "ITEMS_LOADING") {
-//   return {
-//     ...state,
-//     loading: true,
-//   }
-// }}
-
-// const selectedItemReducer = (selectItem = null, action) => {
-//   if (action.type === "SELECTED_ITEM") {
-//     return action.payload;
-//   }
-//   return selectItem;
-// };
-
-// export default combineReducers({
-//   items: getItemReducer,
-//   // items: itemsReducer,
-//   // selectedItem: selectedItemReducer,
-// });

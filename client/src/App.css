@@ -15,19 +15,20 @@ body {
 /*review*/
 .sidebar {
   grid-area: sidebar;
-  min-height: 1000px;
+  height: 100vh;
 }
 
 .main {
   grid-area: main;
+  /* padding-bottom: 20%; */
 }
 
-.wrapper {  
+.wrapper {
   display: grid;
-  grid-template-columns:  300px 1fr;
-  grid-template-areas: 
-  "header header"
-  "sidebar main";
+  grid-template-columns: 300px 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
 }
 
 /*---navbar---*/
@@ -48,15 +49,27 @@ body {
 }
 
 .shoppingCart-btn {
-  border: 2px orange solid;
+  border: 1px #d8d8d8 solid;
   height: 36px;
   width: 66px;
   background: white;
+  padding: 8px 12px 4px 12px;
+  border-radius: 4px;
+}
+
+.shoppingCart-btn:hover {
+  border: 1px #faf9f9 solid;
 }
 
 .fa-shopping-cart {
   font-size: 25px;
-  color: rgb(218, 142, 1);
+  /* color: rgb(252, 148, 84); */
+  color: #b1b1b1;
+
+}
+
+.fa-shopping-cart:hover {
+  color: #c9c9c9;
 }
 
 .sidebar {
@@ -75,8 +88,8 @@ body {
 /*Items List*/
 
 .model {
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 267px;
   background-size: cover;
 }
 
@@ -84,13 +97,24 @@ body {
   box-shadow: 3px 3px 5px rgb(133, 133, 161);
 }
 
-.description, .price {
-  font-size: 12px;
+.brand {
+  font-size: 18px;
 }
- 
-.itemContainer {
-  width: 150px;
+
+.description,
+.price {
+  font-size: 14px;
+}
+
+.item-container {
+  width: 200px;
   margin: 20px 4%;
+}
+
+.description {
+  height: 84px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .list-grid {
@@ -104,17 +128,14 @@ body {
   background-size: cover;
 }
 
-.brand-link:link {
-  text-decoration: none;
-  color:rgb(250, 96, 7);
-}
-
+.brand-link:link,
 .brand-link:visited {
-  color:rgb(250, 96, 7);
+  text-decoration: none;
+  color: rgb(250, 96, 7);
 }
 
 .brand-link:hover {
-  color:rgb(253, 159, 100);
+  color: rgb(253, 159, 100);
 }
 
 .description-link:link {
@@ -130,20 +151,21 @@ body {
   color: rgb(61, 61, 61);
 }
 
-
-
 /*---Item Details---*/
-.grid_nio {
+.details-container {
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 30% 50%;
+  grid-gap: 5%;
 }
 
 button {
-  width: 100px;
+  width: 90px;
   height: 24px;
   background: rgb(201, 201, 252);
   border: 1px rgb(157, 170, 199) solid;
   border-radius: 5px;
+  margin: 1%;
+  cursor: pointer;
 }
 
 /*---Shopping List--*/

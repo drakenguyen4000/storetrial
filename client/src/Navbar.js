@@ -11,13 +11,13 @@ const Navbar = () => {
         <li>Accessories</li>
         <li>Active Wear</li>
         <li>Casual Wear</li>
-        <Link to={`/shoppingcart`}>
-          <li>
-            <button className="shoppingCart-btn">
+        <li>
+          <Link to={`/shoppingcart`}>
+            <span className="shoppingCart-btn">
               <i className="fas fa-shopping-cart"></i>
-            </button>
-          </li>
-        </Link>
+            </span>
+          </Link>
+        </li>
       </ul>
     </nav>
   );

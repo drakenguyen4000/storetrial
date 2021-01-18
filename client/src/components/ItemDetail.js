@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { showItem } from "../action";
+import { showItem, addItem } from "../action";
+import { Link } from "react-router-dom";
 
 const ItemDetail = (props) => {
   useEffect(() => {
-    console.log("Items Details")
+    console.log("Items Details");
     props.showItem(props.item_id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -13,7 +14,7 @@ const ItemDetail = (props) => {
     return (
       <div className="container">
         <h2>Details</h2>
-        <div>
+        <div className="details-container">
           <img
             className="modelImage"
             src={`${props.details.image}`}
@@ -23,6 +24,14 @@ const ItemDetail = (props) => {
             <div>{props.details.brand}</div>
             <p className="description">{props.details.description}</p>
             <strong>{props.details.price}</strong>
+            <div>
+              <button onClick={() => props.addItem(props.item_id)}>
+                Add to Cart
+              </button>
+              <Link to={`/shoppingcart`}>
+                <button>Buy Now</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -39,4 +48,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, { showItem })(ItemDetail);
+export default connect(mapStateToProps, { showItem, addItem })(ItemDetail);
