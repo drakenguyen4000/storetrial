@@ -6,70 +6,79 @@ const data = [
     brand: "Lucky Brands",
     image:
       "https://images.unsplash.com/photo-1547637916-48ceb6f8d505?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+    quantity: 0,
     description: "High Waist Straight Trousers Women Straight Solid Elegant",
-    price: "$29.99",
+    price: 29.99,
   },
   {
     brand: "L Linen",
     image:
       "https://images.unsplash.com/photo-1589173239067-1c7ee83112b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+      quantity: 0,
     description:
       "Chiffon Dresses Short Sleeve Boho Summer Dress 2020 Vintage Plus Size Maxi Sundress Elegant Women Bodycon Party",
-    price: "$24.99",
+    price: 24.99,
   },
   {
     brand: "Autumn Winter",
     image:
       "https://images.unsplash.com/photo-1592669241067-2f92a1048085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+      quantity: 0,
     description:
       "2019 Autumn Winter Geometric Print Vintage Dress Plus Size Midi Dresses Korean Elegant Women Party Long Sleeve",
-    price: "$23.99",
+    price: 23.99,
   },
   {
     brand: "Lucky Brands",
     image:
       "https://images.unsplash.com/photo-1547637916-48ceb6f8d505?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+      quantity: 0,
     description: "High Waist Straight Trousers Women Straight Solid Elegant",
-    price: "$29.99",
+    price: 29.99,
   },
   {
     brand: "L Linen",
     image:
       "https://images.unsplash.com/photo-1589173239067-1c7ee83112b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+      quantity: 0,
     description:
       "Chiffon Dresses Short Sleeve Boho Summer Dress 2020 Vintage Plus Size Maxi Sundress Elegant Women Bodycon Party",
-    price: "$24.99",
+    price: 24.99,
   },
   {
     brand: "Autumn Winter",
     image:
       "https://images.unsplash.com/photo-1592669241067-2f92a1048085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+      quantity: 0,
     description:
       "2019 Autumn Winter Geometric Print Vintage Dress Plus Size Midi Dresses Korean Elegant Women Party Long Sleeve",
-    price: "$23.99",
+    price: 23.99,
   },
   {
     brand: "Lucky Brands",
     image:
       "https://images.unsplash.com/photo-1547637916-48ceb6f8d505?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+      quantity: 0,
     description: "High Waist Straight Trousers Women Straight Solid Elegant",
-    price: "$29.99",
+    price: 29.99,
   },
   {
     brand: "L Linen",
     image:
       "https://images.unsplash.com/photo-1589173239067-1c7ee83112b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+      quantity: 0,
     description:
       "Chiffon Dresses Short Sleeve Boho Summer Dress 2020 Vintage Plus Size Maxi Sundress Elegant Women Bodycon Party",
-    price: "$24.99",
+    price: 24.99,
   },
   {
     brand: "Autumn Winter",
     image:
       "https://images.unsplash.com/photo-1592669241067-2f92a1048085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
+      quantity: 0,
     description:
       "2019 Autumn Winter Geometric Print Vintage Dress Plus Size Midi Dresses Korean Elegant Women Party Long Sleeve",
-    price: "$23.99",
+    price: 23.99,
   },
 ];
 

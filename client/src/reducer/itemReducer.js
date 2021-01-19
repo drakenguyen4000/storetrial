@@ -29,13 +29,13 @@ export default function itemReducer (state = initialState, action) {
         show: action.payload,
         loading: false,
       };
-    case "GET_ITEMS": 
-    console.log(action.payload, "get_items reducer")
-      return {
-        ...state,
-        shoplist: action.payload,
-        loading: false,
-      }
+    // case "GET_ITEMS": 
+    // // console.log(action.payload, "get_items reducer")
+    //   return {
+    //     ...state,
+    //     shoplist: action.payload,
+    //     loading: false,
+    //   }
     case "LOADING_ITEMS":
       return {
         ...state,

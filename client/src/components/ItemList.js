@@ -32,14 +32,14 @@ const ItemList = (props) => {
                   <p className="description">{item.description}</p>
                 </Link>
                 <p className="price">
-                  <strong>{item.price}</strong>
+                  <strong>${item.price}</strong>
                 </p>
-                {/* onClick Add Item to Cart */}
-                <button onClick={() => props.addItem(item._id)}>
+                {/* <button onClick={() => props.addItem(item._id)}> */}
+                <button onClick={() => props.addItem(item)}>
                   Add to Cart
                 </button>
                 <Link to={`/shoppingcart`}>
-                  <button onClick={() => props.addItem(item._id)}>Buy Now</button>
+                  <button onClick={() => props.addItem(item)}>Buy Now</button>
                 </Link>
               </div>
             );

@@ -28,22 +28,20 @@ export const showItem = (id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-//Take cart items ids and grab items list
-export const getItems = (ids) => (dispatch) => {
-  // console.log(id);
-  dispatch(itemsLoading());
-  axios
-    .post(`/shoppingcart`, ids)
-    .then((res) =>
-      dispatch({
-        type: "GET_ITEMS",
-        payload: res.data,
-      })
-    )
-    .catch((err) => console.log(err));
-};
-
-
+// //Take cart items ids and grab items list
+// export const getItems = (ids) => (dispatch) => {
+//   // console.log(id);
+//   dispatch(itemsLoading());
+//   axios
+//     .post(`/shoppingcart`, ids)
+//     .then((res) =>
+//       dispatch({
+//         type: "GET_ITEMS",
+//         payload: res.data,
+//       })
+//     )
+//     .catch((err) => console.log(err));
+// };
 
 // export const getItems = (id) => (dispatch) => {
 //   console.log(id);

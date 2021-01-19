@@ -1,40 +1,41 @@
-import { useEffect } from "react";
-import { getItems } from "../action";
+// import { useEffect } from "react";
+// import { getItems } from "../action";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ShoppingCart = (props) => {
-  console.log("Shopping Cart");
-  useEffect(() => {
-    if (props.cartItems) {
-      props.getItems(props.cartItems);
-    }
-    return null;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  // console.log("Shopping Cart");
+  //   if (props.cartItems) {
+  //     props.getItems(props.cartItems);
+  //   }
+  //   return null;
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const shoppingCart = (props) => {
-   return props.shopList.map((item) => (
-      <div className="item-container shopContainer" key={item[0]._id}>
-        <Link className="image-link" to={`/list/${item[0]._id}`}>
+    console.log(props)
+   return props.cartItems.map((item) => (
+      <div className="item-container shopContainer" key={item._id}>
+        <Link className="image-link" to={`/list/${item._id}`}>
           <img
             className="model"
-            src={`${item[0].image}`}
-            alt={`${item[0].description}`}
+            src={`${item.image}`}
+            alt={`${item.description}`}
           />
         </Link>
         <div>
           <div>
-            <Link className="brand-link" to={`/list/${item[0]._id}`}>
-              <p className="brand">{item[0].brand}</p>
+            <Link className="brand-link" to={`/list/${item._id}`}>
+              <p className="brand">{item.brand}</p>
             </Link>
             <Link
               className="description-link"
-              to={`/list/${item[0]._id}`}
+              to={`/list/${item._id}`}
             >
-              <p className="description">{item[0].description}</p>
+              <p className="description">{item.description}</p>
             </Link>
-            <strong>{item[0].price}</strong>
+            <strong>${item.price}</strong>
           </div>
           <span>Qty: </span>
           <span>Num</span>
@@ -44,7 +45,7 @@ const ShoppingCart = (props) => {
       </div>
     ));
   };
-  if (props.shopList) {
+  if (props.cartItems) {
     return (
       <div className="container">
         <h2>Shopping Cart</h2>
@@ -62,11 +63,12 @@ const ShoppingCart = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state.shoplist);
+  console.log(state.cart);
   return {
     cartItems: state.cart,
-    shopList: state.shoplist,
+    // shopList: state.shoplist,
   };
 };
 
-export default connect(mapStateToProps, { getItems })(ShoppingCart);
+// export default connect(mapStateToProps, { getItems })(ShoppingCart);
+export default connect(mapStateToProps)(ShoppingCart);
