@@ -1,21 +1,64 @@
 import { connect } from "react-redux";
-import { getList, showItem, addItem } from "../action";
+import {
+  getList,
+  showItem,
+  addToCart,
+  changeQty,
+  updateItemQty,
+} from "../action";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import {Input, Form, FormGroup, Label} from "reactstrap";
 
 const ItemList = (props) => {
+  const { getList, changeQty, addToCart, updateItemQty, cart, list } = props;
+
   useEffect(() => {
-    console.log("Item list");
-    props.getList();
+    getList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (props.list) {
+  const onChange = (e) => {
+    // console.log(e.target.dataset.index)
+    e.preventDefault();
+    const { value } = e.target;
+    const { index } = e.target.dataset;
+    changeQty(Number(index), Number(value));
+  };
+
+  const logicCart = (item, e, buynow) => {
+    e.preventDefault();
+    if (!cart) {
+      addToCart(item, buynow);
+    } else {
+      const index = cart.findIndex((cart) => {
+        return cart._id === item._id;
+      });
+      if (index !== -1) {
+        updateItemQty(index, item.quantity, buynow);
+      } else {
+        addToCart(item, buynow);
+      }
+    }
+  }
+
+  const onBuy = (item, e, buynow) => {
+    return item.quantity > 0 ? logicCart(item, e, buynow) : null;
+  };
+
+  const onConsole = () => {
+    // console.log(props);
+    console.log(list);
+    console.log(cart);
+  };
+
+  if (list) {
     return (
       <div className="container">
         <h2>ItemList</h2>
+        <button onClick={onConsole}>Console Log</button>
         <div className="list-grid">
-          {props.list.map((item) => {
+          {list.map((item, i) => {
             return (
               <div className="item-container" key={item._id}>
                 <Link className="image-link" to={`/list/${item._id}`}>
@@ -23,6 +66,7 @@ const ItemList = (props) => {
                     className="model"
                     src={`${item.image}`}
                     alt={`${item.description}`}
+                    alt="model"
                   />
                 </Link>
                 <Link className="brand-link" to={`/list/${item._id}`}>
@@ -34,13 +78,35 @@ const ItemList = (props) => {
                 <p className="price">
                   <strong>${item.price}</strong>
                 </p>
-                {/* <button onClick={() => props.addItem(item._id)}> */}
-                <button onClick={() => props.addItem(item)}>
-                  Add to Cart
-                </button>
-                <Link to={`/shoppingcart`}>
-                  <button onClick={() => props.addItem(item)}>Buy Now</button>
-                </Link>
+                <Form>
+                <FormGroup className="assign-group">
+                <Label>Qty: </Label>
+              <Input
+                type="select"
+                name="quantity"
+                className="quantity_input"
+                onChange={onChange}
+                data-index={i}
+                required
+              >
+                <option value="">
+                  --Select--
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                </Input>
+                </FormGroup>
+                <button onClick={(e) => onBuy(item, e)}>Add to Cart</button>
+                <button onClick={(e) => onBuy(item, e, "buynow")}>Buy Now</button>
+                </Form>
               </div>
             );
           })}
@@ -59,6 +125,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getList, showItem, addItem })(
-  ItemList
-);
+export default connect(mapStateToProps, {
+  getList,
+  showItem,
+  changeQty,
+  addToCart,
+  updateItemQty,
+})(ItemList);

@@ -45,7 +45,7 @@ body {
 }
 
 .navbar ul li {
-  margin: 0 80px;
+  margin: 0 5%;
 }
 
 .shoppingCart-btn {
@@ -87,10 +87,19 @@ body {
 
 /*Items List*/
 
+.modelImage {
+  width: 300px;
+  height: 400px;
+  background-size: cover;
+}
+
+.model, .modelImage {
+  background-image: url(./image/model.jpg);
+}
 .model {
+  background-size: cover;
   width: 200px;
   height: 267px;
-  background-size: cover;
 }
 
 .model:hover {
@@ -122,12 +131,6 @@ body {
   flex-wrap: wrap;
 }
 
-.modelImage {
-  width: 300px;
-  height: 400px;
-  background-size: cover;
-}
-
 .brand-link:link,
 .brand-link:visited {
   text-decoration: none;
@@ -149,6 +152,12 @@ body {
 
 .description-link:hover {
   color: rgb(61, 61, 61);
+}
+
+input {
+  appearance: textfield;
+  width: 15%;
+  margin: 2%;
 }
 
 /*---Item Details---*/
@@ -178,7 +187,8 @@ button {
 
 .shop-btn {
   font-weight: 800;
-  width: 35px;
+  /* width: 35px; */
+  width: 70px;
   margin: 2%;
   background: rgb(252, 211, 135);
   border: none;

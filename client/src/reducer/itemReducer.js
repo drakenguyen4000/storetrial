@@ -2,12 +2,13 @@ const initialState = {
   items: [],
   cart: [],
   shoplist: [],
+  show: null,
   selected: null,
   loading: false,
 };
 
-export default function itemReducer (state = initialState, action) {
-  // const {cart} = state;
+export default function itemReducer(state = initialState, action) {
+  const { i, quantity } = action;
   switch (action.type) {
     case "GET_LIST":
       return {
@@ -15,33 +16,42 @@ export default function itemReducer (state = initialState, action) {
         items: action.payload,
         loading: false,
       };
-    case "ADD_ITEM":
-      // console.log(action.payload)
+    case "SHOW_ITEM":
       return {
-        ...state, 
-        //If state.cart exist or empty, add payload to state.cart array
-        cart: [ ...(state.cart || []), action.payload], 
-        loading: false,
-      }
-    case "SHOW_ITEM": 
-      return {
-        ...state, 
+        ...state,
         show: action.payload,
         loading: false,
       };
-    // case "GET_ITEMS": 
-    // // console.log(action.payload, "get_items reducer")
-    //   return {
-    //     ...state,
-    //     shoplist: action.payload,
-    //     loading: false,
-    //   }
+    case "CHANGE_QTY":
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, i),
+          { ...state.items[i], quantity: (state.items[i].quantity = quantity) },
+          ...state.items.slice(i + 1),
+        ],
+      };
+    case "ADD_TO_CART":
+      // console.log(action.payload, "addtocart reducer")
+      return {
+        ...state,
+        cart: [...(state.cart || []), action.payload],
+      };
+    case "UPDATE_ITEM_QTY":
+      return {
+        ...state,
+        cart: [
+          ...state.cart.slice(0, i),
+          { ...state.cart[i], quantity: (state.cart[i].quantity = quantity) },
+          ...state.cart.slice(i + 1),
+        ],
+      };
     case "LOADING_ITEMS":
       return {
         ...state,
         loading: true,
       };
-    default: 
-    return state
+    default:
+      return state;
   }
 }

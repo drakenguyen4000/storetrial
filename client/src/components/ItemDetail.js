@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { showItem, addItem } from "../action";
+import { showItem, changeQty } from "../action";
 import { Link } from "react-router-dom";
 
 const ItemDetail = (props) => {
@@ -19,18 +19,19 @@ const ItemDetail = (props) => {
           <img
             className="modelImage"
             src={`${props.details.image}`}
-            alt="nothing"
+            alt={`${props.details.description}`}
+            alt="model"
           />
           <div className="detail">
             <div>{props.details.brand}</div>
             <p className="description">{props.details.description}</p>
-            <strong>{props.details.price}</strong>
+            <strong>${props.details.price}</strong>
             <div>
-              <button onClick={() => props.addItem(props.details)}>
+              <button onClick={() => props.changeQty(props.details)}>  
                 Add to Cart
               </button>
               <Link to={`/shoppingcart`}>
-                <button onClick={() => props.addItem(props.details)}>Buy Now</button>
+                <button onClick={() => props.changeQty(props.details)}>Buy Now</button>
               </Link>
             </div>
           </div>
@@ -49,4 +50,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, { showItem, addItem })(ItemDetail);
+export default connect(mapStateToProps, { showItem, changeQty })(ItemDetail);

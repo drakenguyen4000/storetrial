@@ -8,10 +8,19 @@ const express = require("express"),
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // seedDB();
-     
+
 //environment variables
 require("dotenv").config();
 
+// mongoose
+//   .connect("mongodb://localhost/eapparelstore", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("Mongodb Connected..."))
+//   .catch((err) => console.log(err));
+
+//MongoDB online
 mongoose
   .connect(process.env.DATABASEURL, {
     useNewUrlParser: true,
@@ -22,7 +31,8 @@ mongoose
 
 app.use("/", items);
 
-//mongoose.set("useFindAndModify", false);
+//MongoDB online
+mongoose.set("useFindAndModify", false);
 
 const port = process.env.PORT || 5000;
 

@@ -1,6 +1,7 @@
 import axios from "axios";
+import history from "../components/history";
 
-//Get Items List
+//List Items
 export const getList = () => (dispatch) => {
   dispatch(itemsLoading());
   axios
@@ -14,7 +15,7 @@ export const getList = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-//show Item
+//Show Item Detail
 export const showItem = (id) => (dispatch) => {
   dispatch(itemsLoading());
   axios
@@ -28,38 +29,35 @@ export const showItem = (id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// //Take cart items ids and grab items list
-// export const getItems = (ids) => (dispatch) => {
-//   // console.log(id);
-//   dispatch(itemsLoading());
-//   axios
-//     .post(`/shoppingcart`, ids)
-//     .then((res) =>
-//       dispatch({
-//         type: "GET_ITEMS",
-//         payload: res.data,
-//       })
-//     )
-//     .catch((err) => console.log(err));
-// };
-
-// export const getItems = (id) => (dispatch) => {
-//   console.log(id);
-//   dispatch(itemsLoading());
-//   axios.get(`/shoppingcart/${id}`).then((res) =>
-//     dispatch({
-//       type: "GET_ITEMS",
-//       payload: res.data,
-//     })
-//   );
-// };
-
-export const addItem = (item) => (dispatch) => {
+//Change list quantity
+export const changeQty = (i, quantity) => (dispatch) => {
   dispatch(itemsLoading());
   dispatch({
-    type: "ADD_ITEM",
+    type: "CHANGE_QTY",
+    i,
+    quantity,
+  });
+};
+
+//Add Item to Cart
+export const addToCart = (item, buynow) => (dispatch) => {
+  dispatch(itemsLoading());
+  dispatch({
+    type: "ADD_TO_CART",
     payload: item,
   });
+  return buynow === "buynow" ? history.push("/shoppingcart") : null;
+};
+
+//Update Item Quantity in Cart
+export const updateItemQty = (i, quantity, buynow) => (dispatch) => {
+  dispatch(itemsLoading());
+  dispatch({
+    type: "UPDATE_ITEM_QTY",
+    i,
+    quantity,
+  });
+  return buynow === "buynow" ? history.push("/shoppingcart") : null;
 };
 
 export const itemsLoading = () => {
