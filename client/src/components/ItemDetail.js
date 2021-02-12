@@ -20,7 +20,7 @@ const ItemDetail = (props) => {
             className="modelImage"
             src={`${props.details.image}`}
             alt={`${props.details.description}`}
-            alt="model"
+            // alt="model"
           />
           <div className="detail">
             <div>{props.details.brand}</div>
@@ -45,7 +45,7 @@ const ItemDetail = (props) => {
 const mapStateToProps = (state, ownProps) => {
   // console.log(state)
   return {
-    details: state.show,
+    details: state.item.show,
     item_id: ownProps.match.params.id,
   };
 };

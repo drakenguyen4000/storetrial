@@ -1,20 +1,21 @@
 import { createStore, applyMiddleware, compose } from "redux";
+import { persistStore } from "redux-persist";
 import thunk from "redux-thunk";
-import rootReducer from "./reducer/itemReducer";
+import persistReducer from "./reducer/index";
 
 //variable representing initial state
 const initialState = {};
 
 const middleware = [thunk];
 
-//since we're using Redux - we should pass middleware inside compose method
-const store = createStore(
-  rootReducer,
+export const store = createStore(
+  persistReducer,
   initialState,
   compose(
-    applyMiddleware(...middleware),
+    applyMiddleware(...middleware)
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
-);
+);       
 
-export default store;
+export const persistor = persistStore(store);
+

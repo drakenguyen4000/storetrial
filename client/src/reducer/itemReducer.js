@@ -32,7 +32,6 @@ export default function itemReducer(state = initialState, action) {
         ],
       };
     case "ADD_TO_CART":
-      // console.log(action.payload, "addtocart reducer")
       return {
         ...state,
         cart: [...(state.cart || []), action.payload],

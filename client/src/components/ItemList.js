@@ -8,7 +8,7 @@ import {
 } from "../action";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {Input, Form, FormGroup, Label} from "reactstrap";
+import { Input, Form, FormGroup, Label } from "reactstrap";
 
 const ItemList = (props) => {
   const { getList, changeQty, addToCart, updateItemQty, cart, list } = props;
@@ -19,7 +19,6 @@ const ItemList = (props) => {
   }, []);
 
   const onChange = (e) => {
-    // console.log(e.target.dataset.index)
     e.preventDefault();
     const { value } = e.target;
     const { index } = e.target.dataset;
@@ -40,7 +39,7 @@ const ItemList = (props) => {
         addToCart(item, buynow);
       }
     }
-  }
+  };
 
   const onBuy = (item, e, buynow) => {
     return item.quantity > 0 ? logicCart(item, e, buynow) : null;
@@ -66,7 +65,7 @@ const ItemList = (props) => {
                     className="model"
                     src={`${item.image}`}
                     alt={`${item.description}`}
-                    alt="model"
+                    // alt="model"
                   />
                 </Link>
                 <Link className="brand-link" to={`/list/${item._id}`}>
@@ -79,33 +78,33 @@ const ItemList = (props) => {
                   <strong>${item.price}</strong>
                 </p>
                 <Form>
-                <FormGroup className="assign-group">
-                <Label>Qty: </Label>
-              <Input
-                type="select"
-                name="quantity"
-                className="quantity_input"
-                onChange={onChange}
-                data-index={i}
-                required
-              >
-                <option value="">
-                  --Select--
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                </Input>
-                </FormGroup>
-                <button onClick={(e) => onBuy(item, e)}>Add to Cart</button>
-                <button onClick={(e) => onBuy(item, e, "buynow")}>Buy Now</button>
+                  <FormGroup>
+                    <Label>Qty: </Label>
+                    <Input
+                      type="select"
+                      name="quantity"
+                      className="quantity_input"
+                      onChange={onChange}
+                      data-index={i}
+                      required
+                    >
+                      <option value="">--Select--</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </Input>
+                  </FormGroup>
+                  <button onClick={(e) => onBuy(item, e)}>Add to Cart</button>
+                  <button onClick={(e) => onBuy(item, e, "buynow")}>
+                    Buy Now
+                  </button>
                 </Form>
               </div>
             );
@@ -114,14 +113,13 @@ const ItemList = (props) => {
       </div>
     );
   }
-  return <div></div>;
+  return <div>FAILED</div>;
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    list: state.items,
-    cart: state.cart,
+    list: state.item.items,
+    cart: state.item.cart,
   };
 };
 

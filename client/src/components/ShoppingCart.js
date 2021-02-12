@@ -1,21 +1,45 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { changeQty } from "../action";
+import { updateItemQty, changeQty } from "../action";
+import {Form, FormGroup, Label, Input} from "reactstrap";
 
 const ShoppingCart = (props) => {
+  const { changeQty, updateItemQty, cart, list } = props;
   const onConsole = () => {
-    console.log(props.cart);
+    console.log(props);
   };
 
-  const shoppingList = (props) => {
-    return props.cart.map((item) => (
+  const onChange = (e) => {
+    // console.log(e.target.dataset.index)
+    e.preventDefault();
+    const { value } = e.target;
+    const { id } = e.target.dataset;
+    //Find each list item id and compare with selected cart item id.  Find the match's index.  
+    const index = list.findIndex((list_item) => {
+      return list_item._id === id;
+    });
+    console.log(index)
+    changeQty(Number(index), Number(value));
+  };
+
+  const update = (item, e, i) => {
+    console.log(e.target.value, "value")
+    console.log(item, "item")
+    console.log(i, "index")
+    e.preventDefault();
+    updateItemQty(i, item.quantity);
+  }
+
+
+  const shoppingList = (cart) => {
+    return cart.map((item, i) => (
       <div className="item-container shopContainer" key={item._id}>
         <Link className="image-link" to={`/list/${item._id}`}>
           <img
             className="model"
             src={`${item.image}`}
             alt={`${item.description}`}
-            alt="model"
+            // alt="model"
           />
         </Link>
         <div>
@@ -28,21 +52,49 @@ const ShoppingCart = (props) => {
             </Link>
             <strong>${item.price}</strong>
           </div>
-          <span>Qty: </span>
-          <span>{item.quantity}</span>
-          <button className="shop-btn update" onClick={changeQty(item)}>
+          <Form>
+                  <FormGroup>
+                    <Label>Qty: </Label>
+                    <Input
+                      type="select"
+                      name="quantity"
+                      className="quantity_input"
+                      defaultValue={item.quantity}
+                      onChange={onChange}
+                      data-id={item._id}
+                      required
+                    >
+                      <option value="">--Select--</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </Input>
+                  </FormGroup>
+                  <button onClick={(e) => update(item, e, i)}>Update</button>
+                  {/* <button onClick={(e) => updateCart(item, e, "buynow")}>
+                    Buy Now
+                  </button> */}
+                </Form>
+          {/* <button className="shop-btn update" onClick={changeQty(item)}>
             Update
-          </button>
+          </button> */}
         </div>
       </div>
     ));
   };
-  if (props.cart) {
+  if (cart) {
     return (
       <div className="container">
         <h2>Shopping Cart</h2>
         <button onClick={onConsole}>Console Log</button>
-        {shoppingList(props)}
+        {shoppingList(cart)}
       </div>
     );
   }
@@ -59,9 +111,9 @@ const ShoppingCart = (props) => {
 const mapStateToProps = (state) => {
   console.log(state.cart);
   return {
-    cart: state.cart,
-    list: state.list,
+    cart: state.item.cart,
+    list: state.item.list,
   };
 };
 
-export default connect(mapStateToProps)(ShoppingCart);
+export default connect(mapStateToProps, {updateItemQty, changeQty})(ShoppingCart);
