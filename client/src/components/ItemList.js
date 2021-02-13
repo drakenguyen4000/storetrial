@@ -4,14 +4,14 @@ import {
   showItem,
   addToCart,
   changeQty,
-  updateItemQty,
+  updateCartItemQty,
 } from "../action";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Input, Form, FormGroup, Label } from "reactstrap";
 
 const ItemList = (props) => {
-  const { getList, changeQty, addToCart, updateItemQty, cart, list } = props;
+  const { getList, changeQty, addToCart, updateCartItemQty, cart, list } = props;
 
   useEffect(() => {
     getList();
@@ -28,14 +28,18 @@ const ItemList = (props) => {
   const logicCart = (item, e, buynow) => {
     e.preventDefault();
     if (!cart) {
+      //Add item to cart array
       addToCart(item, buynow);
     } else {
+      //find the index where cart._id matches item._id
       const index = cart.findIndex((cart) => {
         return cart._id === item._id;
       });
       if (index !== -1) {
-        updateItemQty(index, item.quantity, buynow);
+        //index exist
+        updateCartItemQty(index, item.quantity, buynow);
       } else {
+        //index doesn't exist
         addToCart(item, buynow);
       }
     }
@@ -128,5 +132,5 @@ export default connect(mapStateToProps, {
   showItem,
   changeQty,
   addToCart,
-  updateItemQty,
-})(ItemList);
+  updateCartItemQty,
+})(ItemList);     

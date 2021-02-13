@@ -36,7 +36,7 @@ export default function itemReducer(state = initialState, action) {
         ...state,
         cart: [...(state.cart || []), action.payload],
       };
-    case "UPDATE_ITEM_QTY":
+    case "UPDATE_CART_ITEM_QTY":
       return {
         ...state,
         cart: [
