@@ -1,6 +1,15 @@
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const cartCount = () => {
+    let sum = 0;
+    props.cart.map((item) => {
+      return (sum += item.quantity);
+    });
+    return sum;
+  };
+
   return (
     <nav className="navbar">
       <ul>
@@ -13,8 +22,11 @@ const Navbar = () => {
         <li>Casual Wear</li>
         <li>
           <Link to={`/shoppingcart`}>
-            <span className="shoppingCart-btn">
-              <i className="fas fa-shopping-cart"></i>
+          <span className="shoppingCart-btn">
+            <span class="fa-layers fa-fw fa-lg">
+              <i class="fas fa-shopping-cart fa-lg"></i>
+              <span class="fa-layers-counter fa-inverse fa-2x" style={{background:"none", fontWeight:"800"}}>{cartCount()}</span>
+            </span>
             </span>
           </Link>
         </li>
@@ -23,4 +35,10 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.item.cart,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);
