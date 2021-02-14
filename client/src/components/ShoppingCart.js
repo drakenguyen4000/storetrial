@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { updateCartItemQty, changeQty } from "../action";
+import { updateCartItemQty, changeQty, deleteItem } from "../action";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 
 const ShoppingCart = (props) => {
-  const { changeQty, updateCartItemQty, cart, list } = props;
+  const { changeQty, updateCartItemQty, deleteItem, cart, list } = props;
   const onConsole = () => {
     console.log(list);
     console.log(cart);
@@ -20,7 +20,7 @@ const ShoppingCart = (props) => {
     });
     changeQty(Number(index), Number(value));
   };
-
+  //Update Item Quantity in Cart
   const updateCart = (cart_item, e, i) => {
     e.preventDefault();
     //find item in where list item id matches cart item id
@@ -30,6 +30,11 @@ const ShoppingCart = (props) => {
     //Update item quantity in cart
     updateCartItemQty(i, item.quantity);
   };
+  //Delete Item from Cart
+  const deleteCartItem = (item, e) => {
+    e.preventDefault();
+    deleteItem(item);
+  }
 
   const shoppingList = (cart) => {
     return cart.map((item, i) => (
@@ -78,6 +83,7 @@ const ShoppingCart = (props) => {
               </Input>
             </FormGroup>
             <button onClick={(e) => updateCart(item, e, i)}>Update</button>
+            <button onClick={(e) => deleteCartItem(item, e)}>Delete</button>
           </Form>
         </div>
       </div>
@@ -110,6 +116,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { updateCartItemQty, changeQty })(
+export default connect(mapStateToProps, { updateCartItemQty, changeQty, deleteItem })(
   ShoppingCart
 );

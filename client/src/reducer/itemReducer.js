@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export default function itemReducer(state = initialState, action) {
-  const { i, quantity } = action;
+  const { i, quantity, item } = action;
   switch (action.type) {
     case "GET_LIST":
       return {
@@ -44,6 +44,14 @@ export default function itemReducer(state = initialState, action) {
           { ...state.cart[i], quantity: (state.cart[i].quantity = quantity) },
           ...state.cart.slice(i + 1),
         ],
+      };
+    case "DELETE_ITEM":
+       const filterCart = state.cart.filter((cart) => {
+          return cart._id !== item._id;
+        })
+      return {
+        ...state,
+        cart: filterCart
       };
     case "LOADING_ITEMS":
       return {
