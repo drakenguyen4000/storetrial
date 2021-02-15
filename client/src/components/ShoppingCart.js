@@ -111,7 +111,7 @@ const ShoppingCart = (props) => {
 const mapStateToProps = (state) => {
   // console.log(state);
   return {
-    cart: state.item.cart,
+    cart: state.cart.cart,
     list: state.item.items,
   };
 };

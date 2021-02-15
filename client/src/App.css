@@ -71,6 +71,10 @@ body {
   color: #c9c9c9;
 }
 
+.fa-layers-counter {
+  color: rgb(250, 197, 100);
+}
+
 .sidebar {
   /* background: #f3f3f3; */
   /* width: 220px; */

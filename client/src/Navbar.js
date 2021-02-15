@@ -37,7 +37,7 @@ const Navbar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    cart: state.item.cart,
+    cart: state.cart.cart,
   };
 };
 

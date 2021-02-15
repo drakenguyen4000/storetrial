@@ -51,7 +51,6 @@ export const addToCart = (item, buynow) => (dispatch) => {
 
 //Update Item Quantity in Cart
 export const updateCartItemQty = (i, quantity, buynow) => (dispatch) => {
-  console.log(i, quantity);
   dispatch(itemsLoading());
   dispatch({
     type: "UPDATE_CART_ITEM_QTY",

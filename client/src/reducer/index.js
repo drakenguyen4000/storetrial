@@ -2,6 +2,7 @@
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import itemReducer from "./itemReducer";
+import cartReducer from "./cartReducer";
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
@@ -9,11 +10,12 @@ const persistConfig = {
   key: "root",
   storage,
   //which reducer will persist
-  whitelist: ["item"],
+  whitelist: ["cart"],
 };
 
 const rootReducer = combineReducers({
   item: itemReducer,
+  cart: cartReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

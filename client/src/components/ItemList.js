@@ -117,13 +117,13 @@ const ItemList = (props) => {
       </div>
     );
   }
-  return <div>FAILED</div>;
+  return <div></div>;
 };
 
 const mapStateToProps = (state) => {
   return {
     list: state.item.items,
-    cart: state.item.cart,
+    cart: state.cart.cart,
   };
 };
 
