@@ -11,7 +11,6 @@ const ItemDetail = (props) => {
   }, []);
 
   if (props.details) {
-    console.log(props)
     return (
       <div className="container">
         <h2>Details</h2>

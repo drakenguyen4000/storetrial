@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { updateCartItemQty, changeQty, deleteItem } from "../action";
 import { Form, FormGroup, Label, Input } from "reactstrap";
+import { cartCount } from "./SharedComponents";
 
 const ShoppingCart = (props) => {
   const { changeQty, updateCartItemQty, deleteItem, cart, list } = props;
@@ -34,7 +35,24 @@ const ShoppingCart = (props) => {
   const deleteCartItem = (item, e) => {
     e.preventDefault();
     deleteItem(item);
-  }
+  };
+
+  const subTotal = () => {
+    let sum = 0;
+    cart.map((item) => {
+      return (sum += item.quantity * item.price);
+    });
+    console.log(sum);
+    return sum;
+  };
+
+  const taxCal = () => {
+    return Number((subTotal() * 0.1).toFixed(2));
+  };
+
+  const salesTotal = () => {
+    return Number(subTotal() + taxCal());
+  };
 
   const shoppingList = (cart) => {
     return cart.map((item, i) => (
@@ -95,6 +113,17 @@ const ShoppingCart = (props) => {
         <h2>Shopping Cart</h2>
         <button onClick={onConsole}>Console Log</button>
         {shoppingList(cart)}
+        <hr />
+        <div className="total-container">
+          <span className="total-title">Subtotal</span>
+          <span className="item-count">{cartCount(props)} item(s)</span>
+          <span>
+            <span className="sub-total">{subTotal()}</span>
+            {/* <span className="sales-total">{taxCal()}</span>
+            <span className="sales-total">{salesTotal()}</span> */}
+          </span>
+          {/* <button onClick={}>Proceed To CheckOut</button> */}
+        </div>
       </div>
     );
   }
@@ -116,6 +145,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { updateCartItemQty, changeQty, deleteItem })(
-  ShoppingCart
-);
+export default connect(mapStateToProps, {
+  updateCartItemQty,
+  changeQty,
+  deleteItem,
+})(ShoppingCart);

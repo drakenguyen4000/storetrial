@@ -196,3 +196,23 @@ button {
   background: rgb(252, 211, 135);
   border: none;
 }
+
+/* hr {
+  width: 80%;
+  float: left;
+} */
+
+.total-container {
+  padding: 5px 40% 10% 10%;
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr;
+  grid-gap: 1%;
+}
+
+.total-title {
+  font-size: 1.8rem;
+}
+
+.item-count, .sub-total{
+  font-size: 1.6rem;
+}
