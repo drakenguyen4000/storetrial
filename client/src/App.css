@@ -209,10 +209,48 @@ button {
   grid-gap: 1%;
 }
 
+.checkout-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid gray;
+  width: 450px;
+  height: 400px;
+}
+
+.your-order {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .total-title {
   font-size: 1.8rem;
 }
 
 .item-count, .sub-total{
   font-size: 1.6rem;
+}
+
+.sales-title-group, .sales-number-group {
+  list-style: none;
+}
+
+.sales-title-group {
+  margin-left: 20%;
+}
+
+.sales-number-group {
+  text-align: right;
+  margin-right: 40%;
+}
+
+.total-before-tax {
+  border-top: 1px gray solid;
+  color: rgb(2, 59, 184);
+  font-size: 1.05rem;
+}
+
+.sales-total{
+  border-top: 1px gray solid;
+  color: green;
+  font-size: 1.4rem;
 }

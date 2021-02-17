@@ -9,6 +9,8 @@ import { HashRouter, Route } from "react-router-dom";
 import history from "./history";
 import Sidebar from "../Sidebar";
 import Navbar from "../Navbar";
+import CheckOut from "./CheckOut";
+import OrderComplete from "./OrderComplete";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
           <Route path="/list" exact component={ItemList} />
           <Route path="/list/:id" exact component={ItemDetail} />
           <Route path="/shoppingcart" exact component={ShoppingCart} />
+          <Route path="/shoppingcart/checkout" exact component={CheckOut} />
+          <Route path="/shoppingcart/ordercomplete" exact component={OrderComplete} />
         </div>
       </div>
     </HashRouter>

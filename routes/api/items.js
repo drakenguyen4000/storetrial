@@ -43,4 +43,9 @@ router.post("/shoppingcart", (req, res) => {
       .catch((err) => console.log(err));
 });
 
+//Complete Order
+router.post("/shoppingcart/completeorder", (req, res)=> {
+  console.log(req.body)
+})
+
 module.exports = router;

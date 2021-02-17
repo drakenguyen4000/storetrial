@@ -118,11 +118,13 @@ const ShoppingCart = (props) => {
           <span className="total-title">Subtotal</span>
           <span className="item-count">{cartCount(props)} item(s)</span>
           <span>
-            <span className="sub-total">{subTotal()}</span>
+            <span className="sub-total">${subTotal()}</span>
             {/* <span className="sales-total">{taxCal()}</span>
             <span className="sales-total">{salesTotal()}</span> */}
           </span>
-          {/* <button onClick={}>Proceed To CheckOut</button> */}
+          <Link to={`/shoppingcart/checkout`}>
+          <button>Proceed To CheckOut</button>
+          </Link>
         </div>
       </div>
     );
