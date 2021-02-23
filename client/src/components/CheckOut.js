@@ -4,9 +4,9 @@ import { cartCount } from "./SharedComponents";
 import { placeOrder } from "../action";
 
 const CheckOut = (props) => {
-  const { updateCartItemQty, cart, list, placeOrder } = props;
+  const { cart, list, placeOrder } = props;
   const onConsole = () => {
-    console.log(list);
+    // console.log(order);
     console.log(cart);
   };
 
@@ -14,14 +14,10 @@ const CheckOut = (props) => {
     const total_cost = salesTotal();
     const order = {
       total_cost,
-      items_ordered: cart
-
+      items_ordered: cart,
     };
     placeOrder(order);
   };
-
-  // const estimatedDelivery = () => {
-  // }
 
   //Update Item Quantity in Cart
   const subTotal = () => {
@@ -29,34 +25,37 @@ const CheckOut = (props) => {
     cart.map((item) => {
       return (sum += item.quantity * item.price);
     });
-    console.log(sum);
-    return sum;
+    return parseFloat(sum.toFixed(2));
   };
+  
   //Calculate Tax
   const taxCal = () => {
-    return Number((subTotal() * 0.1).toFixed(2));
+    return parseFloat((subTotal() * 0.1).toFixed(2));
   };
 
   const shipping = 12.99;
 
   //Determines freeshipping eligibility
   const freeShipping = () => {
-    return subTotal() > 20 ? shipping : 0;
+    const freeship = subTotal() > 20 ? shipping : 0;
+    return parseFloat(freeship.toFixed(2));
   };
 
   //subtotal before taxes
   const beforeTax = () => {
-    return subTotal() + shipping - freeShipping();
+    const bfTax = subTotal() + shipping - freeShipping();
+    return parseFloat(bfTax.toFixed(2));
   };
 
   //total
   const salesTotal = () => {
-    return Number(beforeTax() + taxCal());
+    const salesTax = beforeTax() + taxCal();
+    return parseFloat(salesTax.toFixed(2));
   };
 
   return (
     <div className="container">
-      <h2>Shopping Cart</h2>
+      <h2>Checkout</h2>
       <button onClick={onConsole}>Console Log</button>
       <div className="your-order">Your Order</div>
       <div className="checkout-container">
@@ -76,9 +75,9 @@ const CheckOut = (props) => {
           <li className="tax">${taxCal()}</li>
           <li className="sales-total">${salesTotal()}</li>
         </ul>
-        {/* <Link to={`/shoppingcart/ordercomplete`}> */}
-        <button onClick={Order}>Place Order</button>
-        {/* </Link> */}
+        <Link to={`/shoppingcart/ordercomplete`}>
+          <button onClick={Order}>Place Order</button>
+        </Link>
       </div>
     </div>
   );
@@ -87,6 +86,7 @@ const CheckOut = (props) => {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart.cart,
+    // order: state.cart.order,
   };
 };
 

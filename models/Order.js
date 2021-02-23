@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
-  user_id: {
-    type: String,
-  },
+  // user_id: {
+  //   type: String,
+  // },
   items_ordered: {
     type: [],
     required: true,
@@ -18,7 +18,7 @@ const OrderSchema = new Schema({
   //   required: true,
   // },
   total_cost: {
-    type: String,
+    type: Number,
     required: true,
   },
   // estimated_delivery: {

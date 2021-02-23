@@ -4,6 +4,7 @@ const express = require("express"),
 
 //Item Model
 const Item = require("../../models/Item");
+const Order = require("../../models/Order");
 
 //Index Route
 router.get("/", (req, res) => {
@@ -39,13 +40,20 @@ router.post("/shoppingcart", (req, res) => {
   );
 
   Promise.all(promise1)
-      .then((item) => res.status(200).json(item))
-      .catch((err) => console.log(err));
+    .then((item) => res.status(200).json(item))
+    .catch((err) => console.log(err));
 });
 
 //Complete Order
-router.post("/shoppingcart/completeorder", (req, res)=> {
-  console.log(req.body)
-})
+router.post("/shoppingcart/completeorder", (req, res) => {
+  const newOrder = new Order({
+    items_ordered: req.body.items_ordered,
+    total_cost: req.body.total_cost,
+  });
+  newOrder
+    .save()
+    .then((data) => res.json(data))
+    .catch((err) => res.json(err));
+});
 
 module.exports = router;

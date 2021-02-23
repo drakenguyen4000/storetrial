@@ -73,12 +73,13 @@ export const placeOrder = (order) => (dispatch) => {
   dispatch(itemsLoading());
   axios
     .post("/shoppingcart/completeorder", order)
-    .then((res) => console.log(res))
+    .then((res) =>
+      dispatch({
+        type: "PLACE_ORDER",
+        order: res.data,
+      })
+    )
     .catch((err) => console.log(err));
-  // dispatch({
-  //   type: "PLACE_ORDER",
-  //   order
-  // })
 };
 
 export const itemsLoading = () => {

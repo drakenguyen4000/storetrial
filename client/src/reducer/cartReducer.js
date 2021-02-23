@@ -1,7 +1,7 @@
 import {initialState} from "./initialState";
 
 export default function itemReducer(state = initialState, action) {
-  const { i, quantity, item } = action;
+  const { i, quantity, item, order } = action;
   switch (action.type) {
     case "ADD_TO_CART":
       return {
@@ -25,6 +25,12 @@ export default function itemReducer(state = initialState, action) {
         ...state,
         cart: filterCart
       };
+    case "PLACE_ORDER": 
+      return {
+        ...state, 
+        order: order,
+        cart: []
+      }
     case "LOADING_ITEMS":
       return {
         ...state,

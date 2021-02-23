@@ -40,18 +40,9 @@ const ShoppingCart = (props) => {
   const subTotal = () => {
     let sum = 0;
     cart.map((item) => {
-      return (sum += item.quantity * item.price);
+      return sum += item.quantity * item.price;
     });
-    console.log(sum);
-    return sum;
-  };
-
-  const taxCal = () => {
-    return Number((subTotal() * 0.1).toFixed(2));
-  };
-
-  const salesTotal = () => {
-    return Number(subTotal() + taxCal());
+    return sum.toFixed(2);
   };
 
   const shoppingList = (cart) => {
@@ -119,8 +110,6 @@ const ShoppingCart = (props) => {
           <span className="item-count">{cartCount(props)} item(s)</span>
           <span>
             <span className="sub-total">${subTotal()}</span>
-            {/* <span className="sales-total">{taxCal()}</span>
-            <span className="sales-total">{salesTotal()}</span> */}
           </span>
           <Link to={`/shoppingcart/checkout`}>
           <button>Proceed To CheckOut</button>
