@@ -1,25 +1,28 @@
 import axios from "axios";
 import history from "../components/history";
+import { message, tokenConfig } from "./authActions";
 
-//List Items
-export const getList = () => (dispatch) => {
+// //List Items
+export const getList = (category) => (dispatch) => {
+  console.log("getList action running");
   dispatch(itemsLoading());
   axios
-    .get("/list")
+    .get(`/list/${category}`)
     .then((res) =>
       dispatch({
         type: "GET_LIST",
         payload: res.data,
       })
     )
-    .catch((err) => console.log(err));
+    .catch(() => history.push("/"));
 };
 
 //Show Item Detail
-export const showItem = (id) => (dispatch) => {
+export const showItem = (category, id) => (dispatch) => {
+  // console.log(category, id)
   dispatch(itemsLoading());
   axios
-    .get(`/list/${id}`)
+    .get(`/list/${category}/${id}`)
     .then((res) =>
       dispatch({
         type: "SHOW_ITEM",
@@ -69,14 +72,42 @@ export const deleteItem = (item) => (dispatch) => {
   });
 };
 
-export const placeOrder = (order) => (dispatch) => {
+export const checkOut = (token, order) => (dispatch, getState) => {
+  console.log("action:", { token, order }, tokenConfig(getState));
   dispatch(itemsLoading());
   axios
-    .post("/shoppingcart/completeorder", order)
+    .post("/checkout", { token, order }, tokenConfig(getState))
+    .then((res) => {
+      if (res.data.status === "Payment success!") {
+        dispatch({
+          type: "CHECKOUT",
+          payload: res.data,
+        });
+        history.push("/shoppingcart/ordercomplete");
+      }
+      //If Payment failed, send status
+      dispatch(message(res.data.status));
+    })
+    .catch((err) => console.log(err));
+};
+
+export const updateFeature = (category) => (dispatch) => {
+  dispatch(itemsLoading());
+  dispatch({
+    type: "FEATURE_UPDATE",
+    payload: category,
+  });
+};
+
+export const getHistory = (id) => (dispatch) => {
+  console.log("action id", id)
+  dispatch(itemsLoading());
+  axios
+    .get(`/orderhistory/${id}`)
     .then((res) =>
       dispatch({
-        type: "PLACE_ORDER",
-        order: res.data,
+        type: "ORDER_HISTORY",
+        payload: res.data,
       })
     )
     .catch((err) => console.log(err));

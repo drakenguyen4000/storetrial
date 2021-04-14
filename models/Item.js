@@ -12,6 +12,9 @@ const ItemSchema = new Schema({
     // image: String,
     // imageId: String,
   },
+  category: {
+    type: String,
+  },
   description: {
     type: String,
     required: true,

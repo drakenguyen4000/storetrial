@@ -1,25 +1,31 @@
 const express = require("express"),
   mongoose = require("mongoose"),
   bodyParser = require("body-parser"),
-  app = express(),
+  app = express(),  
   items = require("./routes/api/items"),
-  seedDB = require("./seeds");
+  users = require("./routes/api/users"),
+  auth = require("./routes/api/auth"),
+  seedDB = require("./seeds"),
+  cors = require("cors");
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors())  
 // seedDB();
 
 //environment variables
 require("dotenv").config();
 
-// mongoose
+//local environement mongo
+// mongoose 
 //   .connect("mongodb://localhost/eapparelstore", {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
 //   })
 //   .then(() => console.log("Mongodb Connected..."))
 //   .catch((err) => console.log(err));
-
+  
 //MongoDB online
 mongoose
   .connect(process.env.DATABASEURL, {
@@ -30,6 +36,8 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/", items);
+app.use("/", users);
+app.use("/", auth);
 
 //MongoDB online
 mongoose.set("useFindAndModify", false);

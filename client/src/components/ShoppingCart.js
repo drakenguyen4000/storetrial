@@ -1,14 +1,26 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { updateCartItemQty, changeQty, deleteItem } from "../action";
+import { message } from "../action/authActions";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { cartCount } from "./SharedComponents";
+import history from "../components/history";
 
 const ShoppingCart = (props) => {
-  const { changeQty, updateCartItemQty, deleteItem, cart, list } = props;
+  const {
+    changeQty,
+    updateCartItemQty,
+    deleteItem,
+    cart,
+    list,
+    message,
+  } = props;
+  const { isAuthenticated } = props.auth;
   const onConsole = () => {
-    console.log(list);
-    console.log(cart);
+    console.log("list:", list);
+    console.log("cart:", cart);
+    // console.log(props.auth.isAuthenticated);
+    // console.log(props.auth.user);
   };
 
   const onChange = (e) => {
@@ -21,6 +33,7 @@ const ShoppingCart = (props) => {
     });
     changeQty(Number(index), Number(value));
   };
+
   //Update Item Quantity in Cart
   const updateCart = (cart_item, e, i) => {
     e.preventDefault();
@@ -31,6 +44,7 @@ const ShoppingCart = (props) => {
     //Update item quantity in cart
     updateCartItemQty(i, item.quantity);
   };
+
   //Delete Item from Cart
   const deleteCartItem = (item, e) => {
     e.preventDefault();
@@ -40,14 +54,22 @@ const ShoppingCart = (props) => {
   const subTotal = () => {
     let sum = 0;
     cart.map((item) => {
-      return sum += item.quantity * item.price;
+      return (sum += item.quantity * item.price);
     });
     return sum.toFixed(2);
   };
 
+  const checkOut = () => {
+    if (isAuthenticated) {
+      return cart.length === 0 ? null : history.push("/shoppingcart/checkout");
+    }
+    message("Please login.");
+    history.push("/login");
+  };
+
   const shoppingList = (cart) => {
     return cart.map((item, i) => (
-      <div className="item-container shopContainer" key={item._id}>
+      <div className="item-container shop-container" key={item._id}>
         <Link className="image-link" to={`/list/${item._id}`}>
           <img
             className="model"
@@ -56,7 +78,7 @@ const ShoppingCart = (props) => {
             // alt="model"
           />
         </Link>
-        <div>
+        <div className="item-detail">
           <div>
             <Link className="brand-link" to={`/list/${item._id}`}>
               <p className="brand">{item.brand}</p>
@@ -91,8 +113,20 @@ const ShoppingCart = (props) => {
                 <option value="10">10</option>
               </Input>
             </FormGroup>
-            <button onClick={(e) => updateCart(item, e, i)}>Update</button>
-            <button onClick={(e) => deleteCartItem(item, e)}>Delete</button>
+            <div>
+              <button
+                className="my-button"
+                onClick={(e) => updateCart(item, e, i)}
+              >
+                Update
+              </button>
+              <button
+                className="my-button"
+                onClick={(e) => deleteCartItem(item, e)}
+              >
+                Delete
+              </button>
+            </div>
           </Form>
         </div>
       </div>
@@ -100,20 +134,24 @@ const ShoppingCart = (props) => {
   };
   if (cart) {
     return (
-      <div className="container">
-        <h2>Shopping Cart</h2>
-        <button onClick={onConsole}>Console Log</button>
-        {shoppingList(cart)}
-        <hr />
-        <div className="total-container">
-          <span className="total-title">Subtotal</span>
-          <span className="item-count">{cartCount(props)} item(s)</span>
-          <span>
+      <div className="container-shopping-cart">
+        <div>
+          <h2>Your Cart</h2>
+          <button className="my-button" onClick={onConsole}>
+            Console Log
+          </button>
+          {shoppingList(cart)}
+          <hr />
+          <div className="total-container">
+            <span className="total-title">Subtotal</span>
+            <span className="item-count">{cartCount(props)} item(s)</span>
             <span className="sub-total">${subTotal()}</span>
-          </span>
-          <Link to={`/shoppingcart/checkout`}>
-          <button>Proceed To CheckOut</button>
-          </Link>
+            <span>
+              <button className="my-button checkout" onClick={checkOut}>
+                CheckOut
+              </button>
+            </span>
+          </div>
         </div>
       </div>
     );
@@ -122,17 +160,19 @@ const ShoppingCart = (props) => {
     <div className="container">
       <div className="itemContainer">
         <h2>Your Cart is Empty</h2>
-        <button onClick={onConsole}>Console Log</button>
+        <button className="my-button" onClick={onConsole}>
+          Console Log
+        </button>
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   return {
     cart: state.cart.cart,
     list: state.item.items,
+    auth: state.auth,
   };
 };
 
@@ -140,4 +180,5 @@ export default connect(mapStateToProps, {
   updateCartItemQty,
   changeQty,
   deleteItem,
+  message,
 })(ShoppingCart);

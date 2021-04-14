@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
-  // user_id: {
-  //   type: String,
-  // },
+  user_id: {
+    type: String,
+  },
   items_ordered: {
     type: [],
     required: true,
@@ -20,6 +20,10 @@ const OrderSchema = new Schema({
   total_cost: {
     type: Number,
     required: true,
+  },
+  purchase_date: {
+    type: Date,
+    default: Date.now,
   },
   // estimated_delivery: {
   //   type: String,

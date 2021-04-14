@@ -3,31 +3,35 @@ import { connect } from "react-redux";
 import {
   showItem,
   changeQty,
-  getList,
+  // getList,
   addToCart,
   updateCartItemQty,
+  updateFeature,
 } from "../action";
-import { Link } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import { Input, Form, FormGroup, Label } from "reactstrap";
+import Loading from "./Loading";
 
 const ItemDetail = (props) => {
   const {
     showItem,
     details,
-    getList,
-    item_id,
+    // getList,
+    // item_id,
     changeQty,
     addToCart,
     updateCartItemQty,
     cart,
     list,
+    updateFeature,
   } = props;
+  const {category, id} = useParams();
 
   useEffect(() => {
-    showItem(props.item_id);
-    getList();
+    updateFeature(category);
+    showItem(category, id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [category]);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -38,7 +42,6 @@ const ItemDetail = (props) => {
     
     changeQty(Number(index), Number(value));
   };
-
 
   const logicCart = (item, e, buynow) => {
     e.preventDefault();
@@ -78,17 +81,16 @@ const ItemDetail = (props) => {
   if (details) {
     return (
       <div className="container">
-        <h2>Details</h2>
-        <button onClick={onConsole}>Console Log</button>
-        <div className="details-container">
+        {/* <h2>Details</h2> */}
+        <button onClick={onConsole}>Console</button>
+        <div className="flex-wrap wrap-margin">
           <img
             className="modelImage"
             src={`${details.image}`}
             alt={`${details.description}`}
-            // alt="model"
           />
-          <div className="detail">
-            <div>{details.brand}</div>
+          <div className="description-wrapper">
+            <strong className="brand">{details.brand}</strong>
             <p className="description">{details.description}</p>
             <strong>${details.price}</strong>
             <div>
@@ -100,10 +102,7 @@ const ItemDetail = (props) => {
                     name="quantity"
                     className="quantity_input"
                     onChange={onChange}
-                    //Can't use index --- need to switch to id
-                    // data-index={i}
                     id={details._id}
-                    // data-id={details._id}
                     required
                   >
                     <option value="">--Select--</option>
@@ -119,8 +118,8 @@ const ItemDetail = (props) => {
                     <option value="10">10</option>
                   </Input>
                 </FormGroup>
-                <button onClick={(e) => onBuy(details, e)}>Add to Cart</button>
-                <button onClick={(e) => onBuy(details, e, "buynow")}>
+                <button className="my-button" onClick={(e) => onBuy(details, e)}>Add</button>
+                <button className="my-button" onClick={(e) => onBuy(details, e, "buynow")}>
                   Buy Now
                 </button>
               </Form>
@@ -130,14 +129,13 @@ const ItemDetail = (props) => {
       </div>
     );
   }
-  return <div className="container"></div>;
+  return <div className="container"><Loading/></div>;
 };
 
-const mapStateToProps = (state, ownProps) => {
-  // console.log(state)
+const mapStateToProps = (state) => {
   return {
     details: state.item.show,
-    item_id: ownProps.match.params.id,
+    // item_id: ownProps.match.params.id,
     list: state.item.items,
     cart: state.cart.cart,
   };
@@ -146,7 +144,8 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(mapStateToProps, {
   showItem,
   changeQty,
-  getList,
+  // getList,
   addToCart,
   updateCartItemQty,
+  updateFeature,
 })(ItemDetail);

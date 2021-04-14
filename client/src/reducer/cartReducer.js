@@ -1,14 +1,26 @@
-import {initialState} from "./initialState";
+import {
+  ADD_TO_CART,
+  DELETE_ITEM,
+  LOADING_ITEMS,
+  CHECKOUT,
+  UPDATE_CART_ITEM_QTY,
+} from "../action/types";
 
-export default function itemReducer(state = initialState, action) {
-  const { i, quantity, item, order } = action;
+const initialState = {
+  cart: [],
+  history: [],
+  loading: false,
+};
+
+export default function cartReducer(state = initialState, action) {
+  const { i, quantity, item } = action;
   switch (action.type) {
-    case "ADD_TO_CART":
+    case ADD_TO_CART:
       return {
         ...state,
         cart: [...(state.cart || []), action.payload],
       };
-    case "UPDATE_CART_ITEM_QTY":
+    case UPDATE_CART_ITEM_QTY:
       return {
         ...state,
         cart: [
@@ -17,7 +29,7 @@ export default function itemReducer(state = initialState, action) {
           ...state.cart.slice(i + 1),
         ],
       };
-    case "DELETE_ITEM":
+    case DELETE_ITEM:
        const filterCart = state.cart.filter((cart) => {
           return cart._id !== item._id;
         })
@@ -25,13 +37,18 @@ export default function itemReducer(state = initialState, action) {
         ...state,
         cart: filterCart
       };
-    case "PLACE_ORDER": 
+    case CHECKOUT:
       return {
         ...state, 
-        order: order,
-        cart: []
+        // msg: action.payload.status, //Message needs it's own reducer
+        cart:[],
       }
-    case "LOADING_ITEMS":
+    case "ORDER_HISTORY":
+      return {
+        ...state,
+        history: action.payload
+      }
+    case LOADING_ITEMS:
       return {
         ...state,
         loading: true,

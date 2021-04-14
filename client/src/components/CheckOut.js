@@ -1,22 +1,29 @@
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import "../components/Stripe.css";
+import StripeCheckout from "react-stripe-checkout";
 import { cartCount } from "./SharedComponents";
-import { placeOrder } from "../action";
+import { checkOut } from "../action";
+import { connect } from "react-redux";
 
 const CheckOut = (props) => {
-  const { cart, list, placeOrder } = props;
+  const { cart, checkOut } = props;
+  const { _id } = props.auth.user;
+
   const onConsole = () => {
-    // console.log(order);
     console.log(cart);
+    console.log(props.auth);
+    console.log(props.auth.user);
+    console.log(_id);
   };
 
-  const Order = () => {
-    const total_cost = salesTotal();
+  const handleToken = (token) => {
     const order = {
-      total_cost,
       items_ordered: cart,
+      user_id: _id,
+      name: `clothing`,
+      salesTotal: salesTotal(),
+      description: `${cart[0].brand} dress`,
     };
-    placeOrder(order);
+    checkOut(token, order);
   };
 
   //Update Item Quantity in Cart
@@ -27,7 +34,7 @@ const CheckOut = (props) => {
     });
     return parseFloat(sum.toFixed(2));
   };
-  
+
   //Calculate Tax
   const taxCal = () => {
     return parseFloat((subTotal() * 0.1).toFixed(2));
@@ -55,29 +62,37 @@ const CheckOut = (props) => {
 
   return (
     <div className="container">
-      <h2>Checkout</h2>
-      <button onClick={onConsole}>Console Log</button>
-      <div className="your-order">Your Order</div>
-      <div className="checkout-container">
-        <ul className="sales-title-group">
-          <li className="">{cartCount(props)} item(s)</li>
-          <li className="sales-title">Shipping Cost</li>
-          <li className="sales-title">Free Shipping</li>
-          <li className="total-before-tax">Total Before Tax</li>
-          <li className="sales-title">Taxes</li>
-          <li className="sales-total">Total</li>
-        </ul>
-        <ul className="sales-number-group">
-          <li className="">${subTotal()}</li>
-          <li className="tax">${shipping}</li>
-          <li className="free">-${freeShipping()}</li>
-          <li className="total-before-tax">${beforeTax()}</li>
-          <li className="tax">${taxCal()}</li>
-          <li className="sales-total">${salesTotal()}</li>
-        </ul>
-        <Link to={`/shoppingcart/ordercomplete`}>
-          <button onClick={Order}>Place Order</button>
-        </Link>
+      <div className="product">
+        <h2>Checkout</h2>
+        <button onClick={onConsole}>Console Log</button>
+        <div className="your-order">Your Order</div>
+        <div className="checkout-container">
+          <ul className="sales-title-group">
+            <li className="">{cartCount(props)} item(s)</li>
+            <li className="sales-title">Shipping Cost</li>
+            <li className="sales-title">Free Shipping</li>
+            <li className="total-before-tax">Total Before Tax</li>
+            <li className="sales-title">Taxes</li>
+            <li className="sales-total">Total</li>
+          </ul>
+          <ul className="sales-number-group">
+            <li className="">${subTotal()}</li>
+            <li className="tax">${shipping}</li>
+            <li className="free">-${freeShipping()}</li>
+            <li className="total-before-tax">${beforeTax()}</li>
+            <li className="tax">${taxCal()}</li>
+            <li className="sales-total">${salesTotal()}</li>
+          </ul>
+          <StripeCheckout
+            stripeKey="pk_test_51IYjrzC8wjT1tp4m0Y0qZ5LCHVjO2yu5zqNJzLzpVgwKCR11N9khEApXI0pdIkms7p9Tfz3Lq66pOJi2eSo5NaZ6004w0mshLZ"
+            token={handleToken}
+            // token={strpOrder}
+            amount={salesTotal() * 100}
+            name="eApparel"   
+            billingAddress //Will enable billing address feature
+            shippingAddress //Will enable shipping address feature
+          />
+        </div>
       </div>
     </div>
   );
@@ -86,8 +101,8 @@ const CheckOut = (props) => {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart.cart,
-    // order: state.cart.order,
+    auth: state.auth,
   };
 };
 
-export default connect(mapStateToProps, { placeOrder })(CheckOut);
+export default connect(mapStateToProps, { checkOut })(CheckOut);

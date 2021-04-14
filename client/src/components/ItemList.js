@@ -5,18 +5,37 @@ import {
   addToCart,
   changeQty,
   updateCartItemQty,
+  updateFeature,
 } from "../action";
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Input, Form, FormGroup, Label } from "reactstrap";
+import Loading from "./Loading";
 
 const ItemList = (props) => {
-  const { getList, changeQty, addToCart, updateCartItemQty, cart, list } = props;
+  const {
+    getList,
+    changeQty,
+    addToCart,
+    updateCartItemQty,
+    cart,
+    list,
+    updateFeature,
+  } = props;
+  const { category } = useParams();
 
   useEffect(() => {
-    getList();
+    updateFeature(category);
+    return list.length === 0 ? getList(category) : null;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [category]);
+
+  const onConsole = () => {
+    // console.log(list);
+    console.log(props);
+    console.log(props.auth);
+    console.log(props.cat);
+  };
 
   const onChange = (e) => {
     e.preventDefault();
@@ -49,81 +68,96 @@ const ItemList = (props) => {
     return item.quantity > 0 ? logicCart(item, e, buynow) : null;
   };
 
-  const onConsole = () => {
-    // console.log(props);
-    console.log(list);
-    console.log(cart);
+  const displayItem = (item, i) => {
+    return (
+      <div className="item-container" key={item._id}>
+        <Link className="image-link" to={`/list/${category}/${item._id}`}>
+          <img
+            className="item__image"
+            src={`${item.image}`}
+            alt={`${item.description}`}
+            // alt="model"
+          />
+        </Link>
+        <Link className="brand-link" to={`/list/${category}/${item._id}`}>
+          <p className="brand">{item.brand}</p>
+        </Link>
+        <Link className="description-link" to={`/list/${category}/${item._id}`}>
+          <p className="description">{item.description}</p>
+        </Link>
+        <p className="price">
+          <strong>${item.price}</strong>
+        </p>
+        <Form>
+          <FormGroup>
+            <Label>Qty: </Label>
+            <Input
+              type="select"
+              name="quantity"
+              className="quantity_input"
+              onChange={onChange}
+              data-index={i}
+              required
+            >
+              <option value="">--Select--</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </Input>
+          </FormGroup>
+          <div>
+            <button className="my-button" onClick={(e) => onBuy(item, e)}>
+              Add
+            </button>
+            <button
+              className="my-button"
+              onClick={(e) => onBuy(item, e, "buynow")}
+            >
+              Buy Now
+            </button>
+          </div>
+        </Form>
+      </div>
+    );
   };
 
   if (list) {
     return (
-      <div className="container">
-        <h2>ItemList</h2>
-        <button onClick={onConsole}>Console Log</button>
-        <div className="list-grid">
-          {list.map((item, i) => {
-            return (
-              <div className="item-container" key={item._id}>
-                <Link className="image-link" to={`/list/${item._id}`}>
-                  <img
-                    className="model"
-                    src={`${item.image}`}
-                    alt={`${item.description}`}
-                    // alt="model"
-                  />
-                </Link>
-                <Link className="brand-link" to={`/list/${item._id}`}>
-                  <p className="brand">{item.brand}</p>
-                </Link>
-                <Link className="description-link" to={`/list/${item._id}`}>
-                  <p className="description">{item.description}</p>
-                </Link>
-                <p className="price">
-                  <strong>${item.price}</strong>
-                </p>
-                <Form>
-                  <FormGroup>
-                    <Label>Qty: </Label>
-                    <Input
-                      type="select"
-                      name="quantity"
-                      className="quantity_input"
-                      onChange={onChange}
-                      data-index={i}
-                      required
-                    >
-                      <option value="">--Select--</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </Input>
-                  </FormGroup>
-                  <button onClick={(e) => onBuy(item, e)}>Add to Cart</button>
-                  <button onClick={(e) => onBuy(item, e, "buynow")}>
-                    Buy Now
-                  </button>
-                </Form>
-              </div>
-            );
-          })}
+      <div className="container-list">
+        <div>
+          <h2 className="category-title">{category}</h2>
+          <button className="my-button" onClick={onConsole}>
+            Console Log
+          </button>
+          <div className="flex-wrap">
+            {list.map((item, i) => {
+              return item.category === category ? displayItem(item, i) : null;
+            })}
+          </div>
         </div>
       </div>
     );
   }
-  return <div></div>;
+  return (
+    <div className="container">
+      <Loading />
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {
   return {
     list: state.item.items,
     cart: state.cart.cart,
+    auth: state.auth,
+    cat: state.item.category,
   };
 };
 
@@ -133,4 +167,5 @@ export default connect(mapStateToProps, {
   changeQty,
   addToCart,
   updateCartItemQty,
-})(ItemList);     
+  updateFeature,
+})(ItemList);
