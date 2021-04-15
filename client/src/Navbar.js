@@ -11,13 +11,13 @@ const Navbar = (props) => {
 
   const authLinks = (
     <>
-      <li className="navbar__welcome">
+      <li className="nav__welcome">
         {user ? `Welcome ${user.name}!` : null}
       </li>
       <Link to={user ? `/orderhistory/${user._id}` : null}>
-        <li className="navbar__item navbar__item-right">Order History</li>
+        <li className="nav__item navbar__item-right">Order History</li>
       </Link>
-      <li className="navbar__item navbar__item-right">
+      <li className="nav__item navbar__item-right">
         <Logout />
       </li>
     </>
@@ -25,20 +25,20 @@ const Navbar = (props) => {
 
   const guestLinks = (
     <>
-      <li className="navbar__item">
+      <li className="nav__item">
         <RegisterModal />
       </li>
       <Link to={`/login`}>
-        <li className="navbar__item">Login</li>
+        <li className="nav__item">Login</li>
       </Link>
     </>
   );
 
   return (
-    <nav className="navbar">
-      <ul className="navbar__top">
+    <nav className="nav">
+      <ul className="nav__top">
       {isAuthenticated ? authLinks : guestLinks}
-      <li className="navbar__item shopping__cart__btn">
+      <li className="nav__item shopping__cart__btn">
           <Link to={`/shoppingcart`} replace>
             <span className="shopping-cart-btn">
               <span className="fa-layers fa-fw fa-lg">
@@ -54,21 +54,21 @@ const Navbar = (props) => {
           </Link>
         </li>
       </ul>
-      <ul className="navbar__bottom">
+      <ul className="nav__bottom">
         <Link to={`/home`} replace>
-          <li className="navbar__item">eApparel</li>
+          <li className="nav__item">eApparel</li>
         </Link>
         <Link to={`/list/men`} replace>
-          <li className="navbar__item">Men</li>
+          <li className="nav__item">Men</li>
         </Link>
         <Link to={`/list/women`} replace>
-          <li className="navbar__item">Women</li>
+          <li className="nav__item">Women</li>
         </Link>
         <Link to={`/list/boys`} replace>
-          <li className="navbar__item">Boys</li>
+          <li className="nav__item">Boys</li>
         </Link>
         <Link to={`/list/girls`} replace>
-          <li className="navbar__item">Girls</li>
+          <li className="nav__item">Girls</li>
         </Link>
       </ul>
     </nav>

@@ -65,9 +65,9 @@ const Sidebar = (props) => {
   if (list) {
     const feature = findRandom();
     return (
-      <div>
+      <div className="sidebar">
         <div>
-        <h5>Featured Item</h5>
+        <h5>Featured Items</h5>
         </div>
         <div className="feature">
         {feature.map((feature) => {
@@ -81,7 +81,7 @@ const Sidebar = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     list: state.item.items,
     selectCat: state.item.category,
