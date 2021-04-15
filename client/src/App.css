@@ -29,14 +29,13 @@ html, body {
 }
 
 /*review*/
-.sidebar {
-  grid-area: sidebar;
+.feature {
+  grid-area: feature;
   height: 100vh;
 }
 
 .main {
   grid-area: main;
-  /* padding-bottom: 20%; */
 }
 
 .wrapper {
@@ -44,7 +43,7 @@ html, body {
   grid-template-columns: 1fr 20%;
   grid-template-areas:
     "header header"
-    " main sidebar";
+    "main feature";
 }
 
 .flex-wrap {
@@ -54,7 +53,7 @@ html, body {
   /* margin-left: 100px; */
 }
 
-.description,
+.item__description,
 .price {
   font-size: 14px;
 }
@@ -140,16 +139,20 @@ html, body {
 }
 
 /*--Side-bar--*/
-.sidebar div {
+.feature {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature__title {
+  margin: 4% auto;
+  margin-bottom: 0;
+}
+
+.feature div {
   font-size: 1.4rem;
   padding: 6% 4%;
   font-weight: 500;
-}
-
-.feature {
-  /* box-shadow: 3px 3px 5px #d8d8d8; */
-  display: flex;
-  flex-direction: column;
 }
 
 /*---Home page---*/
@@ -177,7 +180,7 @@ html, body {
   box-shadow: 3px 3px 5px rgb(133, 133, 161);
 }
 
-.brand {
+.item__brand {
   font-size: 18px;
 }
 
@@ -186,7 +189,7 @@ html, body {
   margin: 20px 4%;
 }
 
-.description {
+.item__description {
   height: 84px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -209,26 +212,26 @@ Form .my-button:nth-child(2) {
   float: right;
 }
 
-.brand-link:link,
-.brand-link:visited {
+.item__brand-link:link,
+.item__brand-link:visited {
   text-decoration: none;
   color: rgb(250, 96, 7);
 }
 
-.brand-link:hover {
+.item__brand-link:hover {
   color: rgb(253, 159, 100);
 }
 
-.description-link:link {
+.item__description-link:link {
   text-decoration: none;
   color: black;
 }
 
-.description-link:visited {
+.item__description-link:visited {
   color: black;
 }
 
-.description-link:hover {
+.item__description-link:hover {
   color: rgb(61, 61, 61);
 }
 

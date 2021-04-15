@@ -42,20 +42,20 @@ const Sidebar = (props) => {
           />
         </Link>
         <Link
-          className="brand-link"
+          className="item__brand-link"
           to={`/list/${feature.category}/${feature._id}`}
           replace
         >
-          <p className="brand">{feature.brand}</p>
+          <p className="item__brand">{feature.brand}</p>
         </Link>
         <Link
-          className="description-link"
+          className="item__description-link"
           to={`/list/${feature.category}/${feature._id}`}
           replace
         >
-          <p className="description">{feature.description}</p>
+          <p className="item__description">{feature.description}</p>
         </Link>
-        <p className="price">
+        <p className="item__price">
           <strong>${feature.price}</strong>
         </p>
       </div>
@@ -65,15 +65,11 @@ const Sidebar = (props) => {
   if (list) {
     const feature = findRandom();
     return (
-      <div className="sidebar">
-        <div>
-        <h5>Featured Items</h5>
-        </div>
-        <div className="feature">
+      <div className="feature">
+        <h5 className="feature__title">Featured Items</h5>
         {feature.map((feature) => {
           return feature ? featureList(feature) : null;
         })}
-        </div>
       </div>
     );
   }
