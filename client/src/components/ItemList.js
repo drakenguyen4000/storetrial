@@ -70,8 +70,10 @@ const ItemList = (props) => {
 
   const displayItem = (item, i) => {
     return (
-      <div className="item-container" key={item._id}>
-        <Link className="image-link" to={`/list/${category}/${item._id}`}>
+      <div className="item" key={item._id}>
+        <Link 
+        // className="image-link" 
+        to={`/list/${category}/${item._id}`}>
           <img
             className="item__image"
             src={`${item.image}`}
@@ -79,13 +81,13 @@ const ItemList = (props) => {
             // alt="model"
           />
         </Link>
-        <Link className="brand-link" to={`/list/${category}/${item._id}`}>
-          <p className="brand">{item.brand}</p>
+        <Link className="item__brand-link" to={`/list/${category}/${item._id}`}>
+          <p className="item__brand">{item.brand}</p>
         </Link>
-        <Link className="description-link" to={`/list/${category}/${item._id}`}>
-          <p className="description">{item.description}</p>
+        <Link className="item__description-link" to={`/list/${category}/${item._id}`}>
+          <p className="item__description">{item.description}</p>
         </Link>
-        <p className="price">
+        <p className="item__price">
           <strong>${item.price}</strong>
         </p>
         <Form>
@@ -113,11 +115,11 @@ const ItemList = (props) => {
             </Input>
           </FormGroup>
           <div>
-            <button className="my-button" onClick={(e) => onBuy(item, e)}>
+            <button className="button" onClick={(e) => onBuy(item, e)}>
               Add
             </button>
             <button
-              className="my-button"
+              className="button"
               onClick={(e) => onBuy(item, e, "buynow")}
             >
               Buy Now
@@ -130,23 +132,21 @@ const ItemList = (props) => {
 
   if (list) {
     return (
-      <div className="container-list">
-        <div>
-          <h2 className="category-title">{category}</h2>
-          <button className="my-button" onClick={onConsole}>
+      <div className="category">
+          <h2 className="category__title">{category}</h2>
+          <button className="button" onClick={onConsole}>
             Console Log
           </button>
-          <div className="flex-wrap">
+          <div className="item-wrapper">
             {list.map((item, i) => {
               return item.category === category ? displayItem(item, i) : null;
             })}
           </div>
-        </div>
       </div>
     );
   }
   return (
-    <div className="container">
+    <div className="category">
       <Loading />
     </div>
   );

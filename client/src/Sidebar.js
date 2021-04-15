@@ -28,7 +28,7 @@ const Sidebar = (props) => {
 
   const featureList = (feature) => {
     return (
-      <div className="item-container" key={feature._id}>
+      <div className="item" key={feature._id}>
         <Link
           // className="image-link"
           to={`/list/${feature.category}/${feature._id}`}

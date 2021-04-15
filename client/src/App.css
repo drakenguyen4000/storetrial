@@ -11,7 +11,14 @@ html, body {
   box-sizing: border-box;
 }
 
-.container-list {
+/* .container-list {
+  padding: 2%;
+  padding-left: 15%;
+  background: rgb(235, 246, 250);
+} */
+
+/*container-list*/
+.category {
   padding: 2%;
   padding-left: 15%;
   background: rgb(235, 246, 250);
@@ -46,15 +53,19 @@ html, body {
     "main feature";
 }
 
-.flex-wrap {
+/*item container*/
+.item-wrapper {
   display: flex;
   flex-wrap: wrap;
-  /* background: blue; */
-  /* margin-left: 100px; */
 }
 
+/* .flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
 .item__description,
-.price {
+.item__price {
   font-size: 14px;
 }
 
@@ -169,6 +180,11 @@ html, body {
 }
 
 /*---Items List---*/
+.item {
+  width: 200px;
+  margin: 20px 4%;
+}
+
 .item__image {
   background-size: cover;
   width: 200px;
@@ -184,18 +200,13 @@ html, body {
   font-size: 18px;
 }
 
-.item-container {
-  width: 200px;
-  margin: 20px 4%;
-}
-
 .item__description {
   height: 84px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.my-button {
+.button {
   background: orange;
   border-radius: 5px;
   padding-bottom: 25px;
@@ -203,12 +214,12 @@ html, body {
   box-shadow: 3px 3px 5px#d8d8d8;
 }
 
-.my-button:hover {
+.button:hover {
   color: white;
   background: rgb(255, 115, 0);
 }
 
-Form .my-button:nth-child(2) {
+Form .button:nth-child(2) {
   float: right;
 }
 
@@ -355,7 +366,7 @@ button {
   font-size: 1.4rem;
 }
 
-.category-title {
+.category__title {
   text-transform: capitalize;
 }
 
