@@ -310,14 +310,13 @@ button {
 } */
 
 .total-container {
-  /* background: rgb(250, 250, 250); */
   /* padding: 5px 0 0 0; */
   display: grid;
   grid-template-columns: 3fr 3fr 3fr 2fr;
   grid-gap: 1%;
 }
 
-.item-detail {
+.item-cart-description-wrapper {
   background: rgb(245, 245, 245);
   padding: 5%;
 }

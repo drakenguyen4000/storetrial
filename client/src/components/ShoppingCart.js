@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { updateCartItemQty, changeQty, deleteItem } from "../action";
 import { message } from "../action/authActions";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { cartCount } from "./SharedComponents";
 import history from "../components/history";
+import FeatureBar from "../FeatureBar";
 
 const ShoppingCart = (props) => {
   const {
@@ -16,6 +17,8 @@ const ShoppingCart = (props) => {
     message,
   } = props;
   const { isAuthenticated } = props.auth;
+  const { category } = useParams();
+
   const onConsole = () => {
     console.log("list:", list);
     console.log("cart:", cart);
@@ -69,22 +72,22 @@ const ShoppingCart = (props) => {
 
   const shoppingList = (cart) => {
     return cart.map((item, i) => (
-      <div className="item-container shop-container" key={item._id}>
-        <Link className="image-link" to={`/list/${item._id}`}>
+      <div className="item shop-container" key={item._id}>
+        <Link className="image-link" to={`/list/${category}/${item._id}`}>
           <img
-            className="model"
+            className="item__image"
             src={`${item.image}`}
             alt={`${item.description}`}
             // alt="model"
           />
         </Link>
-        <div className="item-detail">
+        <div className="item-cart-description-wrapper">
           <div>
-            <Link className="brand-link" to={`/list/${item._id}`}>
-              <p className="brand">{item.brand}</p>
+            <Link className="item__brand-link" to={`/list/${category}/${item._id}`}>
+              <p className="item__brand">{item.brand}</p>
             </Link>
-            <Link className="description-link" to={`/list/${item._id}`}>
-              <p className="description">{item.description}</p>
+            <Link className="item__description-link" to={`/list/${category}/${item._id}`}>
+              <p className="item__description">{item.description}</p>
             </Link>
             <strong>${item.price}</strong>
           </div>
@@ -115,13 +118,13 @@ const ShoppingCart = (props) => {
             </FormGroup>
             <div>
               <button
-                className="my-button"
+                className="button"
                 onClick={(e) => updateCart(item, e, i)}
               >
                 Update
               </button>
               <button
-                className="my-button"
+                className="button"
                 onClick={(e) => deleteCartItem(item, e)}
               >
                 Delete
@@ -134,37 +137,47 @@ const ShoppingCart = (props) => {
   };
   if (cart) {
     return (
-      <div className="container-shopping-cart">
-        <div>
-          <h2>Your Cart</h2>
-          <button className="my-button" onClick={onConsole}>
-            Console Log
-          </button>
-          {shoppingList(cart)}
-          <hr />
-          <div className="total-container">
-            <span className="total-title">Subtotal</span>
-            <span className="item-count">{cartCount(props)} item(s)</span>
-            <span className="sub-total">${subTotal()}</span>
-            <span>
-              <button className="my-button checkout" onClick={checkOut}>
-                CheckOut
+      <>
+        <div className="main">
+          <div className="container-shopping-cart">
+            <div>
+              <h2>Your Cart</h2>
+              <button className="button" onClick={onConsole}>
+                Console Log
               </button>
-            </span>
+              {shoppingList(cart)}
+              <hr />
+              <div className="total-container">
+                <span className="total-title">Subtotal</span>
+                <span className="item-count">{cartCount(props)} item(s)</span>
+                <span className="sub-total">${subTotal()}</span>
+                <span>
+                  <button className="button checkout" onClick={checkOut}>
+                    CheckOut
+                  </button>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+        <FeatureBar />
+      </>
     );
   }
   return (
-    <div className="container">
-      <div className="itemContainer">
-        <h2>Your Cart is Empty</h2>
-        <button className="my-button" onClick={onConsole}>
-          Console Log
-        </button>
+    <>
+      <div className="main">
+        <div className="container">
+          <div className="itemContainer">
+            <h2>Your Cart is Empty</h2>
+            <button className="my-button" onClick={onConsole}>
+              Console Log
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+      <FeatureBar />
+    </>
   );
 };
 
