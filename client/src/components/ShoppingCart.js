@@ -81,7 +81,7 @@ const ShoppingCart = (props) => {
             // alt="model"
           />
         </Link>
-        <div className="item-cart-description-wrapper">
+        <div className="item-cart-description">
           <div>
             <Link className="item__brand-link" to={`/list/${category}/${item._id}`}>
               <p className="item__brand">{item.brand}</p>
@@ -139,7 +139,7 @@ const ShoppingCart = (props) => {
     return (
       <>
         <div className="main">
-          <div className="container-shopping-cart">
+          <div className="shopping-cart">
             <div>
               <h2>Your Cart</h2>
               <button className="button" onClick={onConsole}>
@@ -147,10 +147,10 @@ const ShoppingCart = (props) => {
               </button>
               {shoppingList(cart)}
               <hr />
-              <div className="total-container">
-                <span className="total-title">Subtotal</span>
-                <span className="item-count">{cartCount(props)} item(s)</span>
-                <span className="sub-total">${subTotal()}</span>
+              <div className="total">
+                <span className="total__title">Subtotal</span>
+                <span className="total__item-count">{cartCount(props)} item(s)</span>
+                <span className="total__sub-total">${subTotal()}</span>
                 <span>
                   <button className="button checkout" onClick={checkOut}>
                     CheckOut
