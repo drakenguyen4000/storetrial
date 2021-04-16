@@ -8,7 +8,6 @@ import ShoppingCart from "./components/ShoppingCart";
 // import { HashRouter, Route } from "react-router-dom";
 import { Router, Route } from "react-router-dom";
 import history from "./components/history";
-import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import CheckOut from "./components/CheckOut";
 import OrderComplete from "./components/OrderComplete";
@@ -28,13 +27,11 @@ const App = () => {
   return (
     // <HashRouter history={history}>
     <Router history={history}>
-      <div className="wrapper">
-        <Navbar />
-        <Route path="/login" exact component={Login} />
-        <Route path="/" exact component={Home} />
-        <Route path="/home" exact component={Home} />
-        <Sidebar />
-        <div className="main">
+      <Navbar />
+      <Route path="/login" exact component={Login} />
+      <Route path="/" exact component={Home} />
+      <Route path="/home" exact component={Home} />
+      <div className="main-feature-grid">
           <Message />
           <Route path="/list/:category" exact component={ItemList} />
           <Route path="/list/:category/:id" exact component={ItemDetail} />
@@ -46,9 +43,8 @@ const App = () => {
             exact
             component={OrderComplete}
           />
-          <Footer />
-        </div>
       </div>
+      <Footer />
     </Router>
     // </HashRouter>
   );

@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const Sidebar = (props) => {
+const FeatureBar = (props) => {
   //grab list from mapStateToProps
   //find first items not caterogy men - i.e. and display
   const { list } = props;
@@ -84,4 +84,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps)(FeatureBar);

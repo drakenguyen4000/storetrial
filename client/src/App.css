@@ -39,7 +39,7 @@ html, body {
   grid-area: header;
 }
 
-/*review*/
+/*review*/  
 .feature {
   grid-area: feature;
   height: 100vh;
@@ -49,7 +49,7 @@ html, body {
   grid-area: main;
 }
 
-.wrapper {
+.main-feature-grid {
   display: grid;
   grid-template-columns: 1fr 20%;
   grid-template-areas:
@@ -430,7 +430,7 @@ button {
       "header header"
       "main main";
   }
-  .sidebar, .feature {
+  .feature {
     display: none;
   }
 }

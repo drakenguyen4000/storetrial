@@ -11,6 +11,7 @@ import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Input, Form, FormGroup, Label } from "reactstrap";
 import Loading from "./Loading";
+import FeatureBar from "../FeatureBar";
 
 const ItemList = (props) => {
   const {
@@ -71,9 +72,10 @@ const ItemList = (props) => {
   const displayItem = (item, i) => {
     return (
       <div className="item" key={item._id}>
-        <Link 
-        // className="image-link" 
-        to={`/list/${category}/${item._id}`}>
+        <Link
+          // className="image-link"
+          to={`/list/${category}/${item._id}`}
+        >
           <img
             className="item__image"
             src={`${item.image}`}
@@ -84,7 +86,10 @@ const ItemList = (props) => {
         <Link className="item__brand-link" to={`/list/${category}/${item._id}`}>
           <p className="item__brand">{item.brand}</p>
         </Link>
-        <Link className="item__description-link" to={`/list/${category}/${item._id}`}>
+        <Link
+          className="item__description-link"
+          to={`/list/${category}/${item._id}`}
+        >
           <p className="item__description">{item.description}</p>
         </Link>
         <p className="item__price">
@@ -132,23 +137,33 @@ const ItemList = (props) => {
 
   if (list) {
     return (
-      <div className="category">
-          <h2 className="category__title">{category}</h2>
-          <button className="button" onClick={onConsole}>
-            Console Log
-          </button>
-          <div className="item-wrapper">
-            {list.map((item, i) => {
-              return item.category === category ? displayItem(item, i) : null;
-            })}
+      <>
+        <div className="main">
+          <div className="category">
+            <h2 className="category__title">{category}</h2>
+            <button className="button" onClick={onConsole}>
+              Console Log
+            </button>
+            <div className="item-wrapper">
+              {list.map((item, i) => {
+                return item.category === category ? displayItem(item, i) : null;
+              })}
+            </div>
           </div>
-      </div>
+        </div>
+        <FeatureBar />
+      </>
     );
   }
   return (
-    <div className="category">
-      <Loading />
-    </div>
+    <>
+      <div className="main">
+        <div className="category">
+          <Loading />
+        </div>
+      </div>
+      <FeatureBar />
+    </>
   );
 };
 
