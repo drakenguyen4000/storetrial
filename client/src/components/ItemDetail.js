@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import {
   showItem,
   changeQty,
-  // getList,
   addToCart,
   updateCartItemQty,
   updateFeature,
@@ -16,8 +15,6 @@ const ItemDetail = (props) => {
   const {
     showItem,
     details,
-    // getList,
-    // item_id,
     changeQty,
     addToCart,
     updateCartItemQty,
@@ -81,17 +78,16 @@ const ItemDetail = (props) => {
   if (details) {
     return (
       <div className="container">
-        {/* <h2>Details</h2> */}
         <button onClick={onConsole}>Console</button>
-        <div className="flex-wrap wrap-margin">
+        <div className="item-wrapper item-wrapper-center">
           <img
-            className="modelImage"
+            className="item__image-detail"
             src={`${details.image}`}
             alt={`${details.description}`}
           />
-          <div className="description-wrapper">
-            <strong className="brand">{details.brand}</strong>
-            <p className="description">{details.description}</p>
+          <div className="item__description-wrapper">
+            <strong className="item__brand">{details.brand}</strong>
+            <p className="item__description">{details.description}</p>
             <strong>${details.price}</strong>
             <div>
               <Form>
@@ -118,8 +114,8 @@ const ItemDetail = (props) => {
                     <option value="10">10</option>
                   </Input>
                 </FormGroup>
-                <button className="my-button" onClick={(e) => onBuy(details, e)}>Add</button>
-                <button className="my-button" onClick={(e) => onBuy(details, e, "buynow")}>
+                <button className="button" onClick={(e) => onBuy(details, e)}>Add</button>
+                <button className="button" onClick={(e) => onBuy(details, e, "buynow")}>
                   Buy Now
                 </button>
               </Form>
@@ -135,7 +131,6 @@ const ItemDetail = (props) => {
 const mapStateToProps = (state) => {
   return {
     details: state.item.show,
-    // item_id: ownProps.match.params.id,
     list: state.item.items,
     cart: state.cart.cart,
   };
@@ -144,7 +139,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   showItem,
   changeQty,
-  // getList,
   addToCart,
   updateCartItemQty,
   updateFeature,
