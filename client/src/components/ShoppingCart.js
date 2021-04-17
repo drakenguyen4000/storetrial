@@ -152,7 +152,7 @@ const ShoppingCart = (props) => {
                 <span className="total__item-count">{cartCount(props)} item(s)</span>
                 <span className="total__sub-total">${subTotal()}</span>
                 <span>
-                  <button className="button checkout" onClick={checkOut}>
+                  <button className="button" onClick={checkOut}>
                     CheckOut
                   </button>
                 </span>

@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 html, body {
@@ -322,17 +323,44 @@ button {
 }
 
 /*----Checkout Page----*/
-.checkout-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid gray;
-  width: 450px;
-  height: 400px;
+
+/*stripe checkout css*/
+.StripeCheckout span {
+  /* background-image: none !important; */
+  background: orange;
+  /* border: 1px orange solid !important; */
+  box-shadow: 3px 3px 5px#d8d8d8 !important;
+  line-height: 1.5 !important;
 }
 
-.your-order {
+.checkout {
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.checkout__title {
   font-size: 1.2rem;
   font-weight: 600;
+  /* background: rgb(229, 236, 237); */
+  background-image: linear-gradient(-180deg,#44b1e8,#3098de);
+  padding-left: 10%;
+  box-shadow: 1px 1px 1px rgb(191, 190, 190);
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
+}
+
+ .checkout__panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* border: 1px solid gray; */
+  background: rgb(252, 251, 251);
+  width: 450px;
+  height: 250px;
+  padding-top: 3%;
+  box-shadow: 1px 1px 1px rgb(191, 190, 190);
+  border-radius: 2px;
 }
 
 .total__title {
@@ -344,27 +372,27 @@ button {
   font-size: 1.2rem;
 }
 
-.sales-title-group,
-.sales-number-group {
+.checkout__labels-group,
+.checkout__values-group {
   list-style: none;
 }
 
-.sales-title-group {
+.checkout__labels-group {
   margin-left: 20%;
 }
 
-.sales-number-group {
+.checkout__values-group {
   text-align: right;
   margin-right: 40%;
 }
 
-.total-before-tax {
+.checkout__total-before-tax {
   border-top: 1px gray solid;
   color: rgb(2, 59, 184);
   font-size: 1.05rem;
 }
 
-.sales-total {
+.checkout__total {
   border-top: 1px gray solid;
   color: green;
   font-size: 1.4rem;
@@ -375,8 +403,6 @@ button {
 }
 
 
-/*--remove--*/
-/*image-link and other -link*/
 /*---Order History---*/
 
 .order-title {

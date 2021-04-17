@@ -3,6 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 import { cartCount } from "./SharedComponents";
 import { checkOut } from "../action";
 import { connect } from "react-redux";
+import FeatureBar from "../FeatureBar";
 
 const CheckOut = (props) => {
   const { cart, checkOut } = props;
@@ -61,40 +62,46 @@ const CheckOut = (props) => {
   };
 
   return (
-    <div className="container">
-      <div className="product">
-        <h2>Checkout</h2>
+    <>
+      <div className="main container">
         <button onClick={onConsole}>Console Log</button>
-        <div className="your-order">Your Order</div>
-        <div className="checkout-container">
-          <ul className="sales-title-group">
-            <li className="">{cartCount(props)} item(s)</li>
-            <li className="sales-title">Shipping Cost</li>
-            <li className="sales-title">Free Shipping</li>
-            <li className="total-before-tax">Total Before Tax</li>
-            <li className="sales-title">Taxes</li>
-            <li className="sales-total">Total</li>
-          </ul>
-          <ul className="sales-number-group">
-            <li className="">${subTotal()}</li>
-            <li className="tax">${shipping}</li>
-            <li className="free">-${freeShipping()}</li>
-            <li className="total-before-tax">${beforeTax()}</li>
-            <li className="tax">${taxCal()}</li>
-            <li className="sales-total">${salesTotal()}</li>
-          </ul>
-          <StripeCheckout
-            stripeKey="pk_test_51IYjrzC8wjT1tp4m0Y0qZ5LCHVjO2yu5zqNJzLzpVgwKCR11N9khEApXI0pdIkms7p9Tfz3Lq66pOJi2eSo5NaZ6004w0mshLZ"
-            token={handleToken}
-            // token={strpOrder}
-            amount={salesTotal() * 100}
-            name="eApparel"   
-            billingAddress //Will enable billing address feature
-            shippingAddress //Will enable shipping address feature
-          />
+        <div className="checkout">
+          <div>
+            <div className="checkout__title">Checkout</div>
+            <div className="checkout__panel">
+              <ul className="checkout__labels-group">
+                <li className="">{cartCount(props)} item(s)</li>
+                <li className="checkout__label">Shipping Cost</li>
+                <li className="checkout__label">Free Shipping</li>
+                <li className="checkout__total-before-tax">Total Before Tax</li>
+                <li className="checkout__label">Taxes</li>
+                <li className="checkout__total">Total</li>
+              </ul>
+              <ul className="checkout__values-group">
+                <li className="checkout__subtotal">${subTotal()}</li>
+                <li className="checkout__shipping">${shipping}</li>
+                <li className="checkout__free-shipping">-${freeShipping()}</li>
+                <li className="checkout__total-before-tax">${beforeTax()}</li>
+                <li className="checkout__tax">${taxCal()}</li>
+                <li className="checkout__total">${salesTotal()}</li>
+                <br/>
+                <li>
+                <StripeCheckout
+                  stripeKey="pk_test_51IYjrzC8wjT1tp4m0Y0qZ5LCHVjO2yu5zqNJzLzpVgwKCR11N9khEApXI0pdIkms7p9Tfz3Lq66pOJi2eSo5NaZ6004w0mshLZ"
+                  token={handleToken}
+                  amount={salesTotal() * 100}
+                  name="eApparel"
+                  billingAddress 
+                  shippingAddress 
+                />
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <FeatureBar />
+    </>
   );
 };
 
