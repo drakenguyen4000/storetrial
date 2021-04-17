@@ -4,11 +4,13 @@ import {
   LOADING_ITEMS,
   CHECKOUT,
   UPDATE_CART_ITEM_QTY,
+  ORDER_HISTORY,
 } from "../action/types";
 
 const initialState = {
   cart: [],
   history: [],
+  order: null,
   loading: false,
 };
 
@@ -41,9 +43,10 @@ export default function cartReducer(state = initialState, action) {
       return {
         ...state, 
         // msg: action.payload.status, //Message needs it's own reducer
-        cart:[],
+        cart: [],
+        order: action.payload,
       }
-    case "ORDER_HISTORY":
+    case ORDER_HISTORY:
       return {
         ...state,
         history: action.payload

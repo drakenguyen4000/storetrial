@@ -21,6 +21,7 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const MESSAGE = "MESSAGE";
 export const CLEAR = "CLEAR";
 export const FEATURE_UPDATE = "FEATURE_UPDATE";
+export const ORDER_HISTORY = "ORDER_HISTORY";
 
 
 

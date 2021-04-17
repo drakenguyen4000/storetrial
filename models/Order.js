@@ -25,10 +25,10 @@ const OrderSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  // estimated_delivery: {
-  //   type: String,
-  //   required: true,
-  // },
+  estimated_delivery: {
+    type: String,
+    default: new Date(Date.now() + ( 3600 * 1000 * 24 * 5)),
+  },
 });
 
 module.exports = Order = mongoose.model("order", OrderSchema);

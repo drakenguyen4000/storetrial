@@ -1,22 +1,31 @@
 import { connect } from "react-redux";
 
 const OrderComplete = (props) => {
-    const onConsole = () => {
-        // console.log(order);
-        console.log(props.order);
-      };
+  const onConsole = () => {
+    // console.log(order);
+    console.log(props.order);
+  };
   return (
-    <div className="container">
+    <div className="main">
       <button onClick={onConsole}>Console Log</button>
-      <div className="order-complete-msg">Order Completed! Thank you!</div>
-      {/* <div className="shipping-status">{shippingStatus()}</div> */}
+      <div>
+      <p className="order-complete">
+        Order Completed! Thank you!
+        <div className="order-complete__delivery-date">
+          Your package should be arriving 3-5 days from your purchase date.
+          The lastest they arrive will be{" "}
+          {props.order.estimated_delivery.substring(0, 15)}.
+        </div>
+      </p>
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    order: state.cart.order,
+    order: state.cart.order.data,
   };
 };
 

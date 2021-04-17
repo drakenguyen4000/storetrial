@@ -428,6 +428,17 @@ button {
   font-size: .8rem;
 }
 
+/*--Complete Other-*/
+.order-complete {
+  font-size: 1.4rem;
+  margin: 4% 10%;
+  padding: 4%;
+  height: 200px;
+  background: rgb(226, 250, 234);
+}  
+.order-complete__delivery-date {
+  font-size: 1.1rem;
+}
 /*---Footer---*/
 #Footer {
   position: relative;
