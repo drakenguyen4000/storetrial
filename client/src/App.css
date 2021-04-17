@@ -12,10 +12,6 @@ html, body {
   box-sizing: border-box;
 }
 
-.container {
-  min-height: 1100px;
-}
-
 /* .container-list {
   padding: 2%;
   padding-left: 15%;
@@ -41,7 +37,18 @@ html, body {
 
 .main {
   grid-area: main;
+  min-height: 1100px;
+  display: flex;
+  justify-content: center;
+  padding: 2%;
 }
+
+/* .container {
+  min-height: 1100px;
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+} */
 
 .main-feature-grid {
   display: grid;
@@ -51,7 +58,7 @@ html, body {
     "main feature";
 }
 
-/*item container*/
+/*item wrapper*/
 .item-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -281,14 +288,7 @@ button {
 }
 
 /*---Shopping Cart--*/
-.shopping-cart {
-  padding: 2%;
-  /* background: rgb(235, 246, 250); */
-  display: flex;
-  justify-content: center;
-}
-
-.shop-container {
+.shop-wrapper {
   /* margin: 5% 0 0 30%; */
   /* background: blue !important; */
   display: grid;
@@ -305,16 +305,20 @@ button {
   border: none;
 }
 
-/* hr {
-  width: 80%;
-  float: left;
-} */
-
 .total {
   /* padding: 5px 0 0 0; */
   display: grid;
   grid-template-columns: 3fr 3fr 3fr 2fr;
   grid-gap: 1%;
+}
+
+.total__title {
+  font-size: 1.4rem;
+}
+
+.total__item-count,
+.total__sub-total {
+  font-size: 1.2rem;
 }
 
 .item-cart-description {
@@ -363,15 +367,6 @@ button {
   border-radius: 2px;
 }
 
-.total__title {
-  font-size: 1.4rem;
-}
-
-.total__item-count,
-.total__sub-total {
-  font-size: 1.2rem;
-}
-
 .checkout__labels-group,
 .checkout__values-group {
   list-style: none;
@@ -402,41 +397,37 @@ button {
   text-transform: capitalize;
 }
 
-
 /*---Order History---*/
+.history {
+  background: rgb(248, 250, 250);
+  width: 60%;
+  padding: 2%;
+}
 
-.order-title {
+.history__purchase-total-group {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.order-image {
-  width: 100px;
-  height: 120px;
-}
-
-.order-grid {
+.history__wrapper {
   display: inline-flex;
   margin: 10px;
 }
 
-.order-details {
+.history__image {
+  width: 100px;
+  height: 120px;
+}
+
+.history__details {
   font-size: .9rem;
 }
 
-.order-details-2 {
+.history__details-2 {
   font-size: .8rem;
 }
 
-/* .order-total {
-  align-items: end;
-} */
-
-.order-wrap {
-  /* background: lightblue; */
-  width: 60%;
-}
 /*---Footer---*/
 #Footer {
   position: relative;

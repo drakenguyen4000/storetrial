@@ -72,7 +72,7 @@ const ShoppingCart = (props) => {
 
   const shoppingList = (cart) => {
     return cart.map((item, i) => (
-      <div className="item shop-container" key={item._id}>
+      <div className="item shop-wrapper" key={item._id}>
         <Link className="image-link" to={`/list/${category}/${item._id}`}>
           <img
             className="item__image"
@@ -135,11 +135,11 @@ const ShoppingCart = (props) => {
       </div>
     ));
   };
+  
   if (cart) {
     return (
       <>
         <div className="main">
-          <div className="shopping-cart">
             <div>
               <h2>Your Cart</h2>
               <button className="button" onClick={onConsole}>
@@ -158,7 +158,6 @@ const ShoppingCart = (props) => {
                 </span>
               </div>
             </div>
-          </div>
         </div>
         <FeatureBar />
       </>
@@ -167,14 +166,12 @@ const ShoppingCart = (props) => {
   return (
     <>
       <div className="main">
-        <div className="container">
-          <div className="itemContainer">
+          <div>
             <h2>Your Cart is Empty</h2>
-            <button className="my-button" onClick={onConsole}>
+            <button className="button" onClick={onConsole}>
               Console Log
             </button>
           </div>
-        </div>
       </div>
       <FeatureBar />
     </>

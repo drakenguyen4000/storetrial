@@ -63,14 +63,14 @@ const CheckOut = (props) => {
 
   return (
     <>
-      <div className="main container">
+      <div className="main">
         <button onClick={onConsole}>Console Log</button>
         <div className="checkout">
           <div>
             <div className="checkout__title">Checkout</div>
             <div className="checkout__panel">
               <ul className="checkout__labels-group">
-                <li className="">{cartCount(props)} item(s)</li>
+                <li className="checkout__label">{cartCount(props)} item(s)</li>
                 <li className="checkout__label">Shipping Cost</li>
                 <li className="checkout__label">Free Shipping</li>
                 <li className="checkout__total-before-tax">Total Before Tax</li>

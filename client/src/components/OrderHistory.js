@@ -10,6 +10,7 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getHistory } from "../action";
+import FeatureBar from "../FeatureBar";
 
 const OrderHistory = (props) => {
   useEffect(() => {
@@ -24,24 +25,29 @@ const OrderHistory = (props) => {
     //   console.log("function running")
     return (
       <div>
-        <div className="order-title">
+        <div className="history__purchase-total-group">
           <strong>
-            <span>Purchase Date: {order.purchase_date.slice(0, 10)} </span></strong>
-            <em>
-            <span className="order-total">Total Cost: ${order.total_cost}</span>
-            </em>
+            <span>Purchase Date: {order.purchase_date.slice(0, 10)} </span>
+          </strong>
+          <em>
+            <span>
+              Total Cost: ${order.total_cost}
+            </span>
+          </em>
         </div>
-        {/* <span>Total Cost: ${order.total_cost}</span> */}
         <div>
           {order.items_ordered.map((item) => {
-            // console.log(item);
             return (
-              <div className="order-grid">
+              <div className="history__wrapper">
                 <div>
-                  <img className="order-image" src={`${item.image}`} />
-                  <div className="order-details">{item.brand}</div>
-                  <span className="order-details-2">${item.price} / </span>
-                  <span className="order-details-2">Qty: {item.quantity}</span>
+                  <img className="history__image" src={`${item.image}`} />
+                  <div className="history__details">{item.brand}</div>
+                  <span className="history__details-2">
+                    ${item.price} /
+                  </span>
+                  <span className="history__details-2">
+                    Qty: {item.quantity}
+                  </span>
                 </div>
               </div>
             );
@@ -53,18 +59,19 @@ const OrderHistory = (props) => {
   };
 
   return (
-    <div className="container">
-      <strong>
-        <h2>Your Order History</h2>
-      </strong>
-      <button onClick={onConsole}>Console</button>
-      <div className="order-wrap">
-        {props.history.map((order) => {
-          // console.log("map running")
-          return listOrder(order);
-        })}
+    <>
+      <div className="main">
+        <button onClick={onConsole}>Console</button>
+        <div className="history">
+          <h2>Order History</h2>
+          <hr />
+          {props.history.map((order) => {
+            return listOrder(order);
+          })}
+        </div>
       </div>
-    </div>
+      <FeatureBar />
+    </>
   );
 };
 
