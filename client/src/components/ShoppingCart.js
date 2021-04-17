@@ -118,13 +118,13 @@ const ShoppingCart = (props) => {
             </FormGroup>
             <div>
               <button
-                className="button"
+                className="button shop-btn "
                 onClick={(e) => updateCart(item, e, i)}
               >
                 Update
               </button>
               <button
-                className="button"
+                className="button shop-btn "
                 onClick={(e) => deleteCartItem(item, e)}
               >
                 Delete
@@ -152,7 +152,7 @@ const ShoppingCart = (props) => {
                 <span className="total__item-count">{cartCount(props)} item(s)</span>
                 <span className="total__sub-total">${subTotal()}</span>
                 <span>
-                  <button className="button" onClick={checkOut}>
+                  <button className="button checkout-btn" onClick={checkOut}>
                     CheckOut
                   </button>
                 </span>

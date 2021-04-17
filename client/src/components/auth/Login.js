@@ -59,7 +59,7 @@ const Login = (props) => {
             value={state.password}
             className="mb-3"
           />
-          <Button style={{ height: "40px" }} color="dark">
+          <Button className="submit-btn" color="dark">
             Submit
           </Button>
         </FormGroup>

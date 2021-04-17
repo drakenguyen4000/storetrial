@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Logout = (props) => {
   return (
     <>
-      <Link onClick={props.logout} href="#">
+      <Link className="nav__item-right-color " onClick={props.logout} href="#">
         Logout
       </Link>
     </>

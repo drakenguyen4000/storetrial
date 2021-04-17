@@ -82,8 +82,9 @@ class RegisterModal extends Component {
     return (
       <>
         <Link
-          color="dark"
-          style={{ marginBottom: "2rem" }}
+          // color="light"
+          className="nav__item-right-color "
+          // style={{ marginBottom: "2rem" }}
           href="#"
           onClick={this.toggle}
         >

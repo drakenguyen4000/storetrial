@@ -64,7 +64,7 @@ const CheckOut = (props) => {
   return (
     <>
       <div className="main">
-        <button onClick={onConsole}>Console Log</button>
+        <button className="button" onClick={onConsole}>Console Log</button>
         <div className="checkout">
           <div>
             <div className="checkout__title">Checkout</div>
