@@ -23,7 +23,8 @@ html, body {
 .category {
   padding: 2%;
   padding-left: 15%;
-  background: rgb(235, 246, 250);
+  /* background: rgb(235, 246, 250); */
+  /* background: white; */
 }
 
 .nav {
@@ -33,7 +34,7 @@ html, body {
 /*review*/  
 .feature {
   grid-area: feature;
-  height: 100vh;
+  background: rgb(235, 246, 250);
 }
 
 .main {
@@ -125,11 +126,18 @@ html, body {
   color: white;
 }
 
+.nav__item-right-color:hover {
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: blue;
+}
+
 .nav__item:hover {
-  background: rgb(226, 226, 226);
-  background: white;
-  border: gray 1px solid;
-  color: black;
+  /* background: rgb(226, 226, 226); */
+  background: orange;
+  /* border: gray 1px solid; */
+  /* color: black; */
+  border-radius: 4px;
 }
 
 .nav__welcome {
@@ -165,11 +173,31 @@ html, body {
   color: rgb(250, 197, 100);
 }
 
-/*--Login--*/
+/*---Message---*/
+
+.alert {
+  text-align: center;
+  margin-bottom: 0 !important;
+}
+
+/*---Register---*/
+.register-btn {
+  margin-top: 2rem;
+}
+
+.register-input {
+  margin-bottom: 1rem;
+}
+
+/*---Login---*/
+.login {
+  min-height: 470px;
+}
+
 .submit-btn {
   height: 40px;
   background: #ff8000 !important;
-  border: none;
+  border: none !important;
 }
 
 /*---Home page---*/
@@ -250,7 +278,7 @@ html, body {
 
 .button:hover {
   color: white;
-  background: rgb(252, 211, 135);
+  background: rgb(151, 57, 3);
   /* background: rgb(255, 115, 0); */
 }
 
@@ -467,12 +495,15 @@ input {
 }
 /*---Footer---*/
 #Footer {
-  position: relative;
+  /* position: relative; */
   font-weight: 400;
-  margin-top: 5%;
+  /* margin-top: 2%; */
   padding: 1% 0;
   font-size: 1.2rem;
   text-align: center;
+  background: orange;
+  color: white;
+  text-shadow: 1px 1px 1px rgb(161, 161, 161);
 }
 
 @media only screen and (max-width: 925px) {

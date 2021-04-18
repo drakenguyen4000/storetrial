@@ -61,7 +61,7 @@ const OrderHistory = (props) => {
   return (
     <>
       <div className="main">
-        <button onClick={onConsole}>Console</button>
+        <button className="button" onClick={onConsole}>Console</button>
         <div className="history">
           <h2>Order History</h2>
           <hr />

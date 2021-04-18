@@ -34,8 +34,8 @@ const Login = (props) => {
     props.login(user);
   };
   return (
-    <div style={{ height: "400px" }}>
-      <button onClick={onConsole}>Console Log</button>
+    <div className="login" style={{ height: "400px" }}>
+      <button className="button" onClick={onConsole}>Console Log</button>
       <Form style={{ height: "400px" }} onSubmit={onSubmit}>
         <FormGroup style={{ marginTop: "8%", margin: "auto", width: "50%" }}>
           <h2 style={{ textAlign: "center" }}>Please Login</h2>

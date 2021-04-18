@@ -28,11 +28,11 @@ const App = () => {
     // <HashRouter history={history}>
     <Router history={history}>
       <Navbar />
+      <Message />
       <Route path="/login" exact component={Login} />
       <Route path="/" exact component={Home} />
       <Route path="/home" exact component={Home} />
       <div className="main-feature-grid">
-          <Message />
           <Route path="/list/:category" exact component={ItemList} />
           <Route path="/list/:category/:id" exact component={ItemDetail} />
           <Route path="/shoppingcart" exact component={ShoppingCart} />

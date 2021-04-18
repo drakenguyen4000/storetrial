@@ -2,12 +2,11 @@ import { connect } from "react-redux";
 
 const OrderComplete = (props) => {
   const onConsole = () => {
-    // console.log(order);
     console.log(props.order);
   };
   return (
     <div className="main">
-      <button onClick={onConsole}>Console Log</button>
+      <button className="button" onClick={onConsole}>Console Log</button>
       <div>
       <p className="order-complete">
         Order Completed! Thank you!
