@@ -61,7 +61,7 @@ const RegisterModal = (props) => {
                 id="name"
                 placeholder="Name"
                 onChange={onChange}
-                className="register-input"
+                className="input-margin"
               />
               <Label for="password">Password</Label>
               <Input
@@ -70,7 +70,7 @@ const RegisterModal = (props) => {
                 id="password"
                 placeholder="Password"
                 onChange={onChange}
-                className="register-input"
+                className="input-margin"
               />
               <Button className="register-btn" color="dark" block>
                 Register

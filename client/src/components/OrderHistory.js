@@ -1,28 +1,16 @@
-//orderHistory action
-//axios call route history
-//Backend - find by user._id
-//push to reducer
-// grab from mapstatetoprops
-//map over each order
-//Display Order History Date // Item Price
-//List Item
-
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getHistory } from "../action";
 import FeatureBar from "../FeatureBar";
+import Loading from "../Loading";
 
 const OrderHistory = (props) => {
   useEffect(() => {
     props.getHistory(props.auth.user._id);
   }, []);
+  const { history } = props;
 
-  const onConsole = () => {
-    console.log(props.history);
-  };
-
-  const listOrder = (order) => {
-    //   console.log("function running")
+  const listOrders = (order) => {
     return (
       <div>
         <div className="history__purchase-total-group">
@@ -30,9 +18,7 @@ const OrderHistory = (props) => {
             <span>Purchase Date: {order.purchase_date.slice(0, 10)} </span>
           </strong>
           <em>
-            <span>
-              Total Cost: ${order.total_cost}
-            </span>
+            <span>Total Cost: ${order.total_cost}</span>
           </em>
         </div>
         <div>
@@ -42,9 +28,7 @@ const OrderHistory = (props) => {
                 <div>
                   <img className="history__image" src={`${item.image}`} />
                   <div className="history__details">{item.brand}</div>
-                  <span className="history__details-2">
-                    ${item.price} /
-                  </span>
+                  <span className="history__details-2">${item.price} / </span>
                   <span className="history__details-2">
                     Qty: {item.quantity}
                   </span>
@@ -60,17 +44,22 @@ const OrderHistory = (props) => {
 
   return (
     <>
-      <div className="main">
-        <button className="button" onClick={onConsole}>Console</button>
-        <div className="history">
-          <h2>Order History</h2>
-          <hr />
-          {props.history.map((order) => {
-            return listOrder(order);
-          })}
-        </div>
-      </div>
-      <FeatureBar />
+      {!history ? (
+        <Loading />
+      ) : (
+        <>
+          <div className="main">
+            <div className="history">
+              <h1>Order History</h1>
+              <hr />
+              {history.map((order) => {
+                return listOrders(order);
+              })}
+            </div>
+          </div>
+          <FeatureBar />
+        </>
+      )}
     </>
   );
 };
@@ -83,4 +72,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { getHistory })(OrderHistory);
-// export default OrderHistory;

@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { cartCount } from "./components/SharedComponents";
 import RegisterModal from "./components/auth/RegisterModal";
-// import Login from "./components/auth/Login";
 import Logout from "./components/auth/Logout";
 import { getList } from "./action/index";
 

@@ -1,24 +1,15 @@
-//login.js
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../action/authActions";
 import { clearErrors } from "../../action/errorActions";
-
 import { useState } from "react";
 
-const Login = (props) => {   
+const Login = (props) => {
   const [state, setState] = useState({
     name: "",
     password: "",
   });
 
-  const onConsole = () => {
-    console.log(props.tempMsg)
-  }
-
-  //When use clicks on button, pass info as "e" and set state with...
-  //target the name attribute
-  //target value attribute
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
@@ -34,11 +25,10 @@ const Login = (props) => {
     props.login(user);
   };
   return (
-    <div className="login" style={{ height: "400px" }}>
-      <button className="button" onClick={onConsole}>Console Log</button>
-      <Form style={{ height: "400px" }} onSubmit={onSubmit}>
-        <FormGroup style={{ marginTop: "8%", margin: "auto", width: "50%" }}>
-          <h2 style={{ textAlign: "center" }}>Please Login</h2>
+    <div className="login">
+      <Form onSubmit={onSubmit}>
+        <FormGroup className="login__form-group">
+          <h2 className="login__title">Please Login</h2>
           <Label for="name">Username</Label>
           <Input
             type="text"
@@ -47,7 +37,7 @@ const Login = (props) => {
             placeholder="Username"
             onChange={handleChange}
             value={state.name}
-            className="mb-3"
+            className="input-margin"
           />
           <Label for="password">Password</Label>
           <Input
@@ -57,7 +47,7 @@ const Login = (props) => {
             placeholder="Password"
             onChange={handleChange}
             value={state.password}
-            className="mb-3"
+            className="input-margin"
           />
           <Button className="submit-btn" color="dark">
             Submit
@@ -68,9 +58,10 @@ const Login = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  tempMsg: state, //What to do with Clear Error action?>>
-});
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+  };
+};
 
 export default connect(mapStateToProps, { login, clearErrors })(Login);

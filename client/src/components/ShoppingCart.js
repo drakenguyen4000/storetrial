@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { updateCartItemQty, changeQty, deleteItem } from "../action";
 import { message } from "../action/authActions";
 import { Form, FormGroup, Label, Input } from "reactstrap";
-import { cartCount } from "./SharedComponents";
+import { cartCount } from "./ExportVar";
 import history from "../components/history";
 import FeatureBar from "../FeatureBar";
 
@@ -97,7 +97,7 @@ const ShoppingCart = (props) => {
               <Input
                 type="select"
                 name="quantity"
-                className="quantity_input"
+                className="input__quantity"
                 defaultValue={item.quantity}
                 onChange={onChange}
                 data-id={item._id}

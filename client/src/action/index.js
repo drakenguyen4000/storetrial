@@ -4,7 +4,6 @@ import { message, tokenConfig } from "./authActions";
 
 // //List Items
 export const getList = (category) => (dispatch) => {
-  console.log("getList action running");
   dispatch(itemsLoading());
   axios
     .get(`/list/${category}`)
@@ -19,8 +18,7 @@ export const getList = (category) => (dispatch) => {
 
 //Show Item Detail
 export const showItem = (category, id) => (dispatch) => {
-  // console.log(category, id)
-  dispatch(itemsLoading());
+  // dispatch(itemsLoading());
   axios
     .get(`/list/${category}/${id}`)
     .then((res) =>
@@ -34,7 +32,7 @@ export const showItem = (category, id) => (dispatch) => {
 
 //Change list quantity
 export const changeQty = (i, quantity) => (dispatch) => {
-  dispatch(itemsLoading());
+  // dispatch(itemsLoading());
   dispatch({
     type: "CHANGE_QTY",
     i,
@@ -73,7 +71,7 @@ export const deleteItem = (item) => (dispatch) => {
 };
 
 export const checkOut = (token, order) => (dispatch, getState) => {
-  console.log("action:", { token, order }, tokenConfig(getState));
+  // console.log("action:", { token, order }, tokenConfig(getState));
   dispatch(itemsLoading());
   axios
     .post("/checkout", { token, order }, tokenConfig(getState))
@@ -100,7 +98,6 @@ export const updateFeature = (category) => (dispatch) => {
 };
 
 export const getHistory = (id) => (dispatch) => {
-  console.log("action id", id)
   dispatch(itemsLoading());
   axios
     .get(`/orderhistory/${id}`)

@@ -69,84 +69,70 @@ const ItemDetail = (props) => {
     return item.quantity > 0 ? logicCart(item, e, buynow) : null;
   };
 
-  const onConsole = () => {
-    // console.log(props);
-    console.log(details);
-    console.log(list);
-    console.log(cart);
-  };
-
-  if (details) {
-    return (
-      <>
-        <div className="main">
-          <div className="container">
-            <button onClick={onConsole}>Console</button>
-            <div className="item-wrapper item-wrapper-center">
-              <img
-                className="item__image-detail"
-                src={`${details.image}`}
-                alt={`${details.description}`}
-              />
-              <div className="item__description-wrapper">
-                <strong className="item__brand">{details.brand}</strong>
-                <p className="item__description">{details.description}</p>
-                <strong>${details.price}</strong>
-                <div>
-                  <Form>
-                    <FormGroup>
-                      <Label>Qty: </Label>
-                      <Input
-                        type="select"
-                        name="quantity"
-                        className="quantity_input"
-                        onChange={onChange}
-                        id={details._id}
-                        required
+  return (
+    <>
+      {!details ? (
+        <Loading />
+      ) : (
+        <>
+          <div className="main">
+            <div className="container">
+              <div className="item-wrapper item-wrapper-center">
+                <img
+                  className="item__image-detail"
+                  src={`${details.image}`}
+                  alt={`${details.description}`}
+                />
+                <div className="item__description-wrapper">
+                  <strong className="item__brand">{details.brand}</strong>
+                  <p className="item__description">{details.description}</p>
+                  <strong>${details.price}</strong>
+                  <div>
+                    <Form>
+                      <FormGroup>
+                        <Label>Qty: </Label>
+                        <Input
+                          type="select"
+                          name="quantity"
+                          className="input__quantity"
+                          onChange={onChange}
+                          id={details._id}
+                          required
+                        >
+                          <option value="">--Select--</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </Input>
+                      </FormGroup>
+                      <button
+                        className="button"
+                        onClick={(e) => onBuy(details, e)}
                       >
-                        <option value="">--Select--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                      </Input>
-                    </FormGroup>
-                    <button
-                      className="button"
-                      onClick={(e) => onBuy(details, e)}
-                    >
-                      Add
-                    </button>
-                    <button
-                      className="button"
-                      onClick={(e) => onBuy(details, e, "buynow")}
-                    >
-                      Buy Now
-                    </button>
-                  </Form>
+                        Add
+                      </button>
+                      <button
+                        className="button"
+                        onClick={(e) => onBuy(details, e, "buynow")}
+                      >
+                        Buy Now
+                      </button>
+                    </Form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <FeatureBar />
-      </>
-    );
-  }
-  return (
-    <>
-      <div className="main">
-        <div className="container">
-          <Loading />
-        </div>
-      </div>
-      <FeatureBar />
+          <FeatureBar />
+        </>
+      )}
     </>
   );
 };

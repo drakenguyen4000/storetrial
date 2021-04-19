@@ -13,8 +13,6 @@ const initialState = {
   loading: false,
   department: null,
   category: null
-  // shoplist: [],
-  // order: {},
 };
 
 export default function itemReducer(state = initialState, action) {

@@ -1,20 +1,14 @@
 import "../components/Stripe.css";
 import StripeCheckout from "react-stripe-checkout";
-import { cartCount } from "./SharedComponents";
+import { cartCount } from "./ExportVar";
 import { checkOut } from "../action";
 import { connect } from "react-redux";
 import FeatureBar from "../FeatureBar";
+import Loading from "../Loading";
 
 const CheckOut = (props) => {
   const { cart, checkOut } = props;
   const { _id } = props.auth.user;
-
-  const onConsole = () => {
-    console.log(cart);
-    console.log(props.auth);
-    console.log(props.auth.user);
-    console.log(_id);
-  };
 
   const handleToken = (token) => {
     const order = {
@@ -63,8 +57,9 @@ const CheckOut = (props) => {
 
   return (
     <>
-      <div className="main">
-        <button className="button" onClick={onConsole}>Console Log</button>
+      {!cart ? (<Loading />) : (
+        <>
+        <div className="main">
         <div className="checkout">
           <div>
             <div className="checkout__title">Checkout</div>
@@ -101,6 +96,8 @@ const CheckOut = (props) => {
         </div>
       </div>
       <FeatureBar />
+        </>
+      ) }
     </>
   );
 };

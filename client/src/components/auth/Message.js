@@ -4,7 +4,6 @@ import { clearMessage } from "../../action/authActions";
 
 const Message = (props) => {
   const { message, clearMessage } = props;
-
   const getStyle = (message) => {
     let msgFlash = null;
     if (message === "Payment success!") {

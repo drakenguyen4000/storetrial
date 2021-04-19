@@ -73,14 +73,12 @@ const ItemList = (props) => {
     return (
       <div className="item" key={item._id}>
         <Link
-          // className="image-link"
           to={`/list/${category}/${item._id}`}
         >
           <img
             className="item__image"
             src={`${item.image}`}
             alt={`${item.description}`}
-            // alt="model"
           />
         </Link>
         <Link className="item__brand-link" to={`/list/${category}/${item._id}`}>
@@ -101,7 +99,7 @@ const ItemList = (props) => {
             <Input
               type="select"
               name="quantity"
-              className="quantity_input"
+              className="input__quantity"
               onChange={onChange}
               data-index={i}
               required
@@ -135,34 +133,30 @@ const ItemList = (props) => {
     );
   };
 
-  if (list) {
-    return (
-      <>
-        <div className="main">
-          <div className="category">
-            <h2 className="category__title">{category}</h2>
-            <button className="button" onClick={onConsole}>
-              Console Log
-            </button>
-            <div className="item-wrapper">
-              {list.map((item, i) => {
-                return item.category === category ? displayItem(item, i) : null;
-              })}
-            </div>
-          </div>
-        </div>
-        <FeatureBar />
-      </>
-    );
-  }
   return (
     <>
-      <div className="main">
-        <div className="category">
-          <Loading />
-        </div>
-      </div>
-      <FeatureBar />
+      {!list ? (
+        <Loading />
+      ) : (
+          <>
+            <div className="main">
+              <div className="category">
+                <h1 className="category__title">{category}</h1>
+                <button className="button" onClick={onConsole}>
+                  Console Log
+                </button>
+                <div className="item-wrapper">
+                  {list.map((item, i) => {
+                    return item.category === category
+                      ? displayItem(item, i)
+                      : null;
+                  })}
+                </div>
+              </div>
+            </div>
+            <FeatureBar />
+          </>
+      )}
     </>
   );
 };

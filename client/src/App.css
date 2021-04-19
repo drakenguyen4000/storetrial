@@ -3,10 +3,11 @@
   padding: 0;
   box-sizing: border-box;
   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
-  font-family: 'Belleza', sans-serif;
+  font-family: "Belleza", sans-serif;
 }
 
-html, body {
+html,
+body {
   /* background: rgb(235, 246, 250);
   margin: 0;
   padding: 0; */
@@ -31,7 +32,7 @@ html, body {
   grid-area: header;
 }
 
-/*review*/  
+/*review*/
 .feature {
   grid-area: feature;
   background: rgb(235, 246, 250);
@@ -76,20 +77,20 @@ html, body {
   font-size: 14px;
 }
 
-.quantity_input {
+.input__quantity {
   box-shadow: 3px 3px 5px#d8d8d8;
 }
 /*---nav---*/
 .nav {
   /* background:  rgb(6, 49, 143); */
-  background:  linear-gradient(-180deg,#6ac6f5,#44b1e8);
+  background: linear-gradient(-180deg, #6ac6f5, #44b1e8);
   height: 90px;
   color: white;
 }
 
 .nav__top {
   margin: 0;
-  background: linear-gradient(-180deg,#14a5ee,#1292d3);
+  background: linear-gradient(-180deg, #14a5ee, #1292d3);
   /* background: linear-gradient(-180deg,#2bb2f5,#1292d3); */
   /* border-bottom: solid 3px rgb(250, 249, 249); */
   width: 100%;
@@ -180,18 +181,29 @@ html, body {
   margin-bottom: 0 !important;
 }
 
+/*---Form---*/
+.input-margin {
+  margin-bottom: 1rem;
+}
+
 /*---Register---*/
 .register-btn {
   margin-top: 2rem;
 }
 
-.register-input {
-  margin-bottom: 1rem;
-}
-
 /*---Login---*/
 .login {
   min-height: 470px;
+}
+
+.login__form-group {
+  margin-top: 8%;
+  margin: auto;
+  width: 50%;
+}
+
+.login__title {
+  text-align: center;
 }
 
 .submit-btn {
@@ -212,7 +224,7 @@ html, body {
   text-align: center;
   font-weight: 200;
   color: white;
-  font-family: 'Belleza', sans-serif;
+  font-family: "Belleza", sans-serif;
   /* text-shadow: 1px 1px 1px rgb(202, 202, 202); */
 }
 
@@ -269,7 +281,11 @@ html, body {
   border-radius: 4px;
   color: white;
   box-shadow: none;
-  background-image: linear-gradient( rgb(240, 114, 11), rgb(255, 115, 0) 85%, rgb(206, 102, 22));
+  background-image: linear-gradient(
+    rgb(240, 114, 11),
+    rgb(255, 115, 0) 85%,
+    rgb(206, 102, 22)
+  );
   text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
   font-size: 14px;
   font-weight: 800;
@@ -315,11 +331,9 @@ input {
   margin: 2%;
 }
 
-
-
 /*---Details---*/
 
-.item-wrapper-center{
+.item-wrapper-center {
   margin-top: 4%;
   margin-left: 30%;
 }
@@ -381,11 +395,15 @@ input {
 /*stripe checkout css*/
 .StripeCheckout span {
   /* line-height: 1.5 !important; */
-  font-family: 'Belleza', sans-serif !important;
+  font-family: "Belleza", sans-serif !important;
 }
 
 .StripeCheckout span:hover {
-  background: linear-gradient(rgb(162, 218, 250), rgb(113, 201, 252) 85%, rgb(115, 200, 250)) !important;
+  background: linear-gradient(
+    rgb(162, 218, 250),
+    rgb(113, 201, 252) 85%,
+    rgb(115, 200, 250)
+  ) !important;
   box-shadow: none !important;
 }
 
@@ -396,20 +414,24 @@ input {
 }
 
 .checkout-btn {
-  background: linear-gradient(rgb(250, 213, 90), rgb(243, 199, 53) 85%, rgb(235, 181, 5));
+  background: linear-gradient(
+    rgb(250, 213, 90),
+    rgb(243, 199, 53) 85%,
+    rgb(235, 181, 5)
+  );
 }
 
 .checkout__title {
   font-size: 1.2rem;
   font-weight: 600;
-  background-image: linear-gradient(-180deg,#44b1e8,#3098de);
+  background-image: linear-gradient(-180deg, #44b1e8, #3098de);
   padding-left: 10%;
   box-shadow: 1px 1px 1px rgb(191, 190, 190);
   color: white;
   text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
 }
 
- .checkout__panel {
+.checkout__panel {
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* border: 1px solid gray; */
@@ -475,11 +497,11 @@ input {
 }
 
 .history__details {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .history__details-2 {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 /*--Complete Other-*/
@@ -489,7 +511,7 @@ input {
   padding: 4%;
   height: 200px;
   background: rgb(226, 250, 234);
-}  
+}
 .order-complete__delivery-date {
   font-size: 1.1rem;
 }
