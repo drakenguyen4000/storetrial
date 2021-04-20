@@ -16,10 +16,8 @@ const FeatureBar = (props) => {
     const otherList = list.filter((item) => {
       return item.category !== selectedCategory ? item : null;
     });
-    console.log("otherList:", otherList)
     //Generate random from number from this otherList
     const random1 = Math.round(Math.random() * otherList.length);
-    console.log("random:", random1)
     //Push this selected item into array
     randomList.push(otherList[random1]);
     //Create 2 list from excluding first random number
@@ -30,7 +28,6 @@ const FeatureBar = (props) => {
     randomList.push(
       newOtherList[Math.round(Math.random() * newOtherList.length)]
     );
-    console.log("random List:", randomList)
     return randomList;
   };
 

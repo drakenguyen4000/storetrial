@@ -152,7 +152,7 @@ const data = [
   {
     brand: "Spring Sports",
     image:
-      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80=1080",
+      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80&w=1080",
       quantity: 0,
       category: "boys",
     description:
@@ -162,7 +162,7 @@ const data = [
   {
     brand: "Spring Sports",
     image:
-      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80=1080",
+      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80&w=1080",
       quantity: 0,
       category: "boys",
     description:
@@ -172,7 +172,7 @@ const data = [
   {
     brand: "Spring Sports",
     image:
-      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80=1080",
+      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80&w=1080",
       quantity: 0,
       category: "boys",
     description:
@@ -182,7 +182,7 @@ const data = [
   {
     brand: "Spring Sports",
     image:
-      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80=1080",
+      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80&w=1080",
       quantity: 0,
       category: "boys",
     description:
@@ -192,7 +192,7 @@ const data = [
   {
     brand: "Spring Sports",
     image:
-      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80=1080",
+      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80&w=1080",
       quantity: 0,
       category: "boys",
     description:
@@ -202,7 +202,7 @@ const data = [
   {
     brand: "Spring Sports",
     image:
-      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80=1080",
+      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80&w=1080",
       quantity: 0,
       category: "boys",
     description:
@@ -212,7 +212,7 @@ const data = [
   {
     brand: "Spring Sports",
     image:
-      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80=1080",
+      "https://images.unsplash.com/photo-1526377242861-e4d7afe69623?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=746&q=80&w=1080",
       quantity: 0,
       category: "boys",
     description:

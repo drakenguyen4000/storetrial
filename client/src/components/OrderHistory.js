@@ -44,8 +44,10 @@ const OrderHistory = (props) => {
 
   return (
     <>
-      {!history ? (
-        <Loading />
+      {history.length === 0 ? (
+        <div className="main">
+          <Loading />
+        </div>
       ) : (
         <>
           <div className="main">
