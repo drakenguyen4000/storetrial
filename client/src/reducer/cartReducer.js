@@ -1,7 +1,6 @@
 import {
   ADD_TO_CART,
   DELETE_ITEM,
-  LOADING_ITEMS,
   CHECKOUT,
   UPDATE_CART_ITEM_QTY,
   ORDER_HISTORY,
@@ -11,7 +10,6 @@ const initialState = {
   cart: [],
   history: [],
   order: null,
-  loading: false,
 };
 
 export default function cartReducer(state = initialState, action) {
@@ -51,11 +49,6 @@ export default function cartReducer(state = initialState, action) {
         ...state,
         history: action.payload
       }
-    case LOADING_ITEMS:
-      return {
-        ...state,
-        loading: true,
-      };
     default:
       return state;
   }

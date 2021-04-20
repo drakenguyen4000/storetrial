@@ -4,7 +4,6 @@ import { message, tokenConfig } from "./authActions";
 
 // //List Items
 export const getList = (category) => (dispatch) => {
-  dispatch(itemsLoading());
   axios
     .get(`/list/${category}`)
     .then((res) =>
@@ -18,7 +17,6 @@ export const getList = (category) => (dispatch) => {
 
 //Show Item Detail
 export const showItem = (category, id) => (dispatch) => {
-  // dispatch(itemsLoading());
   axios
     .get(`/list/${category}/${id}`)
     .then((res) =>
@@ -32,7 +30,6 @@ export const showItem = (category, id) => (dispatch) => {
 
 //Change list quantity
 export const changeQty = (i, quantity) => (dispatch) => {
-  // dispatch(itemsLoading());
   dispatch({
     type: "CHANGE_QTY",
     i,
@@ -42,7 +39,6 @@ export const changeQty = (i, quantity) => (dispatch) => {
 
 //Add Item to Cart
 export const addToCart = (item, buynow) => (dispatch) => {
-  dispatch(itemsLoading());
   dispatch({
     type: "ADD_TO_CART",
     payload: item,
@@ -52,7 +48,6 @@ export const addToCart = (item, buynow) => (dispatch) => {
 
 //Update Item Quantity in Cart
 export const updateCartItemQty = (i, quantity, buynow) => (dispatch) => {
-  dispatch(itemsLoading());
   dispatch({
     type: "UPDATE_CART_ITEM_QTY",
     i,
@@ -64,7 +59,6 @@ export const updateCartItemQty = (i, quantity, buynow) => (dispatch) => {
 
 //Delete Item from Cart
 export const deleteItem = (item) => (dispatch) => {
-  dispatch(itemsLoading());
   dispatch({
     type: "DELETE_ITEM",
     item,
@@ -72,8 +66,6 @@ export const deleteItem = (item) => (dispatch) => {
 };
 
 export const checkOut = (token, order) => (dispatch, getState) => {
-  // console.log("action:", { token, order }, tokenConfig(getState));
-  dispatch(itemsLoading());
   axios
     .post("/checkout", { token, order }, tokenConfig(getState))
     .then((res) => {
@@ -91,7 +83,6 @@ export const checkOut = (token, order) => (dispatch, getState) => {
 };
 
 export const updateFeature = (category) => (dispatch) => {
-  dispatch(itemsLoading());
   dispatch({
     type: "FEATURE_UPDATE",
     payload: category,
@@ -99,7 +90,6 @@ export const updateFeature = (category) => (dispatch) => {
 };
 
 export const getHistory = (id) => (dispatch) => {
-  dispatch(itemsLoading());
   axios
     .get(`/orderhistory/${id}`)
     .then((res) =>
@@ -111,8 +101,3 @@ export const getHistory = (id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const itemsLoading = () => {
-  return {
-    type: "LOADING_ITEMS",
-  };
-};

@@ -2,15 +2,12 @@ import {
   GET_LIST,
   SHOW_ITEM,
   CHANGE_QTY,
-  LOADING_ITEMS,
   FEATURE_UPDATE,
 } from "../action/types";
-// import {initialState} from "./initialState";
 
 const initialState = {
   items: [],
   show: null,
-  loading: false,
   department: null,
   category: null
 };
@@ -22,13 +19,11 @@ export default function itemReducer(state = initialState, action) {
       return {
         ...state,
         items: action.payload,
-        loading: false,
       };
     case SHOW_ITEM:
       return {
         ...state,
         show: action.payload,
-        loading: false,
       };
     case CHANGE_QTY:
       return {
@@ -43,12 +38,6 @@ export default function itemReducer(state = initialState, action) {
       return {
         ...state,
         category: action.payload,
-        loading: false,
-      };  
-    case LOADING_ITEMS:
-      return {
-        ...state,
-        loading: true,
       };
     default:
       return state;

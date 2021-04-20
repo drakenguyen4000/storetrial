@@ -9,7 +9,6 @@ export const SHOW_ITEM = "SHOW_ITEM";
 
 // //client/src/actions/types.js
 export const USER_LOADED = "USER_LOADED";
-export const USER_LOADING = "USER_LOADING";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
@@ -22,6 +21,7 @@ export const MESSAGE = "MESSAGE";
 export const CLEAR = "CLEAR";
 export const FEATURE_UPDATE = "FEATURE_UPDATE";
 export const ORDER_HISTORY = "ORDER_HISTORY";
+export const  USER_LOADING = " USER_LOADING";
 
 
 

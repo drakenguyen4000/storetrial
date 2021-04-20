@@ -1,10 +1,7 @@
 import axios from "axios";
-// import { returnErrors } from "./errorActions";
 import history from "../components/history";
-
 import {
   USER_LOADED,
-  USER_LOADING,
   AUTH_ERROR,
   REGISTERED_SUCCESS,
   REGISTER_FAIL,
@@ -12,12 +9,12 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   MESSAGE,
+  CLEAR, 
 } from "./types";
 
 //Check token and load user
 export const loadUser = () => (dispatch, getState) => {
   //User Loading
-  dispatch({ type: USER_LOADING });
   axios
     // .get("/api/auth/user", tokenConfig(getState))
     .get("/users", tokenConfig(getState))
@@ -113,7 +110,7 @@ export const message = (msg) => (dispatch) => {
 
 export const clearMessage = () => (dispatch) => {
   dispatch({
-    type: "CLEAR",
+    type: CLEAR,
   });
 };
 

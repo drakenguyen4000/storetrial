@@ -1,7 +1,7 @@
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../action/authActions";
-import { clearErrors } from "../../action/errorActions";
+// import { clearErrors } from "../../action/errorActions";
 import { useEffect, useState } from "react";
 
 const Login = (props) => {
@@ -68,4 +68,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { login, clearErrors })(Login);
+export default connect(mapStateToProps, { login })(Login);
