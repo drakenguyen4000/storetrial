@@ -72,9 +72,7 @@ const ItemList = (props) => {
   const displayItem = (item, i) => {
     return (
       <div className="item" key={item._id}>
-        <Link
-          to={`/list/${category}/${item._id}`}
-        >
+        <Link to={`/list/${category}/${item._id}`}>
           <img
             className="item__image"
             src={`${item.image}`}
@@ -136,27 +134,28 @@ const ItemList = (props) => {
   return (
     <>
       {list.length === 0 ? (
-        <Loading />
-        // console.log(list)
+        <div className="main">
+          <Loading />
+        </div>
       ) : (
-          <>
-            <div className="main">
-              <div className="category">
-                <h1 className="category__title">{category}</h1>
-                <button className="button" onClick={onConsole}>
-                  Console Log
-                </button>
-                <div className="item-wrapper">
-                  {list.map((item, i) => {
-                    return item.category === category
-                      ? displayItem(item, i)
-                      : null;
-                  })}
-                </div>
+        <>
+          <div className="main">
+            <div className="category">
+              <h1 className="category__title">{category}</h1>
+              <button className="button" onClick={onConsole}>
+                Console Log
+              </button>
+              <div className="item-wrapper">
+                {list.map((item, i) => {
+                  return item.category === category
+                    ? displayItem(item, i)
+                    : null;
+                })}
               </div>
             </div>
-            <FeatureBar />
-          </>
+          </div>
+          <FeatureBar />
+        </>
       )}
     </>
   );
