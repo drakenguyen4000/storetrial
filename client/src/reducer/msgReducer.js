@@ -1,4 +1,4 @@
-import { MESSAGE, CLEAR } from "../action/types";
+import { MESSAGE, CLEAR_MESSAGE } from "../action/types";
 
 const initialState = {
   msg: null,
@@ -12,7 +12,7 @@ export default function msgReducer(state = initialState, action) {
         msg: action.payload,
         isLoading: false,
       };
-    case CLEAR: {
+    case CLEAR_MESSAGE: {
       return {
         ...state,
         msg: null,

@@ -9,7 +9,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   MESSAGE,
-  CLEAR, 
+  CLEAR_MESSAGE, 
 } from "./types";
 
 //Check token and load user
@@ -110,7 +110,7 @@ export const message = (msg) => (dispatch) => {
 
 export const clearMessage = () => (dispatch) => {
   dispatch({
-    type: CLEAR,
+    type: CLEAR_MESSAGE,
   });
 };
 
