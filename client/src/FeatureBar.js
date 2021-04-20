@@ -6,23 +6,31 @@ const FeatureBar = (props) => {
   //grab list from mapStateToProps
   //find first items not caterogy men - i.e. and display
   const { list } = props;
-  const { selectCat } = props;
+  const { selectedCategory } = props;
 
-  useEffect(() => {}, [selectCat]);
+  useEffect(() => {}, [selectedCategory]);
 
   const findRandom = () => {
     const randomList = [];
+    //Create list from caterogy not of the current selected category
     const otherList = list.filter((item) => {
-      return item.category !== selectCat ? item : null;
+      return item.category !== selectedCategory ? item : null;
     });
+    console.log("otherList:", otherList)
+    //Generate random from number from this otherList
     const random1 = Math.round(Math.random() * otherList.length);
+    console.log("random:", random1)
+    //Push this selected item into array
+    randomList.push(otherList[random1]);
+    //Create 2 list from excluding first random number
     const newOtherList = otherList.filter((item, i) => {
       return i !== random1 ? item : null;
     });
-    randomList.push(otherList[Math.round(Math.random() * otherList.length)]);
+    //Random pick and push 2 item to array
     randomList.push(
       newOtherList[Math.round(Math.random() * newOtherList.length)]
     );
+    console.log("random List:", randomList)
     return randomList;
   };
 
@@ -80,7 +88,7 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     list: state.item.items,
-    selectCat: state.item.category,
+    selectedCategory: state.item.category,
   };
 };
 
