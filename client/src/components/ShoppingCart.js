@@ -26,13 +26,12 @@ const ShoppingCart = (props) => {
     updateFeature,
   } = props;
   const { isAuthenticated } = props.auth;
-  const { category } = useParams();
 
   useEffect(() => {
-    updateFeature(category);
-    return list.length === 0 ? getList(category) : null;
+    updateFeature();
+    return list.length === 0 ? getList() : null;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category]);
+  }, []);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -81,7 +80,7 @@ const ShoppingCart = (props) => {
   const shoppingList = (cart) => {
     return cart.map((item, i) => (
       <div className="item shop-wrapper" key={item._id}>
-        <Link className="image-link" to={`/list/${category}/${item._id}`}>
+        <Link className="image-link" to={`/list/${item.category}/${item._id}`}>
           <img
             className="item__image"
             src={`${item.image}`}
@@ -92,13 +91,13 @@ const ShoppingCart = (props) => {
           <div>
             <Link
               className="item__brand-link"
-              to={`/list/${category}/${item._id}`}
+              to={`/list/${item.category}/${item._id}`}
             >
               <p className="item__brand">{item.brand}</p>
             </Link>
             <Link
               className="item__description-link"
-              to={`/list/${category}/${item._id}`}
+              to={`/list/${item.category}/${item._id}`}
             >
               <p className="item__description">{item.description}</p>
             </Link>
