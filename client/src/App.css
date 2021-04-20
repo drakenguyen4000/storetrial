@@ -385,7 +385,7 @@ input {
   font-size: 1.2rem;
 }
 
-.item-cart-description {
+.item__cart-description-wrapper {
   background: rgb(245, 245, 245);
   padding: 5%;
 }

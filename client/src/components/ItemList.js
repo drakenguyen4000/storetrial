@@ -32,7 +32,7 @@ const ItemList = (props) => {
   }, [category]);
 
   const onConsole = () => {
-    // console.log(list);
+    console.log(list);
     console.log(props);
     console.log(props.auth);
     console.log(props.cat);
@@ -135,8 +135,9 @@ const ItemList = (props) => {
 
   return (
     <>
-      {!list ? (
+      {list.length === 0 ? (
         <Loading />
+        // console.log(list)
       ) : (
           <>
             <div className="main">

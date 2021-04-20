@@ -1,6 +1,13 @@
 import { connect } from "react-redux";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { updateCartItemQty, changeQty, deleteItem } from "../action";
+import {
+  updateCartItemQty,
+  changeQty,
+  deleteItem,
+  updateFeature,
+  getList,
+} from "../action";
 import { message } from "../action/authActions";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { cartCount } from "./ExportVar";
@@ -15,16 +22,17 @@ const ShoppingCart = (props) => {
     cart,
     list,
     message,
+    getList,
+    updateFeature,
   } = props;
   const { isAuthenticated } = props.auth;
   const { category } = useParams();
 
-  const onConsole = () => {
-    console.log("list:", list);
-    console.log("cart:", cart);
-    // console.log(props.auth.isAuthenticated);
-    // console.log(props.auth.user);
-  };
+  useEffect(() => {
+    updateFeature(category);
+    return list.length === 0 ? getList(category) : null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category]);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -78,15 +86,20 @@ const ShoppingCart = (props) => {
             className="item__image"
             src={`${item.image}`}
             alt={`${item.description}`}
-            // alt="model"
           />
         </Link>
-        <div className="item-cart-description">
+        <div className="item__cart-description-wrapper ">
           <div>
-            <Link className="item__brand-link" to={`/list/${category}/${item._id}`}>
+            <Link
+              className="item__brand-link"
+              to={`/list/${category}/${item._id}`}
+            >
               <p className="item__brand">{item.brand}</p>
             </Link>
-            <Link className="item__description-link" to={`/list/${category}/${item._id}`}>
+            <Link
+              className="item__description-link"
+              to={`/list/${category}/${item._id}`}
+            >
               <p className="item__description">{item.description}</p>
             </Link>
             <strong>${item.price}</strong>
@@ -118,7 +131,7 @@ const ShoppingCart = (props) => {
             </FormGroup>
             <div>
               <button
-                className="button shop-btn "
+                className="button shop-btn"
                 onClick={(e) => updateCart(item, e, i)}
               >
                 Update
@@ -135,43 +148,27 @@ const ShoppingCart = (props) => {
       </div>
     ));
   };
-  
-  if (cart) {
-    return (
-      <>
-        <div className="main">
-            <div>
-              <h2>Your Cart</h2>
-              <button className="button" onClick={onConsole}>
-                Console Log
-              </button>
-              {shoppingList(cart)}
-              <hr />
-              <div className="total">
-                <span className="total__title">Subtotal</span>
-                <span className="total__item-count">{cartCount(props)} item(s)</span>
-                <span className="total__sub-total">${subTotal()}</span>
-                <span>
-                  <button className="button checkout-btn" onClick={checkOut}>
-                    CheckOut
-                  </button>
-                </span>
-              </div>
-            </div>
-        </div>
-        <FeatureBar />
-      </>
-    );
-  }
+
   return (
     <>
       <div className="main">
-          <div>
-            <h2>Your Cart is Empty</h2>
-            <button className="button" onClick={onConsole}>
-              Console Log
-            </button>
+        <div>
+          {cart.length === 0 ? <h2>Your is Empty</h2> : <h2>Your Cart</h2>}
+          {shoppingList(cart)}
+          <hr />
+          <div className="total">
+            <span className="total__title">Subtotal</span>
+            <span className="total__item-count">
+              {cartCount(props)} item(s)
+            </span>
+            <span className="total__sub-total">${subTotal()}</span>
+            <span>
+              <button className="button checkout-btn" onClick={checkOut}>
+                CheckOut
+              </button>
+            </span>
           </div>
+        </div>
       </div>
       <FeatureBar />
     </>
@@ -190,5 +187,7 @@ export default connect(mapStateToProps, {
   updateCartItemQty,
   changeQty,
   deleteItem,
+  getList,
+  updateFeature,
   message,
 })(ShoppingCart);
