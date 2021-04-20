@@ -26,6 +26,7 @@ const ItemDetail = (props) => {
   const { category, id } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     updateFeature(category);
     showItem(category, id);
     // eslint-disable-next-line react-hooks/exhaustive-deps

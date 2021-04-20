@@ -61,6 +61,7 @@ export const updateCartItemQty = (i, quantity, buynow) => (dispatch) => {
   //Navigate to shopping cart if user buys now
   return buynow === "buynow" ? history.push("/shoppingcart") : null;
 };
+
 //Delete Item from Cart
 export const deleteItem = (item) => (dispatch) => {
   dispatch(itemsLoading());

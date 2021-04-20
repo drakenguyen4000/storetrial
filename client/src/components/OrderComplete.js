@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import Loading from "../Loading";
 
 const OrderComplete = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const { estimated_delivery } = props.order;
 
   return (

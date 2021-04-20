@@ -5,8 +5,13 @@ import { checkOut } from "../action";
 import { connect } from "react-redux";
 import FeatureBar from "../FeatureBar";
 import Loading from "../Loading";
+import { useEffect } from "react";
 
 const CheckOut = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { cart, checkOut } = props;
   const { _id } = props.auth.user;
 
@@ -57,47 +62,57 @@ const CheckOut = (props) => {
 
   return (
     <>
-      {!cart ? (<Loading />) : (
+      {!cart ? (
+        <Loading />
+      ) : (
         <>
-        <div className="main">
-        <div className="checkout">
-          <div>
-            <div className="checkout__title">Checkout</div>
-            <div className="checkout__panel">
-              <ul className="checkout__labels-group">
-                <li className="checkout__label">{cartCount(props)} item(s)</li>
-                <li className="checkout__label">Shipping Cost</li>
-                <li className="checkout__label">Free Shipping</li>
-                <li className="checkout__total-before-tax">Total Before Tax</li>
-                <li className="checkout__label">Taxes</li>
-                <li className="checkout__total">Total</li>
-              </ul>
-              <ul className="checkout__values-group">
-                <li className="checkout__subtotal">${subTotal()}</li>
-                <li className="checkout__shipping">${shipping}</li>
-                <li className="checkout__free-shipping">-${freeShipping()}</li>
-                <li className="checkout__total-before-tax">${beforeTax()}</li>
-                <li className="checkout__tax">${taxCal()}</li>
-                <li className="checkout__total">${salesTotal()}</li>
-                <br/>
-                <li>
-                <StripeCheckout
-                  stripeKey="pk_test_51IYjrzC8wjT1tp4m0Y0qZ5LCHVjO2yu5zqNJzLzpVgwKCR11N9khEApXI0pdIkms7p9Tfz3Lq66pOJi2eSo5NaZ6004w0mshLZ"
-                  token={handleToken}
-                  amount={salesTotal() * 100}
-                  name="eApparel"
-                  billingAddress 
-                  shippingAddress 
-                />
-                </li>
-              </ul>
+          <div className="main">
+            <div className="checkout">
+              <div>
+                <div className="checkout__title">Checkout</div>
+                <div className="checkout__panel">
+                  <ul className="checkout__labels-group">
+                    <li className="checkout__label">
+                      {cartCount(props)} item(s)
+                    </li>
+                    <li className="checkout__label">Shipping Cost</li>
+                    <li className="checkout__label">Free Shipping</li>
+                    <li className="checkout__total-before-tax">
+                      Total Before Tax
+                    </li>
+                    <li className="checkout__label">Taxes</li>
+                    <li className="checkout__total">Total</li>
+                  </ul>
+                  <ul className="checkout__values-group">
+                    <li className="checkout__subtotal">${subTotal()}</li>
+                    <li className="checkout__shipping">${shipping}</li>
+                    <li className="checkout__free-shipping">
+                      -${freeShipping()}
+                    </li>
+                    <li className="checkout__total-before-tax">
+                      ${beforeTax()}
+                    </li>
+                    <li className="checkout__tax">${taxCal()}</li>
+                    <li className="checkout__total">${salesTotal()}</li>
+                    <br />
+                    <li>
+                      <StripeCheckout
+                        stripeKey="pk_test_51IYjrzC8wjT1tp4m0Y0qZ5LCHVjO2yu5zqNJzLzpVgwKCR11N9khEApXI0pdIkms7p9Tfz3Lq66pOJi2eSo5NaZ6004w0mshLZ"
+                        token={handleToken}
+                        amount={salesTotal() * 100}
+                        name="eApparel"
+                        billingAddress
+                        shippingAddress
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <FeatureBar />
+          <FeatureBar />
         </>
-      ) }
+      )}
     </>
   );
 };

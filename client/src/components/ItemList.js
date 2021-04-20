@@ -26,6 +26,7 @@ const ItemList = (props) => {
   const { category } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     updateFeature(category);
     return list.length === 0 ? getList(category) : null;
     // eslint-disable-next-line react-hooks/exhaustive-deps

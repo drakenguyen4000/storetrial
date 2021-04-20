@@ -28,6 +28,7 @@ const ShoppingCart = (props) => {
   const { isAuthenticated } = props.auth;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     updateFeature();
     return list.length === 0 ? getList() : null;
     // eslint-disable-next-line react-hooks/exhaustive-deps

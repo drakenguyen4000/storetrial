@@ -2,13 +2,17 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../action/authActions";
 import { clearErrors } from "../../action/errorActions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Login = (props) => {
   const [state, setState] = useState({
     name: "",
     password: "",
   });
+  
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  },[])
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -35,7 +35,6 @@ const FeatureBar = (props) => {
     return (
       <div className="item" key={feature._id}>
         <Link
-          // className="image-link"
           to={`/list/${feature.category}/${feature._id}`}
           replace
         >
@@ -43,7 +42,6 @@ const FeatureBar = (props) => {
             className="item__image"
             src={`${feature.image}`}
             alt={`${feature.description}`}
-            // alt="model"
           />
         </Link>
         <Link
