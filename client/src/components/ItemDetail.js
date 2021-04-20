@@ -73,7 +73,9 @@ const ItemDetail = (props) => {
   return (
     <>
       {!details ? (
-        <Loading />
+        <div className="main">
+          <Loading />
+        </div>
       ) : (
         <>
           <div className="main">
