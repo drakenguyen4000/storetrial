@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { getHistory } from "../action";
+import { getList, getHistory, updateFeature } from "../action";
 import FeatureBar from "../FeatureBar";
 import Loading from "../Loading";
 
 const OrderHistory = (props) => {
+  const {list, getList, getHistory, updateFeature} = props;
   useEffect(() => {
-    props.getHistory(props.auth.user._id);
+    getHistory(props.auth.user._id);
+    updateFeature();
+    return list.length === 0 ? getList() : null;
   }, []);
   const { history } = props;
 
@@ -70,7 +73,8 @@ const mapStateToProps = (state) => {
   return {
     history: state.cart.history,
     auth: state.auth,
+    list: state.item.items,
   };
 };
 
-export default connect(mapStateToProps, { getHistory })(OrderHistory);
+export default connect(mapStateToProps, { getHistory, updateFeature, getList })(OrderHistory);
