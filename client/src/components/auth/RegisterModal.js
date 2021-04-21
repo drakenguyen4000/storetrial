@@ -17,8 +17,8 @@ import { register } from "../../action/authActions";
 const RegisterModal = (props) => {
   const [state, setState] = useState({
     modal: false,
-    name: "",
-    password: "",
+    name: null,
+    password: null,
   });
 
   const toggle = () => {

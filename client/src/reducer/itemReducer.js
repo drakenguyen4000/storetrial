@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   items: [],
-  show: null,
+  show: {},
   department: null,
   category: null
 };

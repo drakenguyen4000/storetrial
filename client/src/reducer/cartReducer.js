@@ -9,7 +9,7 @@ import {
 const initialState = {
   cart: [],
   history: [],
-  order: null,
+  order: {},
 };
 
 export default function cartReducer(state = initialState, action) {
