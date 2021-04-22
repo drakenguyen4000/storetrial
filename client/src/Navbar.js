@@ -25,10 +25,10 @@ const Navbar = (props) => {
   const guestLinks = (
     <>
       <li className="nav__item">
-        <RegisterModal className="nav__item " />
+        <RegisterModal />
       </li>
-      <Link to={`/login`}>
-        <li className="nav__item">Login</li>
+      <Link className="nav__item" to={`/login`}>
+        <li>Login</li>
       </Link>
     </>
   );
@@ -54,20 +54,20 @@ const Navbar = (props) => {
         </li>
       </ul>
       <ul className="nav__bottom">
-        <Link to={`/home`} replace>
-          <li className="nav__item">eApparel</li>
+        <Link className="nav__item" to={`/home`} replace>
+          <li>eApparel</li>
         </Link>
-        <Link to={`/list/men`} replace>
-          <li className="nav__item">Men</li>
+        <Link className="nav__item" to={`/list/men`} replace>
+          <li >Men</li>
         </Link>
-        <Link to={`/list/women`} replace>
-          <li className="nav__item">Women</li>
+        <Link className="nav__item" to={`/list/women`} replace>
+          <li >Women</li>
         </Link>
-        <Link to={`/list/boys`} replace>
-          <li className="nav__item">Boys</li>
+        <Link className="nav__item" to={`/list/boys`} replace>
+          <li>Boys</li>
         </Link>
-        <Link to={`/list/girls`} replace>
-          <li className="nav__item">Girls</li>
+        <Link className="nav__item" to={`/list/girls`} replace>
+          <li>Girls</li>
         </Link>
       </ul>
     </nav>
