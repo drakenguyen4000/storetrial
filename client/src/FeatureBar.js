@@ -70,9 +70,11 @@ const FeatureBar = (props) => {
     return (
       <div className="feature">
         <h5 className="feature__title">Featured Items</h5>
+        <div className="feature-wrapper">
         {feature.map((feature) => {
           return feature ? featureList(feature) : null;
         })}
+      </div>
       </div>
     );
   }

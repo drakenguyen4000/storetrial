@@ -35,7 +35,7 @@ const Navbar = (props) => {
 
   return (
     <nav className="nav">
-      <ul className="nav__top">
+      <ul className="navbars nav__top">
       {isAuthenticated ? authLinks : guestLinks}
       <li className="nav__item shopping__cart__btn">
           <Link to={`/shoppingcart`} replace>
@@ -53,7 +53,7 @@ const Navbar = (props) => {
           </Link>
         </li>
       </ul>
-      <ul className="nav__bottom">
+      <ul className="navbars nav__bottom">
         <Link className="nav__item" to={`/home`} replace>
           <li>eApparel</li>
         </Link>

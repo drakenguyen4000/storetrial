@@ -80,70 +80,77 @@ const ShoppingCart = (props) => {
 
   const shoppingList = (cart) => {
     return cart.map((item, i) => (
-      <div className="item shop-wrapper" key={item._id}>
-        <Link className="image-link" to={`/list/${item.category}/${item._id}`}>
-          <img
-            className="item__image"
-            src={`${item.image}`}
-            alt={`${item.description}`}
-          />
-        </Link>
-        <div className="item__cart-description-wrapper ">
-          <div>
+      <div>
+        <div className="shop-wrapper" key={item._id}>
+          <div class="flex-items">
             <Link
-              className="item__brand-link"
+              className="image-link"
               to={`/list/${item.category}/${item._id}`}
             >
-              <p className="item__brand">{item.brand}</p>
+              <img
+                className="shop__image"
+                src={`${item.image}`}
+                alt={`${item.description}`}
+              />
             </Link>
-            <Link
-              className="item__description-link"
-              to={`/list/${item.category}/${item._id}`}
-            >
-              <p className="item__description">{item.description}</p>
-            </Link>
-            <strong>${item.price}</strong>
           </div>
-          <Form>
-            <FormGroup>
-              <Label>Qty: </Label>
-              <Input
-                type="select"
-                name="quantity"
-                className="input__quantity"
-                defaultValue={item.quantity}
-                onChange={onChange}
-                data-id={item._id}
-                required
+          <div className="flex-items">
+            <div className="shop__cart-description-wrapper">
+              <Link
+                className="shop__brand-link"
+                to={`/list/${item.category}/${item._id}`}
               >
-                <option value="">--Select--</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </Input>
-            </FormGroup>
-            <div>
-              <button
-                className="button shop-btn"
-                onClick={(e) => updateCart(item, e, i)}
+                <p className="shop__brand">{item.brand}</p>
+              </Link>
+              <Link
+                className="shop__description-link"
+                to={`/list/${item.category}/${item._id}`}
               >
-                Update
-              </button>
-              <button
-                className="button shop-btn "
-                onClick={(e) => deleteCartItem(item, e)}
-              >
-                Delete
-              </button>
-            </div>
-          </Form>
+                <p className="shop__description">{item.description}</p>
+              </Link>
+              <strong>${item.price}</strong>
+            <Form>
+              <FormGroup>
+                <Label>Qty: </Label>
+                <Input
+                  type="select"
+                  name="quantity"
+                  className="input__quantity"
+                  defaultValue={item.quantity}
+                  onChange={onChange}
+                  data-id={item._id}
+                  required
+                >
+                  <option value="">--Select--</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </Input>
+              </FormGroup>
+              <div>
+                <button
+                  className="button shop-btn"
+                  onClick={(e) => updateCart(item, e, i)}
+                >
+                  Update
+                </button>
+                <button
+                  className="button shop-btn "
+                  onClick={(e) => deleteCartItem(item, e)}
+                >
+                  Delete
+                </button>
+              </div>
+            </Form>
+          </div>
+          </div>
         </div>
       </div>
     ));
@@ -152,18 +159,18 @@ const ShoppingCart = (props) => {
   return (
     <>
       <div className="main">
-        <div>
+        <div className="shop">
           {cart.length === 0 ? <h2>Your is Empty</h2> : <h2>Your Cart</h2>}
           {shoppingList(cart)}
           <hr />
           <div className="total">
-            <span className="total__title">Subtotal</span>
-            <span className="total__item-count">
+            <span className="total-flex total__title">Subtotal</span>
+            <span className="total-flex total__item-count">
               {cartCount(props)} item(s)
             </span>
-            <span className="total__sub-total">${subTotal()}</span>
+            <span className="total-flex total__sub-total">${subTotal()}</span>
             <span>
-              <button className="button checkout-btn" onClick={checkOut}>
+              <button className="total-flex button checkout-btn" onClick={checkOut}>
                 CheckOut
               </button>
             </span>
