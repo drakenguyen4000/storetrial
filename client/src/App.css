@@ -12,7 +12,6 @@
 html,
 body {
   box-sizing: border-box;
-  height: auto; /*??*/
 }
 
 img {
@@ -62,7 +61,8 @@ Form .button:nth-child(2) {
   grid-area: main;
   min-height: 1100px;
   display: flex;
-  padding: 1.1rem;
+  padding: 5%;
+  justify-content: center;
 }
 
 .main-feature-grid {
@@ -93,6 +93,7 @@ Form .button:nth-child(2) {
   background: linear-gradient(-180deg, #6ac6f5, #44b1e8);
 }
 
+.nav__welcome,
 .nav__item {
   width: 80px;
   margin: 5px 1%;
@@ -102,10 +103,12 @@ Form .button:nth-child(2) {
   color: var(--color-white);
 }
 
+.nav__welcome,
 .nav__item-right {
   width: 120px;
 }
 
+.nav__welcome,
 .nav__item-right-color {
   color: var(--color-white);
 }
@@ -129,20 +132,19 @@ Form .button:nth-child(2) {
 
 .shopping__cart__btn {
   border: 1px #d8d8d8 solid;
-  height: 36px;
-  width: 66px;
+  height: 34px;
+  width: 60px;
   background: var(--color-white);
-  /* padding: 8px 20px 4px 10px; */
-  padding: 0.5rem 1.2rem 0.25rem 0.1rem;
+  padding: 0.3rem 0.8rem 0.25rem 0.1rem;
   border-radius: 4px;
 }
 
 .shopping__cart__btn:hover {
-  border: 1px #faf9f9 solid;
+  color: var(--color-white);
 }
 
 .fa-shopping-cart {
-  font-size: 30px;
+  font-size: 1.9rem;
   color: #b1b1b1;
 }
 
@@ -204,7 +206,6 @@ Form .button:nth-child(2) {
   text-align: center;
   font-weight: 200;
   color: var(--color-white);
-  /* font-family: "Belleza", sans-serif; */
 }
 
 /*---Feature-Bar----*/
@@ -319,10 +320,6 @@ input {
 }
 
 /*---Shopping Cart----*/
-
-.shop {
-  width: 100%;
-}
 
 .shop-wrapper {
   display: flex;
@@ -485,8 +482,7 @@ input {
 .history {
   background: rgb(248, 250, 250);
   width: 80%;
-  padding: 0.5rem;
-  margin: 0 auto;
+  padding: 3%;
 }
 
 .history__purchase-total-group {
@@ -515,14 +511,21 @@ input {
 
 /*----Complete Other-*/
 .order-complete {
-  font-size: 1.4rem;
-  margin: 4% 10%;
-  padding: 4%;
-  height: 200px;
-  background: rgb(226, 250, 234);
+  width: 90%;
+  height: 50%;
+  background: rgb(248, 248, 248);
+  border: 1px solid rgb(185, 184, 184);
 }
+
+.order-complete__title {
+  font-size: 1.5rem;
+  background: gold;
+  padding-left: 5%;
+}
+
 .order-complete__delivery-date {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  padding: 5%;
 }
 /*----Footer----*/
 #Footer {
@@ -537,6 +540,9 @@ input {
 
 /*----Media Query----*/
 @media only screen and (min-width: 740px) {
+  .homepage {
+    font-size: 3rem;
+  }
 
   .main-feature-grid {
     display: grid;
@@ -546,18 +552,34 @@ input {
       "main feature";
   }
 
+  .nav__welcome,
   .nav__item {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   .total__title,
   .total__item-count,
   .total__sub-total {
     font-size: 1.2rem;
   }
+
+  .order-complete__title {
+    font-size: 1.75rem;
+  }
+
+  .order-complete__delivery-date {
+    font-size: 1.1rem;
+  }
 }
 
 @media only screen and (min-width: 925px) {
+  .homepage {
+    font-size: 3.5rem;
+  }
+  .nav__welcome,
   .nav__item {
     font-size: 1.1rem;
+  }
+  .order-complete {
+    width: 60%;
   }
 }

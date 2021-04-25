@@ -37,8 +37,9 @@ const Navbar = (props) => {
     <nav className="nav">
       <ul className="navbars nav__top">
       {isAuthenticated ? authLinks : guestLinks}
-      <li className="nav__item shopping__cart__btn">
-          <Link to={`/shoppingcart`} replace>
+      {/* <li className="nav__item shopping__cart__btn"> */}
+          <Link className="nav__item shopping__cart__btn" to={`/shoppingcart`} replace>
+          <li>
             <span className="shopping-cart-btn">
               <span className="fa-layers fa-fw fa-lg">
                 <i className="fas fa-shopping-cart fa-lg"></i>
@@ -50,8 +51,9 @@ const Navbar = (props) => {
                 </span>
               </span>
             </span>
+            </li>
           </Link>
-        </li>
+        {/* </li> */}
       </ul>
       <ul className="navbars nav__bottom">
         <Link className="nav__item" to={`/home`} replace>
