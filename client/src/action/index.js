@@ -5,7 +5,7 @@ import { message, tokenConfig } from "./authActions";
 // //List Items
 export const getList = (category) => (dispatch) => {
   axios
-    .get(`/list/${category}`)
+    .get(`/eapparel/${category}`)
     .then((res) =>
       dispatch({
         type: "GET_LIST",
@@ -18,14 +18,14 @@ export const getList = (category) => (dispatch) => {
 //Show Item Detail
 export const showItem = (category, id) => (dispatch) => {
   axios
-    .get(`/list/${category}/${id}`)
+    .get(`/eapparel/${category}/${id}`)
     .then((res) =>
       dispatch({
         type: "SHOW_ITEM",
         payload: res.data,
       })
     )
-    .catch((err) => console.log(err));
+    .catch(() => history.push("/"));
 };
 
 //Change list quantity
@@ -43,7 +43,7 @@ export const addToCart = (item, buynow) => (dispatch) => {
     type: "ADD_TO_CART",
     payload: item,
   });
-  return buynow === "buynow" ? history.push("/shoppingcart") : null;
+  return buynow === "buynow" ? history.push("/eapparel/shoppingcart") : null;
 };
 
 //Update Item Quantity in Cart
@@ -54,7 +54,7 @@ export const updateCartItemQty = (i, quantity, buynow) => (dispatch) => {
     quantity,
   });
   //Navigate to shopping cart if user buys now
-  return buynow === "buynow" ? history.push("/shoppingcart") : null;
+  return buynow === "buynow" ? history.push("/eapparel/shoppingcart") : null;
 };
 
 //Delete Item from Cart
@@ -67,14 +67,14 @@ export const deleteItem = (item) => (dispatch) => {
 
 export const checkOut = (token, order) => (dispatch, getState) => {
   axios
-    .post("/checkout", { token, order }, tokenConfig(getState))
+    .post("/eapparel/checkout", { token, order }, tokenConfig(getState)) 
     .then((res) => {
       if (res.data.status === "Payment success!") {
         dispatch({
           type: "CHECKOUT",
           payload: res.data,
         });
-        history.push("/shoppingcart/ordercomplete");
+        history.push("/eapparel/shoppingcart/ordercomplete");
       }
       //If Payment failed, send status
       dispatch(message(res.data.status));
@@ -91,7 +91,7 @@ export const updateFeature = (category) => (dispatch) => {
 
 export const getHistory = (id) => (dispatch) => {
   axios
-    .get(`/orderhistory/${id}`)
+    .get(`/eapparel/orderhistory/${id}`)
     .then((res) =>
       dispatch({
         type: "ORDER_HISTORY",
@@ -100,4 +100,3 @@ export const getHistory = (id) => (dispatch) => {
     )
     .catch((err) => console.log(err));
 };
-

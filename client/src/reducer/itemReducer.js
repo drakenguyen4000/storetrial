@@ -3,13 +3,15 @@ import {
   SHOW_ITEM,
   CHANGE_QTY,
   FEATURE_UPDATE,
+  ORDER_HISTORY,
 } from "../action/types";
 
 const initialState = {
   items: [],
   show: {},
+  orderhistory: [],
   department: null,
-  category: null
+  category: null,
 };
 
 export default function itemReducer(state = initialState, action) {
@@ -34,7 +36,12 @@ export default function itemReducer(state = initialState, action) {
           ...state.items.slice(i + 1),
         ],
       };
-    case FEATURE_UPDATE: 
+    case ORDER_HISTORY:
+      return {
+        ...state,
+        orderhistory: action.payload,
+      };
+    case FEATURE_UPDATE:
       return {
         ...state,
         category: action.payload,

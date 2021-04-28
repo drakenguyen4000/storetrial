@@ -13,41 +13,8 @@ const { v4: uuidv4 } = require("uuid");
 const Item = require("../../models/Item");
 const Order = require("../../models/Order");
 
-// Index Route
-router.get("/list/:category", (req, res) => {
-  Item.find()
-    //-1 is sort by descending
-    .sort({ date: -1 })
-    .then((items) => res.status(200).json(items))
-    .catch((err) => console.log(err));
-});
-
-//Show Route
-router.get("/list/:category/:id", (req, res) => {
-  Item.findById(req.params.id)
-    .then((item) => res.status(200).json(item))
-    .catch((err) => console.log(err));
-});
-
-//Complete Order
-router.post("/shoppingcart/ordercomplete", auth, (req, res) => {
-  const newOrder = new Order({
-    user_id: req.body.user_id,
-    items_ordered: req.body.items_ordered,
-    total_cost: req.body.total_cost,
-  });
-  newOrder
-    .save()
-    .then((data) => {
-      console.log(data, "order saved");
-      res.status(200).json(data);
-    })
-    .catch((err) => res.json(err));
-});
-
 //Checkout
-router.post("/checkout", async (req, res) => {
-  // console.log("Request Body:", req.body);
+router.post("/eapparel/checkout", async (req, res) => {
   let error;
   let status;
   try {
@@ -81,10 +48,8 @@ router.post("/checkout", async (req, res) => {
       },
       { idempotencyKey }
     );
-    // console.log("Charge:", charge );
     status = "Payment success!";
   } catch (error) {
-    // console.error("Error:", error);
     status = "Payment failed!";
   }
 
@@ -110,11 +75,28 @@ router.post("/checkout", async (req, res) => {
   }
 });
 
-router.get("/orderhistory/:id", (req, res) => {
+//Order History
+router.get("/eapparel/orderhistory/:id", (req, res) => {
   const filter = req.params.id;
   Order.find({"user_id": filter})
     .then((orders) => res.status(200).json(orders))
     .catch((err) => console.log(err));
+});
+
+//List Items
+router.get("/eapparel/:category", (req, res) => {
+  Item.find()
+    //-1 is sort by descending
+    .sort({ date: -1 })
+    .then((items) => res.status(200).json(items))
+    .catch((err) => res.status(404).json(err));
+});
+
+//Show Details Route
+router.get("/eapparel/:category/:id", (req, res) => {
+  Item.findById(req.params.id)
+    .then((item) => res.status(200).json(item))
+    .catch((err) => res.status(404).json(err));
 });
 
 module.exports = router;

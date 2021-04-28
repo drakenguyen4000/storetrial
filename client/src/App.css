@@ -302,14 +302,16 @@ input {
 
 /*---Details----*/
 
-.item-wrapper-center {
-  margin-top: 4%;
-  margin-left: 30%;
+.details-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .item__image-detail {
   min-width: 250px;
   max-width: 300px;
+  height: 450px;
   box-shadow: 3px 3px 5px rgb(133, 133, 161);
 }
 
@@ -353,7 +355,7 @@ input {
 }
 
 .shop__description {
-  height: 84px;
+  height: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
 }

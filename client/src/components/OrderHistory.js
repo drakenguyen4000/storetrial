@@ -2,16 +2,16 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getList, getHistory, updateFeature } from "../action";
 import FeatureBar from "../FeatureBar";
-import Loading from "../Loading";
-
+  
 const OrderHistory = (props) => {
-  const {list, getList, getHistory, updateFeature} = props;
+  const { list, getList, getHistory, updateFeature } = props;
   useEffect(() => {
     getHistory(props.auth.user._id);
     updateFeature();
     return list.length === 0 ? getList() : null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const { history } = props;
+  const { orderhistory } = props;
 
   const listOrders = (order) => {
     return (
@@ -26,10 +26,10 @@ const OrderHistory = (props) => {
         </div>
         <div>
           {order.items_ordered.map((item) => {
-            return (
+            return (  
               <div className="history__wrapper">
                 <div>
-                  <img className="history__image" src={`${item.image}`} />
+                  <img className="history__image" src={`${item.image}`} alt={`${item.description}`} />
                   <div className="history__details">{item.brand}</div>
                   <span className="history__details-2">${item.price} / </span>
                   <span className="history__details-2">
@@ -47,34 +47,29 @@ const OrderHistory = (props) => {
 
   return (
     <>
-      {history.length === 0 ? (
-        <div className="main">
-          <Loading />
-        </div>
-      ) : (
-        <>
-          <div className="main">
-            <div className="history">
-              <h1>Order History</h1>
-              <hr />
-              {history.map((order) => {
+      <div className="main">
+        <div className="history">
+          <h1>Order History</h1>
+          {orderhistory.length === 0
+            ? null
+            : orderhistory.map((order) => {
                 return listOrders(order);
               })}
-            </div>
-          </div>
-          <FeatureBar />
-        </>
-      )}
+        </div>
+      </div>
+      <FeatureBar />
     </>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    history: state.cart.history,
+    orderhistory: state.item.orderhistory,
     auth: state.auth,
     list: state.item.items,
   };
 };
 
-export default connect(mapStateToProps, { getHistory, updateFeature, getList })(OrderHistory);
+export default connect(mapStateToProps, { getHistory, updateFeature, getList })(
+  OrderHistory
+);

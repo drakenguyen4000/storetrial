@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   updateCartItemQty,
   changeQty,
@@ -72,7 +72,7 @@ const ShoppingCart = (props) => {
 
   const checkOut = () => {
     if (isAuthenticated) {
-      return cart.length === 0 ? null : history.push("/shoppingcart/checkout");
+      return cart.length === 0 ? null : history.push("/eapparel/shoppingcart/checkout");
     }
     message("Please login.");
     history.push("/login");
@@ -198,3 +198,4 @@ export default connect(mapStateToProps, {
   updateFeature,
   message,
 })(ShoppingCart);
+

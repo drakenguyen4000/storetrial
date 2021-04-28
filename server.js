@@ -18,22 +18,22 @@ app.use(cors())
 require("dotenv").config();
 
 //local environement mongo
-mongoose 
-  .connect("mongodb://localhost/eapparelstore", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Mongodb Connected..."))
-  .catch((err) => console.log(err));
-  
-//MongoDB online
-// mongoose
-//   .connect(process.env.DATABASEURL, {
+// mongoose 
+//   .connect("mongodb://localhost/eapparelstore", {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
 //   })
 //   .then(() => console.log("Mongodb Connected..."))
 //   .catch((err) => console.log(err));
+  
+//MongoDB online
+mongoose
+  .connect(process.env.DATABASEURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Mongodb Connected..."))
+  .catch((err) => console.log(err));
 
 app.use("/", items);
 app.use("/", users);

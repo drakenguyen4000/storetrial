@@ -73,19 +73,19 @@ const ItemList = (props) => {
   const displayItem = (item, i) => {
     return (
       <div className="item" key={item._id}>
-        <Link to={`/list/${category}/${item._id}`}>
+        <Link to={`/eapparel/${category}/${item._id}`}>
           <img
             className="item__image"
             src={`${item.image}`}
             alt={`${item.description}`}
           />
         </Link>
-        <Link className="item__brand-link" to={`/list/${category}/${item._id}`}>
+        <Link className="item__brand-link" to={`/eapparel/${category}/${item._id}`}>
           <p className="item__brand">{item.brand}</p>
         </Link>
         <Link
           className="item__description-link"
-          to={`/list/${category}/${item._id}`}
+          to={`/eapparel/${category}/${item._id}`}
         >
           <p className="item__description">{item.description}</p>
         </Link>

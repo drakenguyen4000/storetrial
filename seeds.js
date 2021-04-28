@@ -220,13 +220,13 @@ const data = [
     price: 14.99,
   },
   {
-    brand: "Summer Wear",
+    brand: "Test Summer Wear",
     image:
       "https://images.unsplash.com/photo-1516257984-b1b4d707412e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
       quantity: 0,
       category: "men",
     description:
-      "2021 Summer Geometric Print Vintage Pants",
+      "2021 Spring Sports Geometric Print Vintage Jacket Plus Size Midi Dresses Korean Elegant Women Party Long Sleeve",
     price: 25.99,
   },
   {

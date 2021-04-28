@@ -35,7 +35,7 @@ const FeatureBar = (props) => {
     return (
       <div className="item" key={feature._id}>
         <Link
-          to={`/list/${feature.category}/${feature._id}`}
+          to={`/eapparel/${feature.category}/${feature._id}`}
           replace
         >
           <img
@@ -46,14 +46,14 @@ const FeatureBar = (props) => {
         </Link>
         <Link
           className="item__brand-link"
-          to={`/list/${feature.category}/${feature._id}`}
+          to={`/eapparel/${feature.category}/${feature._id}`}
           replace
         >
           <p className="item__brand">{feature.brand}</p>
         </Link>
         <Link
           className="item__description-link"
-          to={`/list/${feature.category}/${feature._id}`}
+          to={`/eapparel/${feature.category}/${feature._id}`}
           replace
         >
           <p className="item__description">{feature.description}</p>

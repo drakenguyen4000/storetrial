@@ -1,12 +1,10 @@
-// import logo from './logo.svg';
+// App.js
 import "./App.css";
 import { useEffect } from "react";
-// import axios from "axios";
 import ItemList from "./components/ItemList";
 import ItemDetail from "./components/ItemDetail";
 import ShoppingCart from "./components/ShoppingCart";
-// import { HashRouter, Route } from "react-router-dom";
-import { Router, Route } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import history from "./components/history";
 import Navbar from "./Navbar";
 import CheckOut from "./components/CheckOut";
@@ -25,28 +23,46 @@ const App = () => {
   }, []);
 
   return (
-    // <HashRouter history={history}>
     <Router history={history}>
       <Navbar />
       <Message />
-      <Route path="/login" exact component={Login} />
-      <Route path="/" exact component={Home} />
-      <Route path="/home" exact component={Home} />
-      <div className="main-feature-grid">
-          <Route path="/list/:category" exact component={ItemList} />
-          <Route path="/list/:category/:id" exact component={ItemDetail} />
-          <Route path="/shoppingcart" exact component={ShoppingCart} />
-          <Route path="/shoppingcart/checkout" exact component={CheckOut} />
-          <Route path="/orderhistory/:id" exact component={OrderHistory} />
-          <Route
-            path="/shoppingcart/ordercomplete"
-            exact
-            component={OrderComplete}
-          />
-      </div>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/eapparel" exact component={Home} />
+        <Route path="/eapparel/login" exact component={Login} />
+        <div className="main-feature-grid">
+          <Switch>
+            <Route
+              path="/eapparel/shoppingcart"
+              exact
+              component={ShoppingCart}
+            />
+            <Route
+              path="/eapparel/shoppingcart/checkout"
+              exact
+              component={CheckOut}
+            />
+            <Route
+              path="/eapparel/shoppingcart/ordercomplete"
+              exact
+              component={OrderComplete}
+            />
+            <Route
+              path="/eapparel/orderhistory/:id"
+              exact
+              component={OrderHistory}
+            />
+            <Route path="/eapparel/:category" exact component={ItemList} />
+            <Route
+              path="/eapparel/:category/:id"
+              exact
+              component={ItemDetail}
+            />
+          </Switch>
+        </div>
+      </Switch>
       <Footer />
     </Router>
-    // </HashRouter>
   );
 };
 
