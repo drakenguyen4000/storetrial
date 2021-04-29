@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 const Login = (props) => {
   const [state, setState] = useState({
-    name: null,
-    password: null,
+    name: "",
+    password: "",
   });
   
   useEffect(()=>{

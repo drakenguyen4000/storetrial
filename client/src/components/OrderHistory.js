@@ -15,7 +15,7 @@ const OrderHistory = (props) => {
 
   const listOrders = (order) => {
     return (
-      <div>
+      <div key={order._id}>
         <div className="history__purchase-total-group">
           <strong>
             <span>Purchase Date: {order.purchase_date.slice(0, 10)} </span>
@@ -27,7 +27,7 @@ const OrderHistory = (props) => {
         <div>
           {order.items_ordered.map((item) => {
             return (  
-              <div className="history__wrapper">
+              <div className="history__wrapper" key={item._id}>
                 <div>
                   <img className="history__image" src={`${item.image}`} alt={`${item.description}`} />
                   <div className="history__details">{item.brand}</div>

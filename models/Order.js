@@ -9,14 +9,6 @@ const OrderSchema = new Schema({
     type: [],
     required: true,
   },
-  // shipping_cost: {
-  //   type: String,
-  //   required: true,
-  // },
-  // tax: {
-  //   type: String,
-  //   required: true,
-  // },
   total_cost: {
     type: Number,
     required: true,

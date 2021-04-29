@@ -13,7 +13,7 @@ const Navbar = (props) => {
       <li className="nav__welcome">
         {user ? `Welcome ${user.name}!` : null}
       </li>
-      <Link to={user ? `/eapparel/orderhistory/${user._id}` : null}>
+      <Link to={user ? `/eapparel/orderhistory/${user._id}` : "#"} replace>
         <li className="nav__item navbar__item-right">History</li>
       </Link>
       <li className="nav__item navbar__item-right">
@@ -27,7 +27,7 @@ const Navbar = (props) => {
       <li className="nav__item">
         <RegisterModal />
       </li>
-      <Link className="nav__item" to={`/eapparel/login`}>
+      <Link className="nav__item" to={`/eapparel/login`} replace>
         <li>Login</li>
       </Link>
     </>

@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   items: [],
-  show: {},
+  show: null,
   orderhistory: [],
   department: null,
   category: null,

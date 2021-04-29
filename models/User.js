@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Create Schema
 const UserSchema = new Schema({
   name: {
     type: String,
@@ -18,5 +17,4 @@ const UserSchema = new Schema({
   },
 });
 
-//Map schema in mongoose model and export as User
 module.exports = User = mongoose.model("user", UserSchema);

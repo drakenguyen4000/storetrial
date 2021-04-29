@@ -6,7 +6,6 @@ export const UPDATE_CART_ITEM_QTY = "UPDATE_CART_ITEM_QTY";
 export const CHANGE_QTY =  "CHANGE_QTY";
 export const GET_LIST = "GET_LIST";
 export const SHOW_ITEM = "SHOW_ITEM";
-
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -18,7 +17,7 @@ export const MESSAGE = "MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 export const FEATURE_UPDATE = "FEATURE_UPDATE";
 export const ORDER_HISTORY = "ORDER_HISTORY";
-export const  USER_LOADING = " USER_LOADING";
+export const USER_LOADING = "USER_LOADING";
 
 
 

@@ -46,7 +46,7 @@ const RegisterModal = (props) => {
 
   return (
     <>
-      <Link className="nav__item-right-color" href="#" onClick={toggle} replace>
+      <Link className="nav__item-right-color" to="#" onClick={toggle} replace>
         Register
       </Link>
       <Modal isOpen={state.modal} toggle={toggle}>
@@ -85,7 +85,6 @@ const RegisterModal = (props) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  error: state.error,
 });
 
 export default connect(mapStateToProps, { register })(RegisterModal);

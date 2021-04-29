@@ -83,6 +83,7 @@ const ItemDetail = (props) => {
               <div className="detail__image-wrapper">
                 <img
                   className="item__image-detail"
+                  // src={`${details.image}`}
                   src={`${details.image}`}
                   alt={`${details.description}`}
                 />

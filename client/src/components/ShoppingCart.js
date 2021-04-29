@@ -80,12 +80,12 @@ const ShoppingCart = (props) => {
 
   const shoppingList = (cart) => {
     return cart.map((item, i) => (
-      <div>
-        <div className="shop-wrapper" key={item._id}>
-          <div class="flex-items">
+      <div key={item._id}>
+        <div className="shop-wrapper">
+          <div className="flex-items">
             <Link
               className="image-link"
-              to={`/list/${item.category}/${item._id}`}
+              to={`/eapparel/${item.category}/${item._id}`}
             >
               <img
                 className="shop__image"
@@ -98,13 +98,13 @@ const ShoppingCart = (props) => {
             <div className="shop__cart-description-wrapper">
               <Link
                 className="shop__brand-link"
-                to={`/list/${item.category}/${item._id}`}
+                to={`/eapparel/${item.category}/${item._id}`}
               >
                 <p className="shop__brand">{item.brand}</p>
               </Link>
               <Link
                 className="shop__description-link"
-                to={`/list/${item.category}/${item._id}`}
+                to={`/eapparel/${item.category}/${item._id}`}
               >
                 <p className="shop__description">{item.description}</p>
               </Link>
