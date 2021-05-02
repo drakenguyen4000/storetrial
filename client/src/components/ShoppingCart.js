@@ -75,7 +75,7 @@ const ShoppingCart = (props) => {
       return cart.length === 0 ? null : history.push("/eapparel/shoppingcart/checkout");
     }
     message("Please login.");
-    history.push("/login");
+    history.push("/eapparel/login");
   };
 
   const shoppingList = (cart) => {

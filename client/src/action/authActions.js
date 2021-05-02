@@ -16,7 +16,6 @@ import {
 export const loadUser = () => (dispatch, getState) => {
   //User Loading
   axios
-    // .get("/api/auth/user", tokenConfig(getState))
     .get("/users", tokenConfig(getState))
     .then((res) =>
       dispatch({
@@ -24,9 +23,7 @@ export const loadUser = () => (dispatch, getState) => {
         payload: res.data,
       })
     )
-    .catch((err) => {
-      // dispatch(returnErrors(err.response.data, err.response.status));
-      // dispatch(message(err.response.data.msg));
+    .catch(() => {
       dispatch({
         type: AUTH_ERROR,
       });
@@ -35,13 +32,11 @@ export const loadUser = () => (dispatch, getState) => {
 
 //Register User
 export const register = ({ name, password }) => (dispatch) => {
-  //Headers
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
-  //Request body
   const body = JSON.stringify({ name, password });
 
   axios
@@ -55,7 +50,6 @@ export const register = ({ name, password }) => (dispatch) => {
     })
     .catch((err) => {
       dispatch(
-        // returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
         message(err.response.data.msg)
       );
       dispatch({
@@ -66,13 +60,11 @@ export const register = ({ name, password }) => (dispatch) => {
 
 //Login
 export const login = ({ name, password }) => (dispatch) => {
-  //Headers
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
-  //Request body
   const body = JSON.stringify({ name, password });
   axios
     .post("/auth", body, config)
@@ -84,7 +76,6 @@ export const login = ({ name, password }) => (dispatch) => {
       history.push("/");
     })
     .catch((err) => {
-      // console.log(err.response.data.msg, err.response.status, "LOGIN_FAIL")
       dispatch(message(err.response.data.msg));
       dispatch({
         type: LOGIN_FAIL,
@@ -118,7 +109,6 @@ export const clearMessage = () => (dispatch) => {
 export const tokenConfig = (getState) => {
   //Get token from localstorage
   const token = getState().auth.token;
-  //Headers
   const config = {
     headers: {
       "Content-type": "application/json",

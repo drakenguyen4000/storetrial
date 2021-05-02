@@ -12,7 +12,7 @@ const express = require("express"),
 // app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors())  
-// seedDB();
+// seedDB();  
 
 //environment variables
 require("dotenv").config();

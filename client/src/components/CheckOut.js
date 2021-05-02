@@ -1,4 +1,3 @@
-import "../components/Stripe.css";
 import StripeCheckout from "react-stripe-checkout";
 import { cartCount } from "./ExportVar";
 import { checkOut } from "../action";
