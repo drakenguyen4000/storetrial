@@ -6,6 +6,7 @@ import {
   addToCart,
   updateCartItemQty,
   updateFeature,
+  getList,
 } from "../action";
 import { useParams } from "react-router-dom";
 import { Input, Form, FormGroup, Label } from "reactstrap";
@@ -22,13 +23,15 @@ const ItemDetail = (props) => {
     cart,
     list,
     updateFeature,
+    getList,
   } = props;
   const { category, id } = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
     updateFeature(category);
-    showItem(category, id);
+    showItem(category, id);  
+    return list.length === 0 ? getList(category) : null;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
@@ -48,7 +51,6 @@ const ItemDetail = (props) => {
       //Add item to cart array
       addToCart(item, buynow);
     } else {
-      //find the index where cart._id matches item._id
       const index = cart.findIndex((cart) => {
         return cart._id === item._id;
       });
@@ -72,24 +74,21 @@ const ItemDetail = (props) => {
 
   return (
     <>
-      {!details ? (
-        <div className="main">
+      <div className="main">
+        {!details ? (
           <Loading />
-        </div>
-      ) : (
-        <>
-          <div className="main">
+        ) : (
+          <>
             <div className="details-wrapper">
               <div className="detail__image-wrapper">
                 <img
                   className="item__image-detail"
-                  // src={`${details.image}`}
                   src={`${details.image}`}
                   alt={`${details.description}`}
                 />
               </div>
               <div className="item__description-wrapper">
-                <strong className="item__brand">{details.brand}</strong>
+                <strong className="item__brand">{details.title}</strong>
                 <p className="item__description">{details.description}</p>
                 <strong>${details.price}</strong>
                 <div>
@@ -117,6 +116,7 @@ const ItemDetail = (props) => {
                         <option value="10">10</option>
                       </Input>
                     </FormGroup>
+                    <div>
                     <button
                       className="button"
                       onClick={(e) => onBuy(details, e)}
@@ -129,14 +129,15 @@ const ItemDetail = (props) => {
                     >
                       Buy Now
                     </button>
+                    </div>
                   </Form>
                 </div>
               </div>
             </div>
-          </div>
-          <FeatureBar />
-        </>
-      )}
+          </>
+        )}
+      </div>
+      <FeatureBar />
     </>
   );
 };
@@ -155,4 +156,5 @@ export default connect(mapStateToProps, {
   addToCart,
   updateCartItemQty,
   updateFeature,
+  getList,
 })(ItemDetail);

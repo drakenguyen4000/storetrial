@@ -11,7 +11,7 @@ import {
 import { message } from "../action/authActions";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { cartCount } from "./ExportVar";
-import history from "../components/history";
+import history from "../history";
 import FeatureBar from "../FeatureBar";
 
 const ShoppingCart = (props) => {
@@ -100,7 +100,7 @@ const ShoppingCart = (props) => {
                 className="shop__brand-link"
                 to={`/eapparel/${item.category}/${item._id}`}
               >
-                <p className="shop__brand">{item.brand}</p>
+                <p className="shop__brand">{item.title}</p>
               </Link>
               <Link
                 className="shop__description-link"

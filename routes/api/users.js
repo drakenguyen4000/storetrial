@@ -8,7 +8,6 @@ const express = require("express"),
 //Index Route
 router.post("/users", (req, res) => {
   const { name, password } = req.body;
-  //simple validation
   if (!name || !password) {
     return res.status(400).json({ msg: "Please enter all fields" });
   }

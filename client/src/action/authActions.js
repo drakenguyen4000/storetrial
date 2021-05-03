@@ -1,5 +1,5 @@
 import axios from "axios";
-import history from "../components/history";
+import history from "../history";
 import {
   USER_LOADED,
   AUTH_ERROR,
@@ -91,7 +91,7 @@ export const logout = () => {
   };
 };
 
-//message
+//Message
 export const message = (msg) => (dispatch) => {
   dispatch({
     type: MESSAGE,

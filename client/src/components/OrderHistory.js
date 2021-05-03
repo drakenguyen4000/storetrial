@@ -2,13 +2,18 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getList, getHistory, updateFeature } from "../action";
 import FeatureBar from "../FeatureBar";
-  
+import history from "../history";
+
 const OrderHistory = (props) => {
   const { list, getList, getHistory, updateFeature } = props;
   useEffect(() => {
-    getHistory(props.auth.user._id);
-    updateFeature();
-    return list.length === 0 ? getList() : null;
+    if (!props.auth.user) {
+      history.push("/eapparel/login");
+    } else {
+      getHistory(props.auth.user._id);
+      updateFeature();
+      return list.length === 0 ? getList() : null;
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { orderhistory } = props;
@@ -26,11 +31,15 @@ const OrderHistory = (props) => {
         </div>
         <div>
           {order.items_ordered.map((item) => {
-            return (  
+            return (
               <div className="history__wrapper" key={item._id}>
                 <div>
-                  <img className="history__image" src={`${item.image}`} alt={`${item.description}`} />
-                  <div className="history__details">{item.brand}</div>
+                  <img
+                    className="history__image"
+                    src={`${item.image}`}
+                    alt={`${item.description}`}
+                  />
+                  <div className="history__details">{item.title}</div>
                   <span className="history__details-2">${item.price} / </span>
                   <span className="history__details-2">
                     Qty: {item.quantity}

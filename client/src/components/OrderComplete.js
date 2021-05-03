@@ -10,21 +10,19 @@ const OrderComplete = (props) => {
   const { estimated_delivery } = props.order;
 
   return (
-    <div>
+    <div className="main">
       {!estimated_delivery ? (
         <Loading />
       ) : (
-        <div className="main">
-          <div className="order-complete">
-            <div className="order-complete__title">eApparel</div>
-            <div className="order-complete__delivery-date">
-              <p>Order Completed! Thank you!</p>
-              <p>
-                Your package should be arriving 3-5 days from your purchase
-                date. The lastest they arrive will be{" "}
-                {estimated_delivery.substring(0, 15)}.
-              </p>
-            </div>
+        <div className="order-complete">
+          <div className="order-complete__title">eApparel</div>
+          <div className="order-complete__delivery-date">
+            <p>Order Completed! Thank you!</p>
+            <p>
+              Your package should be arriving 3-5 days from your purchase date.
+              The lastest they arrive will be{" "}
+              {estimated_delivery.substring(0, 15)}.
+            </p>
           </div>
         </div>
       )}

@@ -1,15 +1,12 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 const FeatureBar = (props) => {
   //grab list from mapStateToProps
   //find first items not caterogy men - i.e. and display
   const { list } = props;
   const { selectedCategory } = props;
-
-  useEffect(() => {}, [selectedCategory]);
-
+  
   const findRandom = () => {
     const randomList = [];
     //Create list from caterogy not of the current selected category
@@ -47,7 +44,7 @@ const FeatureBar = (props) => {
           className="item__brand-link"
           to={`/eapparel/${feature.category}/${feature._id}`}
         >
-          <p className="item__brand">{feature.brand}</p>
+          <p className="item__brand">{feature.title}</p>
         </Link>
         <Link
           className="item__description-link"

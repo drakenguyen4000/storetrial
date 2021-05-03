@@ -67,7 +67,7 @@ router.post("/eapparel/checkout", async (req, res) => {
       })
       .catch((err) => {
         //Saved order failed
-        res.json(err);
+        res.status(400).json(err);
       });
   } else {
     //payment failed
@@ -75,7 +75,7 @@ router.post("/eapparel/checkout", async (req, res) => {
   }
 });
 
-//Order History
+//Get Order History
 router.get("/eapparel/orderhistory/:id", (req, res) => {
   const filter = req.params.id;
   Order.find({"user_id": filter})
@@ -92,7 +92,7 @@ router.get("/eapparel/:category", (req, res) => {
     .catch((err) => res.status(404).json(err));
 });
 
-//Show Details Route
+//Show Item Details
 router.get("/eapparel/:category/:id", (req, res) => {
   Item.findById(req.params.id)
     .then((item) => res.status(200).json(item))

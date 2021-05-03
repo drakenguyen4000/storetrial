@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import FeatureBar from "../FeatureBar";
 import Loading from "../Loading";
 import { useEffect } from "react";
+import MockDataModal from "./MockDataModal";
 
 const CheckOut = (props) => {
   useEffect(() => {
@@ -20,7 +21,7 @@ const CheckOut = (props) => {
       user_id: _id,
       name: `clothing`,
       salesTotal: salesTotal(),
-      description: `${cart[0].brand} dress`,
+      description: `${cart[0].title} dress`,
     };
     checkOut(token, order);
   };
@@ -67,7 +68,6 @@ const CheckOut = (props) => {
         <>
           <div className="main">
             <div className="checkout">
-              <div>
                 <div className="checkout__title">Checkout</div>
                 <div className="checkout__panel">
                   <ul className="checkout__labels-group">
@@ -93,8 +93,7 @@ const CheckOut = (props) => {
                     </li>
                     <li className="checkout__tax">${taxCal()}</li>
                     <li className="checkout__total">${salesTotal()}</li>
-                    <br />
-                    <li>
+                    <li className="checkout__btns" >
                       <StripeCheckout
                         stripeKey="pk_test_51IYjrzC8wjT1tp4m0Y0qZ5LCHVjO2yu5zqNJzLzpVgwKCR11N9khEApXI0pdIkms7p9Tfz3Lq66pOJi2eSo5NaZ6004w0mshLZ"
                         token={handleToken}
@@ -104,10 +103,10 @@ const CheckOut = (props) => {
                         shippingAddress
                       />
                     </li>
+                    <li className="checkout__btns"><MockDataModal /></li>
                   </ul>
                 </div>
               </div>
-            </div>
           </div>
           <FeatureBar />
         </>

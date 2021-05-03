@@ -3,7 +3,7 @@ const item = require("./models/Item");
 
 const data = [
   {
-    brand: "Belted High Waist Pants",
+    title: "Belted High Waist Pants",
     image:
       "https://images.unsplash.com/photo-1547637916-48ceb6f8d505?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
     quantity: 0,
@@ -13,7 +13,7 @@ const data = [
     price: 29.99,
   },
   {
-    brand: "Ruffle Midi Dress",
+    title: "Ruffle Midi Dress",
     image:
       "https://images.unsplash.com/photo-1589173239067-1c7ee83112b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
     quantity: 0,
@@ -23,7 +23,7 @@ const data = [
     price: 36.99,
   },
   {
-    brand: "Autumn Winter",
+    title: "Autumn Winter",
     image:
       "https://images.unsplash.com/photo-1592669241067-2f92a1048085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMDc0NzJ8MHwxfGFsbHx8fHx8fHx8&ixlib=rb-1.2.1&q=80&w=1080",
     quantity: 0,
@@ -33,7 +33,7 @@ const data = [
     price: 35.99,
   },
   {
-    brand: "Linen Blend Camisole",
+    title: "Linen Blend Camisole",
     image:
       "https://images.unsplash.com/photo-1603316040381-f91e5c9f0e7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -43,7 +43,7 @@ const data = [
     price: 21.99,
   },
   {
-    brand: "Pattern Cotton Midi",
+    title: "Pattern Cotton Midi",
     image:
       "https://images.unsplash.com/photo-1591346544135-50543bdd1f30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -53,7 +53,7 @@ const data = [
     price: 32.99,
   },
   {
-    brand: "Be Free Tunic",
+    title: "Be Free Tunic",
     image:
       "https://images.unsplash.com/photo-1542648870-438579cbd0ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=677&q=80&w=1080",
     quantity: 0,
@@ -63,7 +63,7 @@ const data = [
     price: 29.99,
   },
   {
-    brand: "Sleeveless Ruffle",
+    title: "Sleeveless Ruffle",
     image:
       "https://images.unsplash.com/photo-1503408024948-0a3e1b2b519c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -73,7 +73,7 @@ const data = [
     price: 37.99,
   },
   {
-    brand: "Floral Midi Dress",
+    title: "Floral Midi Dress",
     image:
       "https://images.unsplash.com/photo-1567189022371-cc754891cdc9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -83,7 +83,7 @@ const data = [
     price: 28.99,
   },
   {
-    brand: "Rib Coverup Jumpsuit",
+    title: "Rib Coverup Jumpsuit",
     image:
       "https://images.unsplash.com/photo-1545291730-faff8ca1d4b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -93,7 +93,7 @@ const data = [
     price: 39.99,
   },
   {
-    brand: "Floral Print Flare",
+    title: "Floral Print Flare",
     image:
       "https://images.unsplash.com/photo-1578679664512-23fa08b10eb5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -103,7 +103,7 @@ const data = [
     price: 17.99,
   },
   {
-    brand: "Demim Jumpsuit",
+    title: "Demim Jumpsuit",
     image:
       "https://images.unsplash.com/photo-1555009393-f20bdb245c4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -113,7 +113,7 @@ const data = [
     price: 22.99,
   },
   {
-    brand: "Striped Long Sleeve",
+    title: "Striped Long Sleeve",
     image:
       "https://images.unsplash.com/photo-1532619451280-ce13925789f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -123,7 +123,7 @@ const data = [
     price: 21.99,
   },
   {
-    brand: "Elephant Print",
+    title: "Elephant Print",
     image:
       "https://images.unsplash.com/photo-1505067072600-5d7426eb98c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=80&w=1080",
     quantity: 0,
@@ -133,7 +133,7 @@ const data = [
     price: 14.99,
   },
   {
-    brand: "Minie Mouse",
+    title: "Minie Mouse",
     image:
       "https://images.unsplash.com/photo-1516697502662-018f15aaca98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -143,7 +143,7 @@ const data = [
     price: 21.99,
   },
   {
-    brand: "Stripe Short Sleeve",
+    title: "Stripe Short Sleeve",
     image:
       "https://images.unsplash.com/photo-1588472235222-0578c263c0a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -153,7 +153,7 @@ const data = [
     price: 18.99,
   },
   {
-    brand: "2 Piece",
+    title: "2 Piece",
     image:
       "https://images.unsplash.com/photo-1593026216342-989385b799cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -163,7 +163,7 @@ const data = [
     price: 24.99,
   },
   {
-    brand: "Long Sleeve Polkadot",
+    title: "Long Sleeve Polkadot",
     image:
       "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=722&q=80&w=1080",
     quantity: 0,
@@ -173,7 +173,7 @@ const data = [
     price: 15.99,
   },
   {
-    brand: "Future Leader Shirt",
+    title: "Future Leader Shirt",
     image:
       "https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80&w=1080",
     quantity: 0,
@@ -183,7 +183,7 @@ const data = [
     price: 14.99,
   },
   {
-    brand: "4-in-1 Everyday Jacket",
+    title: "4-in-1 Everyday Jacket",
     image:
       "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -193,7 +193,7 @@ const data = [
     price: 25.99,
   },
   {
-    brand: "Dark Windrunner Sweater",
+    title: "Dark Windrunner Sweater",
     image:
       "https://images.unsplash.com/photo-1510255082245-9b3e8e1656f5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -203,7 +203,7 @@ const data = [
     price: 21.99,
   },
   {
-    brand: "Kid's Blue Tees",
+    title: "Kid's Blue Tees",
     image:
       "https://images.unsplash.com/photo-1613144577510-faf2567da706?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80&w=1080",
     quantity: 0,
@@ -213,7 +213,7 @@ const data = [
     price: 14.99,
   },
   {
-    brand: "Red Bomber Jacket",
+    title: "Red Bomber Jacket",
     image:
       "https://images.unsplash.com/photo-1467564151038-a705a00e19bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -223,7 +223,7 @@ const data = [
     price: 19.99,
   },
   {
-    brand: "Logo 5",
+    title: "Logo 5",
     image:
       "https://images.unsplash.com/photo-1616232508636-d6b8343713ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80&w=1080",
     quantity: 0,
@@ -233,7 +233,7 @@ const data = [
     price: 14.99,
   },
   {
-    brand: "Full Zip Hoodie",
+    title: "Full Zip Hoodie",
     image:
       "https://images.unsplash.com/photo-1536252107959-9aa5927cc6de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -243,7 +243,7 @@ const data = [
     price: 14.99,
   },
   {
-    brand: "Outdoor Adventure",
+    title: "Outdoor Adventure",
     image:
       "https://images.unsplash.com/photo-1502810217690-b2aa88e35100?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -253,7 +253,7 @@ const data = [
     price: 17.99,
   },
   {
-    brand: "Houser Button-Up",
+    title: "Houser Button-Up",
     image:
       "https://images.unsplash.com/photo-1529776292731-c2246c65df5a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -263,7 +263,7 @@ const data = [
     price: 17.99,
   },
   {
-    brand: "Short Sleeve Poplin",
+    title: "Short Sleeve Poplin",
     image:
       "https://images.unsplash.com/photo-1614113075469-6f2decc9ec25?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=624&q=80&w=1080",
     quantity: 0,
@@ -273,7 +273,7 @@ const data = [
     price: 14.99,
   },
   {
-    brand: "Plaid Casual",
+    title: "Plaid Casual",
     image:
       "https://images.unsplash.com/photo-1612983881270-6de7d8862f11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -283,7 +283,7 @@ const data = [
     price: 23.99,
   },
   {
-    brand: "Hawaiian Short Sleeves",
+    title: "Hawaiian Short Sleeves",
     image:
       "https://images.unsplash.com/photo-1612540139125-8c408876c81b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -293,7 +293,7 @@ const data = [
     price: 21.99,
   },
   {
-    brand: "Graphic T-Shirt",
+    title: "Graphic T-Shirt",
     image:
       "https://images.unsplash.com/photo-1588731247530-4076fc99173e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fG1lbnxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60&w=1080",
     quantity: 0,
@@ -303,7 +303,7 @@ const data = [
     price: 15.99,
   },
   {
-    brand: "Summer Long Sleeves",
+    title: "Summer Long Sleeves",
     image:
       "https://images.unsplash.com/photo-1588635631677-ea547542d60c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -313,7 +313,7 @@ const data = [
     price: 22.99,
   },
   {
-    brand: "Denim Long Sleeve",
+    title: "Denim Long Sleeve",
     image:
       "https://images.unsplash.com/photo-1526257719984-af5118d67b6d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=662&q=80&w=1080",
     quantity: 0,
@@ -323,7 +323,7 @@ const data = [
     price: 42.99,
   },
   {
-    brand: "White Dress Shirt",
+    title: "White Dress Shirt",
     image:
       "https://images.unsplash.com/flagged/photo-1577996693134-e50d294a665f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -333,7 +333,7 @@ const data = [
     price: 19.99,
   },
   {
-    brand: "Classic Hoodie",
+    title: "Classic Hoodie",
     image:
       "https://images.unsplash.com/photo-1531945086322-64e2ffae14a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80&w=1080",
     quantity: 0,
@@ -343,7 +343,7 @@ const data = [
     price: 25.99,
   },
   {
-    brand: "Denim Jacket",
+    title: "Denim Jacket",
     image:
       "https://images.unsplash.com/photo-1516257984-b1b4d707412e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,
@@ -353,7 +353,7 @@ const data = [
     price: 45.99,
   },
   {
-    brand: "Motor Bike Jacket",
+    title: "Motor Bike Jacket",
     image:
       "https://images.unsplash.com/photo-1541119370235-6c11470cfb1e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80&w=1080",
     quantity: 0,

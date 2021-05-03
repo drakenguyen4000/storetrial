@@ -32,13 +32,6 @@ const ItemList = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
-  const onConsole = () => {
-    console.log(list);
-    console.log(props);
-    console.log(props.auth);
-    console.log(props.cat);
-  };
-
   const onChange = (e) => {
     e.preventDefault();
     const { value } = e.target;
@@ -80,8 +73,11 @@ const ItemList = (props) => {
             alt={`${item.description}`}
           />
         </Link>
-        <Link className="item__brand-link" to={`/eapparel/${category}/${item._id}`}>
-          <p className="item__brand">{item.brand}</p>
+        <Link
+          className="item__brand-link"
+          to={`/eapparel/${category}/${item._id}`}
+        >
+          <p className="item__brand">{item.title}</p>
         </Link>
         <Link
           className="item__description-link"
@@ -134,30 +130,21 @@ const ItemList = (props) => {
 
   return (
     <>
-      {list.length === 0 ? (
-        <div className="main">
+      <div className="main">
+        {list.length === 0 ? (
           <Loading />
-        </div>
-      ) : (
-        <>
-          <div className="main">
-            <div className="category">
-              <h1 className="category__title">{category}</h1>
-              <button className="button" onClick={onConsole}>
-                Console Log
-              </button>
-              <div className="item-wrapper">
-                {list.map((item, i) => {
-                  return item.category === category
-                    ? displayItem(item, i)
-                    : null;
-                })}
-              </div>
+        ) : (
+          <div className="category">
+            <h1 className="category__title">{category}</h1>
+            <div className="item-wrapper">
+              {list.map((item, i) => {
+                return item.category === category ? displayItem(item, i) : null;
+              })}
             </div>
           </div>
-          <FeatureBar />
-        </>
-      )}
+        )}
+      </div>
+      <FeatureBar />
     </>
   );
 };

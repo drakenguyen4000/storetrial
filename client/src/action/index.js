@@ -1,5 +1,5 @@
 import axios from "axios";
-import history from "../components/history";
+import history from "../history";
 import { message, tokenConfig } from "./authActions";
 
 // //List Items
@@ -65,6 +65,7 @@ export const deleteItem = (item) => (dispatch) => {
   });
 };
 
+//Post Checkout Payment (Pay with Card)
 export const checkOut = (token, order) => (dispatch, getState) => {
   axios
     .post("/eapparel/checkout", { token, order }, tokenConfig(getState)) 

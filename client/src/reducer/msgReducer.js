@@ -10,13 +10,11 @@ export default function msgReducer(state = initialState, action) {
       return {
         ...state,
         msg: action.payload,
-        isLoading: false,
       };
     case CLEAR_MESSAGE: {
       return {
         ...state,
         msg: null,
-        isLoading: false,
       };
     }
     default:
