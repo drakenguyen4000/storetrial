@@ -9,7 +9,7 @@ const express = require("express"),
   path = require("path");
 app.use(express.json());
 app.use(cors())  
-// seedDB();  
+// seedDB();   
 
 //environment variables
 require("dotenv").config();
