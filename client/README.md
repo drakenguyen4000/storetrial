@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# eapparelstore - Online Store - MERN STACK 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Project Description
+- This store app allows users to create an account, make orders, make payments using a credit card, and review their order history.  
+- This app uses React for it's frontend, Redux state management to store send/receive data with the server side, Node to handle orders on the backend, and MongoDB database to store accounts and order details.  
 
-## Available Scripts
+### My motivation for this app?  
+- I wanted to challenge myself to build an app that used Redux state management. 
 
-In the project directory, you can run:
+### Why build this project?
+- I felt like an online shop would be a good app to try and build a full stack app that uses Redux.  Online stores require a frontend design to attract customers and a backend to handle orders and history.
 
-### `npm start`
+### What did you learn?
+- I learned how to implement Redux to manage state to handle online orders.  I also was able to hook up a credit card payment system to my online store.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### What issues did I run into when building this app?  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Shopping Cart Problem 1: How to handle users adding and deleting items from a cart?  
+- Solution: Initially I decided to have each item be stored in the backend but upon implementation did not seem feasible to store data in the back end when a user may not even make these purchases.  Backend should be for completed orders not items in a cart.  So I decided to keep it stored in state until the user completes and paid for the order.  This led to another problem.  
+#### Shopping Cart Problem 2: When user browses to another page, the items in cart disappears because Redux state resets.  
+- Solution: Solution was to use Redux Persist to save cartReducer in a persistant state so shopping cart data is not lost when browser reloads.  
+ 
+### How to Install and Run the Project? 
+1. Go to project on Github: https://github.com/drakenguyen4000/eapparelstores
+2. You can download the zip file or forking.  
+3. You will also need Node and Visual Studio Code installed.  
+   - https://code.visualstudio.com/
+   - https://nodejs.org/en/
+4. Once you have the files, open them in Visual Studio Code, open your terminal, type "npm install".  This will install all node packages neccesary to run this app.  
+5. To start app, while in the root directory in the terminal, run "npm run dev".  This will start both client and server of you app.
